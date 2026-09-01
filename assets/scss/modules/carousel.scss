@@ -1,0 +1,90 @@
+.issue__carousel {
+	width: calc(100% + #{$space--s} * 2);
+	margin-left: - $space--s;
+
+	margin-top: $space--l;
+	margin-bottom: $space--xl;
+
+	@include screen--large {
+		width: calc(100% + #{$space--s} * 3);
+		margin-left: - $space--s * 1.5;
+	}
+
+	@include screen--mobile {
+		width: calc(100% + #{$space--xs} * 2);
+		margin-left: - $space--xs;
+	}
+
+	&:hover {
+		* > img {
+			filter: grayscale(0) brightness(1);
+		    transition: all 150ms ease;
+		    mix-blend-mode: normal;
+		}
+	}
+
+	.issues {
+	    white-space: nowrap;
+	    overflow: scroll;
+	    padding-left: $space--s;
+		transform: translate(0px, 0px);
+		will-change: transform;
+		
+		.cover {
+		    display: inline-block;
+		    margin-right: $space--s;
+			// width: 200px;
+			filter: brightness(0.92) contrast(1.1);
+			// width: 100%;
+
+			@include screen--tablet {
+				// width: $space--xl;
+			}
+
+			@include screen--mobile {
+				// width: $space--l * 1.5;
+			}
+
+			img {
+			    // width: 200px;
+			    // height: auto;
+				height: 300px;
+				width: auto;
+
+				@include screen--tablet {
+					// width: $space--xl;
+				}
+				
+				@include screen--mobile {
+					// width: $space--l * 1.5;
+					height: 200px;
+
+				}
+
+				transition: all 800ms ease;
+
+
+				&.image--before {
+					filter: grayscale(1) brightness(1);
+					-webkit-filter: grayscale(1) brightness(1);
+					mix-blend-mode: multiply;
+				}
+	
+				&.image--after {
+					filter: grayscale(0) brightness(1);
+					-webkit-filter: grayscale(0) brightness(1);
+					mix-blend-mode: normal;
+				}
+			}
+		}
+	}
+
+	.title {
+		margin-left: $space--s;
+		margin-top: $space--s;
+		width: calc(100% - #{$space--s} * 2);
+		display: flex;
+		justify-content: flex-end;
+	}
+
+}

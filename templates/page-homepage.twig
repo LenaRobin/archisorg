@@ -1,0 +1,268 @@
+{% extends "base.twig" %}
+
+{% block content %}
+
+    <div class="home__section cheat__section home__section--scrolling">
+        {# <div class="layer"> #}
+            {# <div class="home__payoff">
+                {{post.content}}
+            </div> #}
+
+            <div class="home__section__news__title">
+            
+                <div class= "home__section__news__heading "><a href="/news"><h5>NEWS</h5></a></div>
+                <div class="home__section__news__more link link--inline link--inline--darkmode"><a href="/news">See all news</a></div>
+            </div>
+            
+            {% if newbits and newbits|length != 0 %}
+                {# Start: News section #}
+                <div class="news__section">
+                    <div class="articles">
+                        <div class="articles__list">
+                            {% for newbit in newbits %}
+                                {% include "block/item-news-home.twig" with {newbit: newbit} %}
+                            {% endfor %}        
+                        </div>
+                    </div>
+                </div>
+                {# End: News section #}
+
+            {% endif %}
+
+
+        {# </div> #}
+    </div>
+
+
+    {% if articles and articles|length != 0 %}
+        {# Start: Volume #}
+        <div class="home__section">
+            <div class="layer layer--volume">
+
+                <div class="layer__top">
+                    <div class="title">
+                        <h2><a href="{{generalcontent.homepage.more_articles_link.url | default("/volume/")}}">{{generalcontent.homepage.block_title_volume | default("VOLUME") }}</a></h2>
+                    </div>
+                </div>
+
+                <div class="layer__content">
+
+                    <div class="articles">
+                        
+                        <div class="articles__highlight">
+                            {% include "block/item-homepage-article-large.twig" with {article: articles|first} %}
+                        </div>
+
+                        {% if articles|length > 1 %}
+                            <div class="articles__list">
+                                {% for article in articles %}
+                                    {% if not loop.first %}
+                                        {% include "block/item-homepage-article.twig" with {article: article} %}
+                                    {% endif %}
+                                {% endfor %}        
+                                
+
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+
+
+                    <div class="module__right">
+                      {% if nav_pub and nav_pub | length != 0 %}
+                        {% set p = nav_pub|first %}
+                        <a href="{{p.path}}">
+                            <div class="issue__current">
+                                <div class="actions">
+                                    <div class="link--inline link--inline--darkmode">
+                                        <span>{{generalcontent.homepage.block_title_out_now | default("Out now")}}</span>
+                                    </div>
+                                </div>
+                                <div class="text">
+                                    {% set title = p.meta("pub_info") %}
+                                    {% if title.number %}
+                                    <div class="number">
+                                        <h1>{{title.number}}</h1>
+                                    </div>
+                                    {% endif %}
+                                    <h5 class="title">{{p|issueTitle.title}}</h5>
+                                </div>
+                            </div>  
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="layer__bottom">
+                    
+                    <a href="{{generalcontent.homepage.more_articles_link.url | default("/volume/")}}">
+                        <button class="button--primary">{{generalcontent.homepage.more_articles_link.title | default("More articles")}}</button>
+                    </a>
+                </div>
+
+
+            </div>
+        </div>
+        {# End: Volume #}
+
+    {% endif %}
+
+    {% if events and events|length != 0 %}
+        {# START: Events #}
+        <div class="home__section">
+            <div class="layer layer--events">
+            
+                <div class="layer__top">
+                    <div class="title">
+                        <h2><a href="{{generalcontent.homepage.see_all_events_link.url | default("/events/")}}">{{generalcontent.homepage.block_title_events | default("Events")}}</a></h2>
+                    </div>
+                </div>
+                
+                <div class="layer__content">
+                    <div class="events__list">
+                        {% for event in events %}
+                            <div class="event__thumbnail">
+                                <a href="{{event.path}}" class="container">
+                                    {% set f = event.meta("from") | date("d.m.Y") %}
+                                    {% set t = event.meta("to") | date("d.m.Y") %}
+                                    {% if not event.meta("to") or t == f %}
+                                        <h4>{{f}}</h4>
+                                    {% else %}
+                                        <h4>{{f}}<br>— {{t}}</h4>
+                                    {% endif %}
+                                    <h4>{{event.title}}</h4>
+                                    {% set loc = event.meta("location") %}
+                                    {% if loc.city %}
+                                        <p>{{loc.city}}</p>    
+                                    {% elseif loc.location %}
+                                        <p>{{loc.location}}</p>    
+                                    {% endif %}
+                                    
+                                </a>
+                            </div>
+                        {% endfor %}
+                        
+        
+                        
+                    </div>
+        
+                </div>
+        
+                <div class="layer__bottom">
+                    
+                    <a href="{{generalcontent.homepage.see_all_events_link.url | default("/events/")}}">
+                        <button class="button--primary">{{generalcontent.homepage.see_all_events_link.title | default("See all events")}}</button>
+                    </a>
+                </div>
+        
+            </div>
+        </div>
+        {# END: Events #}
+    {% endif %}
+    
+
+    <!-- Projects -->
+    {% if projects and projects|length != 0 %}
+    <div class="home__section">
+        <div class="layer layer--projects">
+            <div class="layer__top">
+                <div class="title">
+                    <h2><a href="{{generalcontent.homepage.see_all_projects_link.url | default("/projects/")}}">{{generalcontent.homepage.block_title_projects | default("Projects")}}</a></h2>
+                </div>
+            </div>
+
+            <div class="layer__content">
+
+                <div class="projects__list">
+                    {% for proj in projects[:4] %}
+                        
+                    <div class="project__thumbnail">
+                        <a href="{{proj.path}}" class="container">
+                            {% if proj.image %}
+                            <div class="image__container image__container--projects">
+                                <img class="image image--bw image--transparent" src="{{Image(proj.image) | resize(800)}}" alt="Image(proj.image).alt">
+                            </div>
+                            {% endif %}
+                            <div class="text">
+                                <h4>{{proj.name}}</h4>
+                                <p>
+                                    {{ proj.excerpt }}
+                                </p>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                    
+                </div>
+            </div>
+
+            <div class="layer__bottom">
+                <a href="{{generalcontent.homepage.see_all_projects_link.url | default("/projects/")}}">
+                    <button class="button--primary">{{generalcontent.homepage.see_all_projects_link.title | default("See all projects")}}</button>
+                </a>
+            </div>
+        </div>
+    </div>  
+    {% endif %}
+
+
+    
+    {# Start: Shop  #}
+    {# <div class="home__section">
+        <div class="layer layer--shop">
+            <div class="layer__top">
+                <div class="title">
+                    
+                    <h2>{{generalcontent.homepage.block_title_shop | default("Shop")}}</h2>
+                </div>
+            </div>
+
+            <div class="layer__content">
+
+
+                <div class="paragraph">
+                    
+                    <p>{{generalcontent.homepage.shop_text | default("Launched in 2003, Volume is Archis' bi-yearly magazine. Volume is available online, in PDF format, and in print through a network of distributors.")}}</p>
+                </div>
+            </div>
+
+            <div class="layer__bottom">
+            <a href="{{generalcontent.homepage.go_to_shop_link.url}}">
+                <button class="button--primary">{{generalcontent.homepage.go_to_shop_link.title | default("Go to shop")}}</button>
+            </a>
+        </div>
+        </div>
+    </div>
+    END: Shop #}
+
+
+
+    
+    {# Start: Books  #}
+    <div class="home__section">
+        <div class="layer layer--books">
+            <div class="layer__top">
+                <div class="title">
+                    <h2><a href="{{generalcontent.homepage.go_to_shop_link.url}}">{{generalcontent.homepage.block_title_shop | default("Books")}}</a></h2>
+                </div>
+            </div>
+
+            <div class="layer__content">
+
+
+                <div class="paragraph">
+                    <p>{{generalcontent.homepage.shop_text | default("Archis is the proud editor of many books.")}}</p>
+                </div>
+            </div>
+
+            <div class="layer__bottom">
+            <a href="{{generalcontent.homepage.go_to_shop_link.url}}">
+                <button class="button--primary">{{generalcontent.homepage.go_to_shop_link.title | default("See our books")}}</button>
+            </a>
+        </div>
+        </div>
+    </div>
+    {# END: Shop #}
+
+
+{% endblock %}

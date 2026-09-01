@@ -1,0 +1,148 @@
+.issue__current {
+	position: relative;
+	background-color: $color--black;
+	border-radius: 100%;
+	height: 300px;
+	width: 300px;
+	color: $color--white;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+
+	transform: rotate(0deg);
+	transition: all 200ms ease-in-out;
+	cursor: pointer;
+
+	&:hover {
+		transform: rotate(8deg);
+	}
+	
+	::-moz-selection {
+		background-color: $color--black;
+		color: $color--white;
+	}
+	
+	::selection {
+		background-color: $color--black;
+		color: $color--white;
+	}
+
+
+	@include screen--mobile {
+		height: 250px;
+		width: 250px;
+	}
+
+
+	&:hover {
+		.actions {
+			.link--inline--darkmode {
+				a, span {
+					&:before,
+					&:after {
+						background-color: $color--white;
+						width: 50%;
+						opacity: 1;
+					}
+				}
+			}
+		}
+	}
+
+	.image__container--volume {
+		// filter: brightness(0.92) contrast(1.1);
+	}
+
+	.image {
+		background-color: $color--black;
+		padding: $space--s $space--s;
+		padding-top: 0;
+		display: none;
+	}
+
+	.text {
+		max-width: 90%;
+
+		p {
+			margin-bottom: $space--xs;
+		}
+
+		.number {
+			text-align: center;
+			display: none;
+
+			h1 {
+				line-height: 1 !important;				
+			}
+		}
+
+		.title {
+			@include type--univers;
+			text-align: center;
+			text-transform: uppercase;
+		}
+	}
+
+	.actions {
+		display: flex;
+		flex-direction: row-reverse;
+		margin-bottom: $space--xs;
+
+		@include screen--tablet {
+			display: flex;
+			justify-content: center;
+		}
+
+		a {
+			display: block;
+		}
+
+		.button--primary {
+			@include screen--tablet {
+				margin: $space--xs $space--xs 0 $space--xxs;
+			}
+		}	
+	}
+
+
+	.link--inline {
+		margin-top: $space--xs;
+		text-align: right;
+	}
+
+
+
+	// Hover sticker
+	// &:after {
+	// 	content: "New issue!";
+	// 	display: block;
+	// 	background-color: $color--black;
+	// 	width: $space--l;
+	// 	height: $space--l;
+	// 	position: absolute;
+	// 	z-index: 9999;
+	// 	border-radius: 100%;
+	// 	color: $color--black;		
+	// 	display: flex;
+	// 	align-items: center;
+	// 	justify-content: center;
+	// 	transform: scale(0);
+	// 	will-change: transform color;
+	// 	transition: all 100ms ease;
+	// 	padding: $space--xs;
+	// 	text-align: center;
+	// }
+
+	// &:hover {
+	// 	&:after {
+	// 		color: $color--white;		
+	// 		transform: scale(1);
+	// 	}
+	// }
+
+
+
+
+}

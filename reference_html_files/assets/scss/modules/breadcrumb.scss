@@ -1,0 +1,24 @@
+.breadcrumb {
+	margin-top: $space--l;
+
+	.breadcrumb--before {
+
+	}
+}
+
+
+.layer__breadcrumbs {
+	margin-bottom: $space--l;
+	@include type--small;
+	display: flex;
+	
+	.breadcrumbs--previous {
+		&:before {
+
+		}
+	}
+
+	.breadcrumbs--categories {
+		
+	}
+}

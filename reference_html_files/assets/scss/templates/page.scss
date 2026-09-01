@@ -1,0 +1,119 @@
+html {
+	background-color: $color--black;
+}
+
+body {
+	background-color: $color--black;
+	color: $color--white;
+    overflow-x: hidden;
+}
+
+
+// Global page container (Volume, Projects, Events...)
+.page {
+	min-height: 100vh;	
+
+	.background {
+		width: 100vw;
+		position: sticky;
+		top: 0;
+		height: 100vh;
+		padding: 1em;
+		z-index: 0;
+		cursor: default;
+
+		&:hover {
+			.layer__nav {
+				opacity: 1;
+			}
+		}
+	}
+
+	.layers {
+	    width: calc(100vw - #{$space--xs * 3});
+	    z-index: 9;
+	    margin-left: $space--xs * 3;
+	    position: relative;
+	    // margin-top: calc(-100vh + #{$space--xs});
+	    margin-top: -100vh;
+	    transition-property: filter, transform;
+	    transition-duration: 200ms, 300ms;
+	    transition-timing-function: cubic-bezier(0, 0, 0.21, 1), ease-out;
+	    transition-delay: 150ms, 0s;
+
+	    &.layers--move--hint {
+	    	transform: translate3d(33%, 0.5rem, 15rem);
+			filter: brightness(0.5);
+
+			img {
+				@include image--nb;
+			}
+	    }
+
+		&.layers--move--aside {
+	    	transform: translate3d(33%, 0.5rem, 15rem);
+			cursor: pointer;
+
+			img {
+				@include image--nb;
+			}
+
+			&.layers--move--hintback {
+	    		transform: translate3d(30%, 0.5rem, 0rem);
+			}
+		}
+
+		@include screen--tablet {
+			width: 100vw;
+			margin-left: 0;
+		}
+
+		.layer {
+			padding: $space--m;
+			padding-top: $space--s;
+
+			@include screen--tablet {
+				padding: $space--s;
+			}
+		}
+	}
+}
+
+
+
+
+.layer__top {
+	// border-top: $borders--thin;
+	// padding-top: $space--xs;
+	// padding-bottom: $space--xs;
+
+
+
+	&.layer__top--big {
+
+	}
+
+	&.layer__top--small {
+		padding-top: $space--xs;
+
+		h2 {
+			transition: all 300ms;
+		    transform-origin: top left;
+			@include p;
+		    transform-origin: top left;
+
+		    a {
+		    	@include type--univers;
+		    }
+		}
+
+		&:hover h2 {
+			transform: translateX(30px);
+		    transform-origin: top left;
+		}
+	}	
+}
+
+
+
+

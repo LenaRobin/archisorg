@@ -1,0 +1,40 @@
+<div class="article__thumbnail">
+    <a class="container" href="{{article.path}}">
+        {% if article.thumbnail %}
+        <div class="image__container image__container--volume">
+            <img class="image" src="{{article.thumbnail | resize(1000, 600) }}" alt="">
+        </div>
+        {% endif %}
+        <div class="text">
+            <h4 class="title">{{article.title}}<br>
+            {% if article.subtitle %}
+                {{ article.subtitle|join(' ') }}
+            {% endif %}
+            </h4>
+            <h5 class="authors">
+                {% for author in article.id|getAuthors %}
+                    {% if not loop.first %}<br/>&amp; {% endif %}{{author.display_name}}        
+                {% endfor %}
+            </h5>
+            {# Tags part #}
+            <div class="tags">
+                {% set pub = article.meta("publication") %}
+                {% if pub %}
+                  <span class="filter__tag">{{pub|issueTitle.title}}</span>
+                {% endif %}
+                {% set dossiers = article.terms("dossier")  %}
+                {% set topics = article.terms("topics")  %}
+
+                {% for cat in dossiers %}
+                    <span class="filter__tag">{{cat.name}}</span>
+                {% endfor %}
+                {% for cat in topics %}
+                 <span class="filter__tag">{{cat.name}}</span>
+                {% endfor %}
+             </div>
+          <div class="excerpt">
+            <p>{{ article.post_excerpt}}</p>
+          </div>
+        </div>
+    </a>
+</div>

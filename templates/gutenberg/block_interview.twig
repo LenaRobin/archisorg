@@ -1,0 +1,29 @@
+<div id="block__interview__{{block.id}}" class="block__interview">
+  
+    {% for par in fields.paragraphs %}
+    <div class="paragraph">
+      <div class="initials">
+        <span>{{par.initials}}</span>
+      </div>
+      <div class="text">
+        <p>
+          {{ par.text }}
+        </p>
+      </div>
+    </div>
+    {% endfor %}
+  
+</div>
+{% if is_preview %}
+<style type="text/css">
+  #block__blockquote__{{block.id}} h4 {
+    font-family: 'PT Serif', serif;
+    font-weight: 400;
+    font-size: 30px;
+    font-size: 2.15vw;
+    line-height: 1.25em;
+  }
+  #block__blockquote__{{block.id}} .source {
+  }
+</style>
+{% endif %}

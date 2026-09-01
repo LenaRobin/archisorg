@@ -1,0 +1,90 @@
+.post__header {
+	
+	.post__title {
+		// text-transform: uppercase;
+	}
+
+	.post__subtitle {
+		// text-transform: uppercase;	
+		text-align: right;
+	}
+}
+
+
+.volume-post .post__content {
+	display: grid;
+	grid-template-columns: 3fr 3fr;
+	grid-column-gap: $space--s;
+
+	p {
+		grid-column: 2 / 3;
+	}
+
+	img {	
+		@include image--interactive;
+	}
+
+	// Quote block
+	.block__quote {
+		grid-column: 1 / 3;
+		margin: $space--l $space--m $space--l * 0.75 0;
+
+		.text {
+			margin-bottom: $space--xs;
+			max-width: 110ch;
+		}
+
+		.source {
+			p {
+				margin-left: 0;
+			}			
+		}
+	}
+
+	// Interview block
+	.block__interview {
+		// margin-left: 50%;
+		// display: grid;
+		// grid-template-columns: 3fr 3fr;
+		grid-column: 1 / 3;
+
+		.paragraph {
+			// grid-column: 2 / 3;
+			display: grid;
+			grid-template-columns: 3fr 3fr;
+			grid-column-gap: $space--s;
+			align-items: baseline;
+			margin-bottom: 1.75rem;
+
+			.initials {
+				text-align: right;
+			}
+
+			.text {
+				p {
+					margin-left: 0;
+					grid-column: 1 / 3;
+				}
+			}
+		}
+	}
+
+	// Large image block
+	.block__image--large {
+		margin: $space--m * 1.35 0;
+		grid-column: 1 / 3;
+
+		.image {
+			@include image--interactive;
+		}
+
+		.caption {
+			margin-top: $space--xs / 2;
+
+			p {
+				margin-left: 0;
+				@include type--small;
+			}
+		}
+	}
+}

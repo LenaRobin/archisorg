@@ -1,0 +1,44 @@
+.layer--projects {
+	background-color: $color--projects;
+	color: $color--black;
+	// border-radius: $corners--layer;
+}
+
+
+.projects .page .layers .layer {
+
+}
+
+.layer--projects {
+	.project__thumbnail {
+		.image__container {
+			margin-bottom: $space--xs;
+		}
+
+		.text {
+			margin-bottom: $space--xs;
+
+			h4 {
+				margin-bottom: $space--xxs;
+			}
+
+			p {
+				width: 90%;
+				max-width: 60ch;
+
+				@include screen--mobile {
+					max-width: none;
+					width: 100%;
+				}
+			}
+		}
+	}
+}
+
+
+
+.nav--projects {
+	.nav__bar {
+		border-bottom: 0;
+	}
+}

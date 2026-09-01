@@ -1,0 +1,43 @@
+{% extends "base.twig" %}
+
+{% block outside_content %}
+
+	<div class="content__archis">
+
+
+    {% if newbits and newbits|length != 0 %}
+        {# Start: News section #}
+        <div class="news__section">
+
+			<div class="title">
+				<h2>
+					News
+				</h2>
+			</div>
+
+                    <div class="articles">
+                        <div class="articles__list">
+                            {% for newbit in newbits %}
+                                {# {% if not loop.first %} #}
+                                    {% include "block/item-news.twig" with {newbit: newbit} %}
+                                {# {% endif %} #}
+                            {% endfor %}        
+                            
+
+                        </div>
+                    </div>
+                    
+
+                </div>
+
+
+
+            </div>
+        </div>
+        {# End: News section #}
+
+    {% endif %}
+
+    </div>
+
+{% endblock %}

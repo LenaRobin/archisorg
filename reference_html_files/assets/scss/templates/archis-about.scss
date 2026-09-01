@@ -1,0 +1,81 @@
+.about {
+
+	img {
+		mix-blend-mode: normal !important;
+	}
+
+	.background {
+
+	}
+
+	.page {
+	    grid-template-columns: 1fr 2fr;
+	    display: grid;
+	    grid-column-gap: $space--s;
+
+	    .background {
+	    	width: auto;
+	    	padding-right: 0;
+
+	    	.layer__archis {
+	    		width: 100%;
+	    	}
+
+	    	.layer__nav {
+	    		opacity: 1;
+
+		    	.navigation {
+		    		width: 100%;
+		    	}
+	    	}
+
+
+	    }
+
+		.content__archis {
+
+			.archis__about {
+				.introduction {
+					padding-right: $space--l;
+					margin-top: $space--l;
+					margin-bottom: $space--l;
+				}
+
+				.header--line {
+					border-top: 1px solid $color--white--transp;
+					padding-top: $space--xxs;
+				}
+
+
+				.description {
+					padding-right: $space--xl;
+					margin-bottom: $space--m;	
+					margin-top: $space--m;
+				}
+
+				.team {
+					padding-right: $space--s;
+					margin-bottom: $space--l;
+
+					.team__members {
+						margin-top: $space--s;
+						margin-bottom: $space--m;
+					}
+
+					.team__extra {
+						margin: $space--s 0;
+					}
+				}
+
+				.contributors {
+					padding-right: $space--l;
+					margin-top: $space--l;
+
+					.contributors__list {
+						margin-top: $space--s;
+					}
+				}
+			}
+		}
+	}
+}

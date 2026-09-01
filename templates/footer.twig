@@ -1,0 +1,104 @@
+<footer class="footer">
+    <div class="footer__container">
+
+
+        <div class="footer__row">
+
+            {# Back up button #}
+            <div class="backup">
+                <div class="link">
+                    <span>{{generalcontent.footer.go_back_up | default("Go back up")}}</span>
+                </div>
+            </div>
+
+            {# Payoff #}
+            <div class="footer__payoff">
+                <h6>Archis is an architectural think tank and publisher. Together with Nieuwe Instituut, we publish VOLUME magazine, organise events, and conduct international research projects.</h6>
+            </div>
+
+        </div>
+
+
+
+
+        <div class="footer__row">
+
+            {% if footer_secondary_1 %}
+            <div class="footer__secondary__1">
+                <p class="footer__label">{{generalcontent.footer.menu_1_title | default("Archis")}}</p>
+                <ul>   
+                    {% for item in footer_secondary_1.get_items %}
+                        <li><a target="{{item.target}}" href="{{item.link}}">{{item.title}}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+
+            {% if footer_secondary_2 %}
+            <div class="footer__secondary__2">
+                <p class="footer__label">{{generalcontent.footer.menu_2_title | default("Volume")}}</p>
+                <ul>   
+                    {% for item in footer_secondary_2.get_items %}
+                        <li><a target="{{item.target}}" href="{{item.link}}">{{item.title}}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+
+            <div class="footer__socials">
+                <p class="footer__label">{{generalcontent.footer.menu_3_title | default("Connect")}}</p>
+                <ul>
+                    {% for item in footer_social.get_items %}
+                        <li><a target="_blank" href="{{item.link}}">{{item.title}}</a></li>    
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="footer__newsletter">
+                <p class="footer__label">{{generalcontent.footer.newsletter.title | default("Newsletter") }}</p>
+                <!-- Begin Mailchimp Signup Form -->
+                <div id="mc_embed_signup">
+                    <form action="https://archis.us6.list-manage.com/subscribe/post?u=312e5be7095c78b8c54057744&amp;id=74f120c184" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                        <div id="mc_embed_signup_scroll">
+                        
+                    <div class="mc-field-group">
+                        <label for="mce-EMAIL">{{generalcontent.footer.newsletter.email_addrees | default("Email Address")}} </label>
+                        <input placeholder="Email Address" type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+                    </div>
+                        <div id="mce-responses" class="clear">
+                            <div class="response" id="mce-error-response" style="display:none"></div>
+                            <div class="response" id="mce-success-response" style="display:none"></div>
+                        </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                        <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_312e5be7095c78b8c54057744_74f120c184" tabindex="-1" value=""></div>
+                        <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+                        </div>
+                    </form>
+                </div>
+                <!--End mc_embed_signup-->
+            </div>
+
+            <div class="footer__tertiary">
+                <ul>
+                    <li>Archis, {{"now"|date('Y')}}</li>
+                    {% for item in footer_tertiary.get_items %}
+                    <li><a target="{{item.target}}" href="{{item.link}}">{{item.title}}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+
+
+
+        </div>
+
+
+
+                
+    </div>
+   
+
+
+
+
+
+</footer>

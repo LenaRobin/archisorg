@@ -1,0 +1,32 @@
+ <div class="events__thumbnail--detailed">
+  <a href="{{event.path}}" class="container">
+    <div class="metadata">
+      {% set f = event.meta("from") | date("d.m.Y") %}
+      {% set t = event.meta("to") | date("d.m.Y") %}
+      {% if not event.meta("to") or t == f %}
+          <h3>{{f}}</h3>
+      {% else %}
+          <h3>{{f}}<br>— {{t}}</h3>
+      {% endif %}
+    </div>
+    <div class="title">
+      <h4>{{event.title}}</h4>
+    </div>
+    <div class="info">
+      <p>{{event.excerpt}}</p>
+      <div class="place">
+        {% set loc = event.meta("location") %}
+        {% if loc.city %}
+            <p>{{loc.city}}</p>    
+        {% elseif loc.location %}
+            <p>{{loc.location}}</p>    
+        {% endif %}
+      </div>
+    </div>
+    {% if event.thumbnail %}
+      <div class="image__container image__container--volume">
+        <img class="image image--bw image--transparent" src="{{event.thumbnail|resize(600)}}" alt="">
+      </div>
+    {% endif %}
+  </a>
+</div>

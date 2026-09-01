@@ -1,0 +1,32 @@
+{# This file demonstrates using most of the index.twig template and modifying 
+   just a small part. See `search.twig` for an example of another approach #}
+
+{% extends "base.twig" %}
+
+{% block content %}
+
+  <div class="layer layer--volume"> 
+    {% include "volume_nav.twig" with {"volume_class": "layer__top--small"} %}
+
+    <div class="layer__content">
+      {% if term %}
+        {% include "block/archive_term_intro.twig" %}
+      {% endif %}
+      {% include "block/archive_article_feed.twig"%}
+      
+
+
+
+{#         {% if posts | length > 8 %}
+          {% include "block/archive_article_feed.twig" with {"posts": posts|slice(9, 8)} %}
+        {% endif %} #}
+          
+        {% include 'partial/pagination.twig' with { pagination: posts.pagination({show_all: false, mid_size: 3, end_size: 2}) } %}
+
+          
+      </div>
+  </div>
+
+
+  </div>
+{% endblock %}

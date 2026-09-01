@@ -1,0 +1,91 @@
+{# This file demonstrates using most of the index.twig template and modifying 
+   just a small part. See `search.twig` for an example of another approach #}
+
+{% extends "base.twig" %}
+
+{% block content %}
+  <div class="layer layer--events">
+
+    <div class="nav nav--events">
+
+      <div class="nav__bar">
+
+        <div class="layer__top layer__top--big">
+          <div class="title">
+
+            
+            <h2>
+              <a href="{{generalcontent.breadcrumbs.events.url}}">{{generalcontent.breadcrumbs.events.title}}</a>
+            </h2>
+          </div>
+        </div>
+      
+      </div>
+
+      
+    </div>
+
+
+    {% set sticker = generalcontent.stickers.events %}
+    {% if sticker %}
+      <div class="sticker--text">
+        <p>
+          {{sticker}}
+        </p>
+      </div>
+    {% endif %}
+
+      
+    <div class="layer__content">
+
+
+
+
+      <!-- Next events -->
+      {% if future|length != 0 %}
+      <div class="events--next">
+        <h5 class="label">
+          {{generalcontent.words.next_events}}
+        </h5>
+
+
+        {# TODO: ANTON: Somehow, future events don't show here!! We need to fix the template #}
+        <div class="events__list">
+          {% for event in future %}
+           {% include "block/events_event.twig" with {"event": event} %}
+          {% endfor %}
+        </div>
+      </div>
+      {% else %}
+      <div class="events--next">
+       
+        <h5 class="label">
+          {{generalcontent.words.next_events}}
+        </h5>
+
+        <div class="events__list events__list--empty">
+          <p>No new event planned yet!</p>
+        </div>
+      </div>
+
+      {% endif %}
+      
+      {% if past|length != 0 %}
+      <div class="events--past">
+
+        <h5 class="label">
+          {{generalcontent.words.past_events}}
+        </h5>
+        
+        <div class="events__list">
+          {% for event in past %}
+           {% include "block/events_event.twig" with {"event": event} %}
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+
+        
+    </div>
+  </div>
+{% endblock %}

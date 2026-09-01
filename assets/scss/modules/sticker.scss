@@ -1,0 +1,135 @@
+.sticker--text {
+	background-color: $color--black;
+	padding: $space--s;
+	height: 20vw;
+	width: 20vw;
+	border-radius: 100%;
+	color: $color--white;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  	z-index: 9;
+	transition: all 200ms ease-in;
+  	// animation: moveright 15s infinite;
+
+	transform: rotate(0deg);
+	transition: all 200ms ease-in-out;
+	cursor: pointer;
+
+	&:hover {
+		transform: rotate(8deg);
+	}
+
+	p, p + p {
+		margin: 0;
+	}
+
+
+	h6 {
+		max-width: 85%;
+
+		@include screen--mobile {
+			max-width: 100%;
+		}
+
+		a {
+			border-bottom: 1px solid;
+		}
+	}
+
+	&.sticker--text--left {
+	  	// animation: moveleft 15s infinite;
+  	}
+
+  	@include screen--large {
+		height: 320px;
+		width: 320px;
+  	}
+
+  	@include screen--desktop {
+		height: 300px;
+		width: 300px;
+  	}
+
+  	@include screen--tablet {
+		height: 225px;
+		width: 225px;
+		transform: rotate(8deg);
+
+		&:hover {
+			pointer-events: none;
+		}
+  	}
+
+	@include screen--mobile {
+		transform: rotate(8deg);
+
+		&:hover {
+			pointer-events: none;
+		}
+	}
+}
+
+@keyframes moveright {
+	0% {
+		transform: rotate(3deg) translate(-5px, -10px) scale(1);
+	}
+
+	50% {
+		transform: rotate(3deg) translate(5px, 0px) scale(1);
+	}
+
+	100% {
+		transform: rotate(3deg) translate(-5px, -10px) scale(1);
+	}
+}
+
+@keyframes moveleft {
+	0% {
+		transform: rotate(-3deg) translate(-5px, -10px) scale(1);
+	}
+
+	50% {
+		transform: rotate(-3deg) translate(5px, 0px) scale(1);
+	}
+
+	100% {
+		transform: rotate(-3deg) translate(-5px, -10px) scale(1);
+	}
+}
+
+
+
+
+// Hide sticker when home sections are folded
+// .home__section {
+// 	.sticker--text {
+// 		opacity: 0;
+// 	  	transition: all 200ms ease-in;
+// 	}
+
+// 	&.home__section--scrolling {
+// 		.sticker--text {	
+// 			opacity: 1;
+// 			transition: all 200ms ease-in;
+// 		  	// animation: moveright 15s infinite;
+
+// 	  	  	&.sticker--text--left {
+// 			  	// animation: moveleft 15s infinite;
+// 		  	}
+// 		}
+// 	}
+// }
+
+
+
+
+// Sticker colors variating
+.layer--events .sticker--text {
+	color: $color--events;
+}
+
+.layer--projects .sticker--text {
+	color: $color--projects;
+}

@@ -1,0 +1,171 @@
+<div class="layer__feed">
+  <div class="articles__list">
+    
+    {% for post in posts %}
+      {% if (loop.index <= 1 and pagination.pages|first.current == true and not second_section) or 
+            (second_section and loop.index == 1) %}
+
+
+        {# Highlight #}
+        <div class="article__thumbnail--highlight {{ post.thumbnail ? "" : "article__thumbnail--highlight--nopic"}}">
+          <div class="content">
+
+            {# Text part #}
+            <div class="text">
+              <a class="link__container" href="{{post.path}}">
+               
+                <div class="title">
+                    <h3>{{post.title}}</h3>
+                    {% if post.subtitle %}
+                      <h3 class="subtitle">{{ post.subtitle|join(' ') }}</h3>
+                    {% endif %}
+                </div>
+
+                 <div class="authors">
+                  {% for author in post.id|getAuthors %}
+                    <h4 class="author__tag">{{author.display_name}}</h4>
+                  {% endfor %}
+                </div> 
+              </a>
+            </div>
+          
+          {% if post.thumbnail %}
+            <div class="image__container image__container--volume">
+              <a href="{{post.path}}">
+                <img class="image" loading="auto" src="{{post.thumbnail | resize( 1200 )}}" alt="">
+              </a>
+            </div>
+          {% endif %}
+
+            {# Excerpt part #}
+            <div class="excerpt">
+              <p>{{ post.post_excerpt}}</p>
+            </div>
+          </div>
+
+
+          {# Tags part #}
+          <div class="tags">
+            {% set pub = post.meta("publication") %}
+            {% if pub %}
+              <span class="filter__tag"><a href="{{pub.path}}">{{pub|issueTitle.title}}</a></span>
+            {% endif %}
+            {% set dossiers = post.terms("dossier")  %}
+            {% set topics = post.terms("topics")  %}
+
+            {% for cat in dossiers %}
+              <span class="filter__tag"><a href="{{cat.path}}">{{cat.name}}</a></span>
+            {% endfor %}
+            {% for cat in topics %}
+              <span class="filter__tag"><a href="{{cat.path}}">{{cat.name}}</a></span>
+            {% endfor %}
+          </div>
+        </div>
+        
+      {% else %}
+
+      {# Thumbnail in list #}
+        <div class="article__thumbnail article__thumbnail--list {{ post.thumbnail? "": "article__thumbnail--nopic"}}">
+          {% if post.thumbnail %}
+            <div class="image__container image__container--volume">
+              <img class="image" loading="auto" src="{{post.thumbnail | resize( 1200 )}}" alt="">
+            </div>
+          {% endif %}
+          
+          {# Text part #}
+          <div class="text">
+            <a class="link__container" href="{{post.path}}">
+          
+              <div class="authors">
+          
+                {# title #}
+                <h5>{{post.title}}</h5>
+
+                {% if post.subtitle %}
+                    <h5>{{ post.subtitle|join(' ') }}</h5>
+                {% endif %}
+              
+                {# authors #}
+                {% for author in post.id|getAuthors %}
+                  <h6 class="author__tag">{{author.display_name}}</h6>
+                {% endfor %}
+
+                {# Tags part #}
+                  <div class="tags">
+                    {% set pub = post.meta("publication") %}
+                    {% if pub %}
+                      <span class="filter__tag">{{pub|issueTitle.title}}</span>
+                    {% endif %}
+                    {% set dossiers = post.terms("dossier")  %}
+                    {% set topics = post.terms("topics")  %}
+
+                    {% for cat in dossiers %}
+                      <span class="filter__tag">{{cat.name}}</span>
+                    {% endfor %}
+                    {% for cat in topics %}
+                      <span class="filter__tag">{{cat.name}}</span>
+                    {% endfor %}
+                  </div>
+              </div>
+
+              <div class="title">
+                  
+                  {# Excerpt part #}
+                  <div class="excerpt">
+                    <p>{{ post.post_excerpt}}</p>
+                  </div>
+              </div>
+            </a>
+
+
+
+          </div>
+
+        </div>
+      {% endif %}
+
+    {%  endfor %}
+  </div>
+
+
+  {% if nav_pub and nav_pub | length != 0 %}
+    {% set p = nav_pub|first %}
+    <div class="module__right">
+
+    <a href="{{p.path}}">
+      <div class="issue__current">
+        
+          <div class="actions">
+            <div class="link--inline link--inline--darkmode">
+              <span>
+                {{generalcontent.words.out_now}}
+              </span>
+            </div>
+          </div>
+
+          <div class="text">
+            {% set title = p.meta("pub_info") %}
+              {% if title.number %}
+              <div class="number">
+                <h1>{{title.number}}</h1>
+              </div>
+              {% endif %}
+              <h5 class="title">{{p|issueTitle.title}}</h5>
+          </div>
+
+        </div>  
+      </a>
+
+    </div>
+  
+  <!-- Breaking block -->
+  <div class="layer__breaking">
+    {% include "block/ad.twig" with {"ad":pagination.current|getAd} %}
+  </div>
+   
+  {% endif %}
+
+
+
+
+</div>

@@ -1,0 +1,247 @@
+.layer--projects {
+
+	img {
+		// @include image--nb;
+	}
+
+	.layer__content {
+		margin-top: $space--m;
+		padding-bottom: $space--l;
+	}
+
+	.project__info {
+		margin-bottom: $space--m;
+
+		.split {
+			display: grid;
+			grid-template-columns: 3fr 1fr 2fr;
+			grid-column-gap: $space--s;
+			align-items: baseline;
+			margin-top: $space--m;
+
+
+			@include screen--mobile {
+				display: block;
+			}
+
+			.project__description {
+				grid-column: 1 / 2;
+
+				p {
+
+				}
+
+				h1 + *, h2 + *, h3 + p, h4 + p, h5 + p, h6 + p, p + p, p + * {
+					margin-top: $space--s;
+				}
+			}
+
+			.project__info {
+				grid-column: 3 / 4;
+
+
+
+				.item {
+					display: grid;
+					grid-template-columns: 2fr 4fr;
+					grid-column-gap: $space--s;
+					border-top: $borders--thin;
+					align-items: baseline;
+					padding-top: $space--xs;
+					margin-bottom: $space--s;
+
+					.label {
+						border-top: none;
+						@include type--small;
+						text-transform: uppercase;
+					}
+
+					.content {
+						p {
+							margin-top: $space--xxs;
+						}
+					}
+				}
+
+				.item + .item {
+					margin-top: $space--s;
+				}
+
+						
+			.project__related {
+				display: grid;
+				grid-column-gap: $space--s;
+				grid-row-gap: $space--s;
+				grid-template-columns: 1fr 2fr;
+				border-top: $borders--thin;
+
+				.label {
+					@include type--small;
+					text-transform: uppercase;
+				}
+
+				.project__related__title {
+					padding-top: $space--xs;
+				}
+
+				.project__related__items {
+
+					.item {
+						border-top: none;
+						display: block;
+						text-align: center;
+
+						img {
+							@include image--nb;
+						    max-width: 200px;
+						}
+					}
+					
+
+				}
+			}
+
+			}
+		}
+	}
+
+
+	.articles__list {
+		display: grid;
+		grid-template-columns: 2fr 2fr 2fr;
+		grid-column-gap: $space--s;
+		grid-row-gap: $space--m;
+
+		@include screen--large {
+			grid-template-columns: 2fr 2fr 2fr 2fr;
+		}
+
+		@include screen--desktop {
+			grid-template-columns: 2fr 2fr 2fr;
+		}
+
+		@include screen--tablet {
+			grid-template-columns: 2fr 2fr;
+		}
+
+		@include screen--mobile {
+			grid-template-columns: 2fr;
+		}
+
+		img {
+			// @include image--nb;
+		}
+
+		.article__thumbnail, .article__thumbnail--list {
+			padding-top: $space--xs;
+			padding-bottom: 0;
+
+			@include screen--tablet {
+				grid-template-columns: 1fr;
+			}
+
+			&:hover {
+				.container {
+					.image__container {
+						display: block;
+						position: static;
+
+						img {
+							aspect-ratio: 14/9;
+							display: block;
+							margin: 0 !important;
+							position: static;
+						    width: 100% !important;
+							object-fit: cover !important;
+							// height: 30vh !important;
+							// @include image--nb;
+						}
+					}	
+				}			
+			}
+
+			.container {
+				.image__container {
+					display: block;
+					position: static;
+					background-color: $color--projects;
+
+					img {
+						display: block;
+						margin: 0 !important;
+						position: static;
+					    width: 100% !important;
+						object-fit: cover !important;
+						aspect-ratio: 14/9;
+						// height: 30vh !important;
+						max-height: 30vh !important;
+
+						&:hover {		
+							aspect-ratio: 14/9;
+							// @include image--nb;
+							// height: 30vh !important;
+							max-height: 30vh !important;
+						}
+
+						@include screen--touch {
+							mix-blend-mode: multiply;
+						}
+					}
+				}
+
+				.text {
+					margin-top: $space--xs;
+
+					.title {
+						text-align: left;
+
+						@include screen--touch {
+							h5 {
+								text-align: left;
+								
+							}
+						}
+					}
+				}				
+			}
+
+			.tags {
+				opacity: 1 !important;
+				text-align: left;
+				margin-top: $space--xs;
+			}
+
+		}
+
+		// .article__thumbnail--nopic {
+		// 	grid-column: auto;
+		//     text-align: left;
+
+		//     h5 {
+		//     	@include h4;
+		//     }
+		// }
+	}
+
+
+
+
+
+
+
+	.filter__bar {
+    	justify-content: flex-end;
+		margin-bottom: $space--m;
+
+		.button__filters {
+			display: none;
+		}
+	}
+
+
+	.layer__bottom {
+		margin-bottom: $space--m;
+		margin-top: $space--s;
+	}
+
+}

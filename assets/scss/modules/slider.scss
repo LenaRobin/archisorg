@@ -1,0 +1,65 @@
+.wp-block-gallery, figure.wp-block-gallery, .projects-post .wp-block-gallery, .projects-post figure.wp-block-gallery  {
+	grid-column: 1/4 !important;
+	margin-top: $space--s !important;
+	margin-bottom: $space--s !important;
+
+	// @include screen--large {
+	// 	width: calc(100% + 5rem) !important;
+	// 	margin-left: - 2.5rem !important;
+	// }
+
+	// @include screen--desktop {
+	// 	width: calc(100% + 3.5rem) !important;
+	// 	margin-left: - 1.75rem !important;
+	// }
+
+
+	// @include screen--tablet {
+	// 	width: calc(100% + 3.5rem) !important;
+	// 	margin-left: - 1.75rem !important;
+	// }
+
+	ul.blocks-gallery-grid {
+	    display: flex !important;
+	    flex-direction: row !important;
+	    flex-wrap: nowrap !important;
+		overflow-x: scroll !important;
+
+	    li.blocks-gallery-item {
+	    	margin: 0;
+	    	height: 100%;
+	    	flex-shrink: 0;
+	    	width: 70%;
+	    	// border: 3px pink solid;
+
+	    	figure {
+	    		height: auto;
+				max-height: 85vh;
+	    		max-width: 100%;
+	    		display: flex;
+	    		align-items: center;
+	    		justify-content: center;
+
+				@include screen--tablet {
+					max-height: 60vh;;
+				}
+
+
+
+	    		img {
+	    			object-fit: contain;
+					width: 90%;
+					max-width: 90%;
+					height: 100%;	    
+					cursor: pointer;
+				}
+
+				figcaption {
+					background: none !important;
+					color: $color--black;
+					padding: 0;
+				}
+	    	}
+	    }
+	}
+}

@@ -1,0 +1,297 @@
+.layer--projects {
+	background-color: $color--projects;
+	color: $color--black;
+
+	img {
+		@include image--nb;
+	}
+}
+
+
+.projects .page .layers .layer {
+
+}
+
+.layer--projects {
+	.project__thumbnail {
+		border-top: $borders--thin $color--black;
+		padding-top: $space--xs;
+
+		.image__container {
+			margin-bottom: $space--xs;
+
+			img {							
+			    aspect-ratio: 5/3;
+			    object-fit: cover;
+			    // height: 250px;
+
+				@include screen--tablet {
+					// height: 200px;
+				}
+
+				@include screen--mobile {
+					// height: 200px;
+				}
+			}
+		}
+
+		.text {
+			margin-bottom: $space--xs;
+
+			h4 {
+				margin-bottom: $space--xxs;
+			}
+
+			p {
+				width: 90%;
+				max-width: 60ch;
+
+				@include screen--mobile {
+					max-width: none;
+					width: 100%;
+				}
+			}
+
+		}
+	}
+
+
+	.label {
+		margin-bottom: $space--xs * 1.5;
+		// text-transform: uppercase;
+		@include type--small;
+
+		@include screen--tablet {
+			margin-bottom: 0;
+		}
+	}
+}
+
+
+
+.nav--projects {
+	.nav__bar {
+		border-bottom: 0;
+	}
+}
+
+
+// Projects news
+
+.projects__new {
+	display: grid;
+	grid-template-columns: 2fr 2fr 2fr 2fr;
+	grid-column-gap: $space--s;
+	grid-row-gap: $space--m;
+	margin-bottom: $space--l;
+
+	@include screen--large {
+		grid-template-columns: 2fr 2fr 2fr 2fr;
+	}
+
+	@include screen--desktop {
+		grid-template-columns: 2fr 2fr 2fr 2fr;
+	}
+
+	@include screen--tablet {
+		grid-template-columns: 2fr 2fr;
+	}
+
+	@include screen--mobile {
+		grid-template-columns: 2fr;
+		grid-row-gap: $space--s;
+	}
+
+	img {
+		// @include image--nb;
+	}
+
+	.article__thumbnail, .article__thumbnail--list {
+		padding-top: $space--xs;
+		padding-bottom: 0;
+
+		@include screen--tablet {
+			grid-template-columns: 1fr;
+		}
+
+		&:hover {
+			.container {
+				.image__container {
+					display: block;
+					position: static;
+
+					img {
+						aspect-ratio: 14/9;
+						display: block;
+						margin: 0 !important;
+						position: static;
+						width: 100% !important;
+						object-fit: cover !important;
+						// height: 30vh !important;
+						// @include image--nb;
+					}
+				}	
+			}			
+		}
+
+		.container {
+			.image__container {
+				display: block;
+				position: static;
+				background-color: $color--projects;
+
+				img {
+					display: block;
+					margin: 0 !important;
+					position: static;
+					width: 100% !important;
+					object-fit: cover !important;
+					aspect-ratio: 14/9;
+					// height: 30vh !important;
+					max-height: 30vh !important;
+
+					&:hover {		
+						aspect-ratio: 14/9;
+						// @include image--nb;
+						// height: 30vh !important;
+						max-height: 30vh !important;
+					}
+
+					@include screen--touch {
+						mix-blend-mode: multiply;
+					}
+				}
+			}
+
+			.text {
+				margin-top: $space--xs;
+
+				.title {
+					text-align: left;
+
+					@include screen--touch {
+						h5 {
+							text-align: left;
+							
+						}
+					}
+				}
+			}				
+		}
+
+		.tag__project {
+			margin-top: $space--xxs;
+		}
+
+		.tags {
+			opacity: 1 !important;
+			text-align: left;
+			margin-top: $space--xxs;
+		}
+
+	}
+
+	// .article__thumbnail--nopic {
+	// 	grid-column: auto;
+	//     text-align: left;
+
+	//     h5 {
+	//     	@include h4;
+	//     }
+	// }
+}
+
+
+
+
+// Projects list
+.projects__list {
+	display: grid;
+	grid-template-columns: 2fr 2fr;
+	grid-column-gap: $space--s;
+	grid-row-gap: $space--s;
+
+	@include screen--large {
+		grid-template-columns: 2fr 2fr 2fr;
+	}
+
+	@include screen--desktop {
+		grid-template-columns: 2fr 2fr;
+	}
+
+	@include screen--tablet {
+		grid-template-columns: 2fr 2fr;
+	}
+
+	@include screen--mobile {
+		grid-template-columns: 2fr;
+	}
+
+	.project__thumbnail {
+		// border: 1px solid;
+		// border-radius: 0 0 $space--xs $space--xs;
+
+		.container {
+			display: flex;
+			flex-direction: column;
+			// padding: $space--xs $space--s;
+
+			.image__container {
+				// display: none;
+			}
+
+			.text {
+				margin-top: $space--xxs;
+
+				p {
+					margin-top: $space--xs;
+				}
+			}
+		}
+	}
+}
+
+
+
+.layer--projects .sticker--text {
+	position: absolute;
+	top: $space--s * 1.5;
+	right: $space--m;
+
+	@include screen--tablet {
+		top: $space--l;
+		right: $space--xs;
+	}
+
+	@include screen--mobile {
+		top:85px;
+	}
+}
+
+
+// .projects {
+	.layer--projects {
+		.layer__content {
+			margin-top: $space--l !important;
+			padding-bottom:  $space--xl / 1.5 !important;
+			// padding-top: $space--m;
+
+			@include screen--tablet {
+
+			}
+
+
+			@include screen--mobile {
+				margin-top: 250px !important;
+			}
+
+			.projects__list {
+				@include screen--mobile {
+					// margin-top: $space--l + $space--m !important;
+				}
+			}
+
+		}
+	}
+// }
+

@@ -1,0 +1,41 @@
+
+@function strip-unit($spacing) {
+  @return $spacing / ($spacing * 0 + 1);
+}
+
+@mixin fluid-spacing($min-vw, $max-vw, $min-spacing, $max-spacing) {
+  $u1: unit($min-vw);
+  $u2: unit($max-vw);
+  $u3: unit($min-spacing);
+  $u4: unit($max-spacing);
+
+  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+    & {
+      padding: $min-spacing;
+      @media screen and (min-width: $min-vw) {
+        padding: calc(#{$min-spacing} + #{strip-unit($max-spacing - $min-spacing)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+      }
+      @media screen and (min-width: $max-vw) {
+        padding: $max-spacing;
+      }
+    }
+  }
+}
+
+
+$min_width: 320px;
+$max_width: 1200px;
+$min_space: 3px;
+$max_space: 6px;
+
+html {
+  // @include fluid-type($min_width, $max_width, $min_font, $max_font);
+}
+
+// Mutiply ratio
+$mod_1: 1.2; // mobile
+$mod_2: 1.8; // desktop
+
+
+// Columns
+$col: 16.6666666667%;

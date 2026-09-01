@@ -1,0 +1,32 @@
+{# Increment these when you change something in javascript or csss on live websites to clear visitors cache #}
+{% set jsversion = 1 %}
+{% set cssversion = 1 %}
+{% set debug = false %}
+<!doctype html>
+<!--[if lt IE 9]><html class="no-js no-svg ie lt-ie9 lt-ie8 lt-ie7" {{ site.language_attributes }}> <![endif]-->
+<!--[if IE 9]><html class="no-js no-svg ie ie9 lt-ie9 lt-ie8" {{ site.language_attributes }}> <![endif]-->
+<!--[if gt IE 9]><!--><html class="no-js no-svg" {{ site.language_attributes }}> <!--<![endif]-->
+<head>
+    <meta charset="{{ site.charset }}" />
+    <meta name="description" content="{{ site.description }}">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="pinterest" content="nopin" />
+    <link rel="author" href="{{ site.theme.link }}/humans.txt" />
+    <link rel="pingback" href="{{ site.pingback_url }}" />
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+    <script src="{{ site.theme.link }}/js/main.js?v={{jsversion}}"></script>
+    <script src="{{ site.theme.link }}/js/smoothscrollpolyfill.js?v={{jsversion}}"></script>
+    {# <link rel="stylesheet" href="{{ site.theme.link }}/style.css?v={{cssversion}}" type="text/css" media="screen" /> #}
+    {% if debug %}
+        <script src="http://localhost:35729/livereload.js"></script>
+    {% endif %}
+
+    {# Snipcart #}
+    <link rel="preconnect" href="https://app.snipcart.com">
+    <link rel="preconnect" href="https://cdn.snipcart.com">
+    <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.2.1/default/snipcart.css" />
+
+    {{function('wp_head')}}

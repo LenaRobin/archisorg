@@ -1,0 +1,48 @@
+
+<div class="post__header header--volume--1">
+  <div class="text">
+    <div class="post__title">
+      <h3>{{post.title}}</h3>
+    </div>
+    {% if post.subtitle %}
+    <div class="post__subtitle">
+      <h3>{{ post.subtitle|join(' ') }}</h3>
+    </div>
+    {% endif %}
+      <div class="post__author">
+      {% for author in post.id|getAuthors %}
+        <h5 class="author__tag">{{author.display_name}}</h5>
+      {% endfor %}
+    </div>
+    <div class="post__date">
+        <span class="date">{{post.date | date("F d, Y")}}</span>
+    </div>
+
+    <div class="tags">
+        {% set pub = post.meta("publication") %}
+        {% if pub %}
+          <span class="filter__tag"><a href="{{pub.path}}">{{pub|issueTitle.title}}</a></span>
+        {% for cat in dossiers %}
+            <span class="filter__tag"><a href="{{cat.path}}">{{cat.name}}</a></span>
+          {% endfor %}
+          {% for cat in topics %}
+            <span class="filter__tag"><a href="{{cat.path}}">{{cat.name}}</a></span>
+          {% endfor %}
+          {% endif %}
+
+      </div>
+    </div>
+
+
+  {%  if post.thumbnail %}
+  <div class="image">
+    <div class="post__cover">
+      {% if ".gif" in post.thumbnail.src %}
+        <img src="{{post.thumbnail.src}}" alt="{{post.title}}">
+      {% else %}
+        <img src="{{post.thumbnail | resize(1400)}}" alt="{{post.title}}">
+      {% endif %}
+    </div>
+  </div>
+{%  endif  %}
+</div>

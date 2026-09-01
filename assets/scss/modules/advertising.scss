@@ -1,0 +1,43 @@
+.add {
+	.add__disclaimer {
+		@include type--small;
+		margin-bottom: $space--s;
+	}
+
+	.add__container {
+		width: 100%;
+
+		// Container
+		.container {
+			height: 200px;
+
+			.add--large {
+			    object-fit: cover;
+			    height: 200px;
+				display: block;
+			}
+
+			.add--small {
+				display: none;
+			}
+		}
+
+
+		@include screen--mobile {
+			.container {
+			    height: 250px;
+
+				.add--large {
+					display: none;
+				}
+				
+				.add--small {	
+				    object-fit: cover;
+				    height: 250px;
+					display: block;
+				}
+			}			
+		}
+
+	}
+}

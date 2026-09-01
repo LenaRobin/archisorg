@@ -1,0 +1,316 @@
+{% extends "base.twig" %}
+{% set title = post.meta("pub_info") %}
+{% set pub_name = "" %}
+{% if not title.number and not title.subject %}
+	{% set pub_name = post.title %}
+{% else %}
+	{% set pub_name =  title.name ~ " " ~ title.number ~ ": " ~ title.subject %}
+{% endif %}
+{% block content %}
+	<div class="layer layer--shop">
+		{# {% include "volume_nav.twig" %} #}
+
+
+
+        <div class="layer__top layer__top--small">
+            <div class="title">
+                <h6>
+                    <a href="{{generalcontent.breadcrumbs.shop.url}}">{{generalcontent.breadcrumbs.shop.title}}</a>
+                </h6>
+            </div>
+        </div>
+
+
+		<div class="layer__content">
+			
+            {# Product info #}
+            <div class="product__info">
+
+                                   
+                {% if post.thumbnail %}
+                     {% if post.get_field('product_type') == 'publication' %}
+                        <div class="cover--mobile--publication cover--mobile">
+                            <img class="img--cover--mobile" src="{{post.thumbnail | resize(1200)}}" alt="{{post.thumbnail.alt}}">
+                        </div>
+                    {% else %}
+                        <div class="cover--mobile">
+                            <img class="img--cover--mobile" src="{{post.thumbnail | resize(1200)}}" alt="{{post.thumbnail.alt}}">
+                        </div>
+                    {% endif %}
+                {% endif %}
+
+				<div class="page__left">
+
+                    {# Product gallery for publication #}
+                    {% if post.get_field('product_type') == 'publication' %}
+                        <div class="product__gallery product__gallery--publication">
+                          {% if post.thumbnail %}
+                                <img class="img--cover" src="{{post.thumbnail | resize(1200)}}" alt="{{post.thumbnail.alt}}">
+                            {% endif %}
+                            {% for image in post.product_shots('gallery') %}
+                                <img src="{{ Image(image) }}" />
+                            {% endfor %}
+                        </div>
+
+                    {% else %}   
+                    {# Product gallery for item #}
+                        <div class="product__gallery product__gallery--item">
+                            {% if post.thumbnail %}
+                                <img class="img--cover" src="{{post.thumbnail | resize(1200)}}" alt="{{post.thumbnail.alt}}">
+                            {% endif %}
+                            {% for image in post.product_shots('gallery') %}
+                                <img src="{{ Image(image) }}" />
+                            {% endfor %}
+                        </div>                                  
+                    {% endif %}
+
+                </div>
+
+                <div class="page__right">
+                    <div class="sticky">
+                        {# {% if post.thumbnail %}
+                            <div class="image__container image__container--volume">
+                                <img class="image image--bw image--transparent" src="{{post.thumbnail | resize(800)}}" alt="">
+                            </div>
+                        {% endif %} #}
+
+                        <div class="product__title">
+                            <h3>{{ post.title }}</h3>
+                        </div>
+
+                        <div class="product__description">
+                            <p>{{ post.meta("product_description") }}</p>    
+
+                            {% if post.publication_url %}
+                            <div class="product__publicationurl">
+                                <a href="{{ post.get_field('publication_url') }}">More about the publication</a>
+                            </div>
+                            {% endif %}                
+                        </div>
+
+                        {# <div class="product__price">
+                            From € <span>{{post.price_in_euros}}</span>
+                        </div> #}
+
+
+                        {# Product actions #}
+                        <div class="product__actions">
+
+
+
+                            {# Product is misc #}
+                            {% if post.get_field('product_type') == 'misc' %}
+                                <div class="product__actions--misc">
+
+                                    {# Unique price point #}
+                                    <div class="action__price">
+                                        € {{post.meta('item_details').item_price}}
+                                    </div>
+
+                                    {# CTA / Validation #}
+                                    <div class="action__validation">
+
+                                        {# Snipcart cta -- misc #}
+                                        <div class="cta cta--misc">
+                                            <button class="buy-button snipcart-add-item button--primary"
+                                                data-item-id="{{post.slug}}"
+                                                data-item-price="{{post.meta('item_details').item_price}}"
+                                                data-item-url="{{post.path}}"
+                                                data-item-name="{{ post.title }}"
+                                                data-item-weight="{{post.meta('product_specificities').weight}}"
+                                                data-item-image="{{post.thumbnail | resize(800)}}"
+                                                data-item-description="{{post.short_description}}">
+                                                    Add to cart
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            {% endif %}
+
+
+
+                            {# Product is publication #}
+                            {% if post.get_field('product_type') == 'publication' %}
+                                <div class="product__actions--publication">
+
+
+                                    {# Options picker #}
+                                    <div class="action__options">
+                                        
+
+                                        {# PDF option #}
+                                        {% if post.meta('pdf_details').is_the_pdf_available  == 'available' %}
+                                            <button class="product__option product__option--PDF" toggle-id="PDF">
+                                                <span class="type">PDF</span>
+                                                <span class="price">€ {{post.meta('pdf_details').pdf_price}}</span>
+                                            </button>
+                                        {% endif %}                                   
+                                        
+
+
+                                        {# Print option available #}
+                                        {% if post.meta('print_details').is_the_print_available  == 'available' %}
+
+                                            {# Print option (external: bruil...) #}
+                                            {% if post.meta('print_details').print_seller  == 'external' %}
+                                                <button class="product__option product__option--external" toggle-id="external">
+                                                    <span class="type">Print copy from our seller</span>
+                                                    <span class="price">€ {{post.meta('print_details').print_price}}</span>
+                                                </button>
+                                            {% endif %}
+                                        
+                                            {# Print option (internal: we sell it) #}
+                                            {% if post.meta('print_details').print_seller  == 'internal' %}
+                                                <button class="product__option product__option--internal" toggle-id="internal">
+                                                    <span class="type">Print copy</span>
+                                                    <span class="price">€ {{post.meta('print_details').print_price}}</span>
+                                                </button>
+                                            {% endif %}
+    
+                                        {% endif %}     
+
+                                        {# Print option SOLD OUT (external: bruil...) #}
+                                        {% if post.meta('print_details').is_the_print_available  == 'out' %}
+                                            <button class="product__option product__option--oos" disabled>
+                                                <span class="type">Print copy</span>
+                                                <span class="soldout">Sold out!</span>
+                                            </button>
+                                        {% endif %}     
+                                    
+                                    </div>
+
+                                    {# CTA / Validation #}
+                                    <div class="action__validation">
+
+
+                                        {# If the option picked is FROM SNIPCART/US #}
+
+                                            {# Snipcart cta -- digital #}
+                                            <div class="cta cta--PDF" toggle-id="PDF">
+                                                <button class="buy-button snipcart-add-item button--primary"
+                                                    data-item-file-guid="{{post.meta('pdf_details').pdf_key}}"
+                                                    data-item-id="{{post.slug}}-digital"
+                                                    data-item-price="{{post.meta('pdf_details').pdf_price}}"
+                                                    data-item-url="{{post.path}}"
+                                                    data-item-name="{{ post.title }} (PDF version)"
+                                                    data-item-image="{{post.thumbnail | resize(800)}}"
+                                                    data-item-description="{{post.short_description}}">
+                                                        Add to cart
+                                                </button>
+                                            </div>
+
+                                            {# Snipcart cta -- physical FROM SNIPCART/US #}
+                                            <div class="cta cta--internal" toggle-id="internal">
+                                                <button class="buy-button snipcart-add-item button--primary"
+                                                    data-item-id="{{post.slug}}-print"
+                                                    data-item-price="{{post.meta('print_details').print_price}}"
+                                                    data-item-weight="{{post.meta('product_specificities').weight}}"
+                                                    data-item-url="{{post.path}}"
+                                                    data-item-name="{{ post.title }} (Printed copy)"
+                                                    data-item-image="{{post.thumbnail | resize(800)}}"
+                                                    data-item-description="{{post.short_description}}">
+                                                        Add to cart
+                                                </button>
+                                            </div>
+
+
+                                        {# If the option picked is print external #}
+                                            {# External shop cta #}
+                                            <div class="cta cta--external" toggle-id="external">
+                                                {% if post.meta('print_details').print_link %}
+                                                    <a target="_blank" href="{{post.meta('print_details').print_link}}">
+                                                        <div class="button--primary">
+                                                            Buy via <span class="hyperlink">bruil.com</span>
+                                                        <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M9.80932 0.0653376V7.02184L8.16294 7.02184L8.16874 2.86533L1.6934 9.34067L0.53398 8.18126L1.6934 7.02184L7.00932 1.70591L2.85281 1.71171V0.0653376H9.80932Z" fill="black"/>
+                                                            </svg>
+                                                        </div>
+                                                    </a>
+                                                {% endif %}
+                                            </div>
+
+
+
+
+
+                                    
+                                    {# End of CTA / Validation #}
+                                    </div>
+
+                                </div>    
+                            {% endif %}
+
+                        {# End of product actions #}
+                        </div>
+
+                        {# Product detailed information #}
+                        <div class="product__details">
+                            
+                            {% if post.meta('product_specificities').language %}
+                            <div class="product__language">
+                                {{post.meta('product_specificities').language}}
+                            </div>
+                            {% endif %}
+
+                            {% if post.meta('product_specificities').dimensions %}
+                            <div class="product__dimensions">
+                                {{post.meta('product_specificities').dimensions}}cm
+                            </div>
+                            {% endif %}
+
+                            {# {% if post.meta('product_specificities').weight %}
+                            <div class="product__weight">
+                                {{post.meta('product_specificities').weight}}
+                            </div>
+                            {% endif %} #}
+
+                            {% if post.meta('product_specificities').texture_material_other_material_considerations %}
+                            <div class="product__other">
+                                {{post.meta('product_specificities').texture_material_other_material_considerations}}
+                            </div>
+                            {% endif %}
+
+                        </div>
+
+
+                        {# Product shipment #}
+                        <div class="product__shipment">
+                            <div class="shipment__info">
+                                <span>We ship our products worldwide.</span>
+                                <span><a href="https://archis.org/shipping">Read more about our shipping rates.</a></span>
+                            </div>
+                        </div>
+
+					</div>
+
+
+				{# End category intro #}
+				</div>	
+            </div>
+
+
+
+        {# {% if nav_pub %}
+        <div class="issue__carousel">
+          <div class="issues">
+            {% for pub in nav_pub %}
+              {% if pub.thumbnail %}
+              <div class="cover"><a href="{{pub.path}}"><img loading="lazy" src="{{pub.thumbnail | resize(400)}}" alt="{{pub|issueTitle.title}}"></a></div>  
+              {% endif %}
+            {% endfor %}
+          </div>
+
+          <div class="title">
+            <div class="link link--inline">
+				<a href="{{generalcontent.links.see_all_issues.url}}">{{generalcontent.links.see_all_issues.title}}</a>
+            </div>
+          </div>
+        </div>
+        {% endif %} #}
+
+	
+			
+		</div><!-- /content-wrapper -->
+	</div>
+{% endblock %}

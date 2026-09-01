@@ -1,0 +1,21 @@
+<div id="block__blockquote__{{block.id}}" class="block__quote">
+  <div class="text">
+    <h4>“{{fields.quote}}”</h4>
+  </div>
+  <div class="source">
+    <p>{{fields.source}}</p>
+  </div>
+</div>
+{% if is_preview %}
+<style type="text/css">
+  #block__blockquote__{{block.id}} h4 {
+    font-family: 'PT Serif', serif;
+    font-weight: 400;
+    font-size: 30px;
+    font-size: 2.15vw;
+    line-height: 1.25em;
+  }
+  #block__blockquote__{{block.id}} .source {
+  }
+</style>
+{% endif %}

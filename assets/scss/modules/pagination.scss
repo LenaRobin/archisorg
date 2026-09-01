@@ -1,0 +1,44 @@
+.pagination-block {
+	margin-top: $space--l * 1.5;
+	margin-bottom: $space--m;
+	// @include type--sans;
+
+	.pagination {
+		display: flex;
+		justify-content: center;
+    	align-items: baseline;
+    	cursor: pointer;
+
+		li {
+			display: inline-block;
+			margin: 0 $space--xxs * 1.5;
+			opacity: 1;
+			transition: all 50ms ease;
+
+			&.first {
+
+			}
+
+			&.dots {
+				
+			}
+
+			&.disabled {
+				display: none !important;
+			}
+
+			&.current {
+				border-bottom: 1px solid;
+				opacity: 1;
+			}
+
+			&:hover {
+				opacity: 1;
+				border-bottom: 1px solid;
+			}
+
+		}
+	}
+
+
+}

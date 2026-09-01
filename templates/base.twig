@@ -1,0 +1,148 @@
+{% block html_head_container %}
+
+{% include 'html-header.twig' %}
+	{% block head %}
+	{% endblock %}
+	</head>
+{% endblock %}
+
+	<body class="{{body_class}}" data-template="base.twig">
+		<!-- Background layer (Archis) -->
+		<div class="page {{page_class}}">
+			<div class="background">
+				<div class="layer__archis {{archis_class | default("layer__nav")}} layer__archis--full">
+					<div class="layer__archis__top">
+					
+						<div class="navigation">
+							<a href="/"><div class="menu__logo">Archis</div></a>
+
+							{% include "menu.twig" with {'items': menu.get_items} %}		
+
+							{# <div class="searchbar">
+								<form action="/" class="search-bar">
+									<input placeholder="Topic, issue..." type="s" name="s" pattern=".*\S.*" required>
+									<button class="search-btn" type="submit">
+										<span>{{generalcontent.words.search}}</span>
+									</button>
+								</form>
+							</div> #}
+
+							
+						</div>
+
+						<div class="navigation__secondary">
+							{% include "menu-secondary.twig" with {'items': menu.get_items} %}				
+						</div>
+					</div>	
+					<div class="layer__archis__payoff">
+					
+    				</div>
+				</div>
+			</div>
+			{% block outside_content %}
+
+			{% endblock %}
+			
+			{% if enable_layers %}
+			<div class="{{ layers_class | default("layers")}}">
+				{% block content %}
+
+				{% endblock %}
+			</div>
+			{% endif %}
+			
+
+			
+
+			
+		</div>
+
+		{# Mobile nav #}
+		<div class="mobilenav__trigger">
+			<svg width="41" height="20" viewBox="0 0 41 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<line y1="1" x2="41" y2="1" stroke="white" stroke-width="2"/>
+			<line y1="9.59668" x2="41" y2="9.59668" stroke="white" stroke-width="2"/>
+			<line y1="18.1936" x2="41" y2="18.1936" stroke="white" stroke-width="2"/>
+			</svg>
+		</div>
+
+
+		{# Snipcart cart menu #}
+		<div class="header__checkout snipcart-checkout">
+			{# <span class="snipcart-total-price">$0.00</span> #}
+			<div class="cart__icon">
+				<svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" alt="" title="" class="snipcart-cart-header__icon snipcart__icon"><path fill-rule="evenodd" clip-rule="evenodd" d="M51.714 20.47L55 60H9l3.286-39.53h9.857v-6.588C22.143 8.424 26.556 4 32 4c5.444 0 9.857 4.424 9.857 9.882v6.589h9.857zM25.43 13.883v16.47h-3.286v-6.587h-6.834l-2.737 32.94h38.856l-2.737-32.94h-6.834v6.588h-3.286v-16.47c0-3.634-2.947-6.589-6.571-6.589-3.624 0-6.571 2.955-6.571 6.588zm3.285 9.883V20.47h6.572v3.294h-6.572z" fill="currentColor"></path></svg>
+				<div class="cart__count">
+					<span class="snipcart-items-count">0</span>
+				</div>			
+			</div>
+		</div>
+
+
+		{% block footer %}
+			{% include "footer.twig" %}
+			{{ function('wp_footer') }}
+
+		{% endblock %}	
+
+		{# Snipcart #}
+		<script async src="https://cdn.snipcart.com/themes/v3.2.1/default/snipcart.js"></script>
+		<div hidden id="snipcart" data-api-key="NGYxN2ViYWMtNTk4OC00ODdiLTg5OGMtYmI1ZDg5ZTA4NzVkNjM3Njk4OTk4MzI5MjA0ODQ5" data-currency="eur">
+			<billing section="bottom">
+				<fieldset class="snipcart-form__set">
+					<div class="snipcat-form__field-checkbox">
+						<snipcart-checkbox name="acceptGDPR" required></snipcart-checkbox>
+						<snipcart-label class="snipcart__font--tiny snipcart-form__label--checkbox" for="acceptGDPR">
+							I have read and agree to the&nbsp<a href="https://archis.org/privacy-policy/" style="text-decoration: underline;">Privacy Policy</a>&nbspand the&nbsp<a href="https://archis.org/terms-and-conditions/" style="text-decoration: underline;">Terms and Conditions</a>
+						</snipcart-label>
+					</div>
+				</fieldset>
+			</billing>
+
+			<featured-payment-methods>
+				<div class="snipcart-featured-payment-methods">
+				  <h3 class="snipcart__font--secondary snipcart__font--bold  snipcart-featured-payment-methods__title">
+						<a :href="securedByUrl" class="snipcart-featured-payment-methods__link" target="_blank" style="align-items: self-end;" rel="nofollow noopener">
+							<icon name="lock" class="snipcart-featured-payment-methods__title-icon"></icon>
+							Secured transaction
+						</a>
+					</h3>
+
+					<ul class="snipcart-featured-payment-methods__list">
+						<li class="snipcart-featured-payment-methods__list-item">
+							<icon name="visa" alt="Visa" class="snipcart__icon--brand"></icon>
+						</li>
+						<li class="snipcart-featured-payment-methods__list-item">
+							<icon name="mastercard" alt="Mastercard" class="snipcart__icon--brand"></icon>
+						</li>
+						<li class="snipcart-featured-payment-methods__list-item">
+							<icon name="method-ideal" alt="Ideal" class="snipcart__icon--brand"></icon>
+						</li>
+						{# <li class="snipcart-featured-payment-methods__list-item" style="width: 32px; height: 32px; margin-right: 15px;">
+							<icon name="method-apple_pay" alt="Apple Pay" class="snipcart__icon--brand"></icon>
+						</li> #}
+						{# <li class="snipcart-featured-payment-methods__list-item">
+							<icon name="method-klarna_pay_later" alt="Klarna" class="snipcart__icon--brand"></icon>
+						</li> #}
+						{# <li style="width: 32px; height: 32px; margin-right: 15px;">
+							<svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect width="40" height="40" rx="8" fill="#F4B6C7"></rect><path fill-rule="evenodd" clip-rule="evenodd" d="M16.25 28.75H12.5V11.25H16.25V28.75ZM16.9446 20.0371C20.2718 18.3985 22.4224 15.0873 22.4999 11.2515H26.4386C26.3852 14.8936 24.8821 18.2723 22.2358 20.7788L27.4999 28.75H22.4999L16.9446 20.0371Z" fill="black"></path><path fill-rule="evenodd" clip-rule="evenodd" d="M27.5 26.2502C27.5 27.6306 28.6194 28.75 30.0002 28.75C31.3806 28.75 32.5 27.6306 32.5 26.2502C32.5 24.8694 31.3806 23.75 30.0002 23.75C28.6194 23.75 27.5 24.8694 27.5 26.2502Z" fill="black"></path></svg>
+						</li>
+						<li style="width: 32px; height: 32px; margin-right: 15px;">
+							<svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M24 0H8C3.58172 0 0 3.58172 0 8V24C0 28.4183 3.58172 32 8 32H24C28.4183 32 32 28.4183 32 24V8C32 3.58172 28.4183 0 24 0Z" fill="#E664A5"></path><path d="M5.33333 8.0172V24.0287C5.33333 24.8086 5.97563 25.405 6.70968 25.405H16.2982C23.547 25.405 26.6667 21.3677 26.6667 16C26.6667 10.6323 23.547 6.59497 16.2982 6.59497H6.75556C5.97563 6.64085 5.33333 7.28315 5.33333 8.0172Z" fill="white"></path><path d="M11.7563 10.5864V22.4229H16.8947C21.5743 22.4229 23.5929 19.762 23.5929 16.0459C23.5929 12.4674 21.5743 9.71467 16.8947 9.71467H12.628C12.1693 9.66879 11.7563 10.0817 11.7563 10.5864Z" fill="#CC0066"></path><path d="M16.2982 24.1663H7.99427C7.26022 24.1663 6.66381 23.5699 6.66381 22.8358V9.25591C6.66381 8.52186 7.26022 7.92545 7.99427 7.92545H16.2982C24.1893 7.92545 25.3821 13.0179 25.3821 16.0459C25.3821 21.276 22.1706 24.1663 16.2982 24.1663ZM7.99427 8.38423C7.48961 8.38423 7.12259 8.79713 7.12259 9.25591V22.8358C7.12259 23.3405 7.53549 23.7075 7.99427 23.7075H16.2982C21.8495 23.7075 24.9233 20.9548 24.9233 16C24.9233 9.34767 19.5097 8.33835 16.2982 8.33835L7.99427 8.38423Z" fill="black"></path><path d="M13.5914 14.4401C13.7749 14.4401 13.9584 14.486 14.096 14.5319C14.2337 14.5778 14.3713 14.6695 14.5089 14.8072C14.6007 14.9448 14.6925 15.0824 14.7842 15.2201C14.8301 15.4036 14.876 15.5871 14.876 15.8165C14.876 16.0459 14.8301 16.2294 14.7842 16.367C14.7383 16.5505 14.6466 16.6882 14.5548 16.8258C14.4631 16.9634 14.3254 17.0552 14.1419 17.147C14.0043 17.2387 13.7749 17.2387 13.5914 17.2387H12.3527V14.3943L13.5914 14.4401ZM13.5455 16.734C13.6373 16.734 13.729 16.734 13.8208 16.6882C13.9125 16.6423 13.9584 16.5964 14.0502 16.5505C14.096 16.4588 14.1878 16.4129 14.1878 16.2753C14.2337 16.1835 14.2337 16.0459 14.2337 15.8624C14.2337 15.7247 14.2337 15.5871 14.1878 15.4953C14.1419 15.4036 14.096 15.2659 14.0502 15.2201C14.0043 15.1283 13.9125 15.0824 13.8208 15.0366C13.729 14.9907 13.5914 14.9907 13.4537 14.9907H12.995V16.7799L13.5455 16.734Z" fill="white"></path><path d="M17.3993 14.4401V14.9448H15.8854V15.5871H17.2617V16.0459H15.8854V16.7341H17.3993V17.2387H15.2431V14.3943L17.3993 14.4401Z" fill="white"></path><path d="M19.5097 14.4402L20.5649 17.2846H19.9227L19.6933 16.6423H18.6381L18.4087 17.2846H17.7664L18.8216 14.4402C18.8675 14.4402 19.5097 14.4402 19.5097 14.4402ZM19.5556 16.1835L19.1886 15.1283L18.8216 16.1835H19.5556Z" fill="white"></path><path d="M21.5741 14.4401V16.7341H22.9504V17.2387H20.9318V14.3943C20.9776 14.4402 21.5741 14.4401 21.5741 14.4401Z" fill="white"></path><path d="M9.41651 17.1469C10.126 17.1469 10.7011 16.5718 10.7011 15.8623C10.7011 15.1529 10.126 14.5778 9.41651 14.5778C8.70705 14.5778 8.13192 15.1529 8.13192 15.8623C8.13192 16.5718 8.70705 17.1469 9.41651 17.1469Z" fill="black"></path><path d="M10.4259 22.4229C9.32482 22.4229 8.45314 21.5513 8.45314 20.4502V18.8903C8.45314 18.3398 8.91192 17.881 9.46246 17.881C10.013 17.881 10.4718 18.3398 10.4718 18.8903L10.4259 22.4229Z" fill="black"></path></svg>
+						</li>
+						<li style="width: 32px; height: 32px; margin-right: 15px;">
+							<svg width="32" height="32" viewBox="0 0 32 32"><g fill="none" fill-rule="evenodd"><rect width="31" height="31" x="0.5" y="0.5" fill="#FFF" stroke="#333" rx="8"></rect><path fill="#000" fill-rule="nonzero" d="M8.34216393 12.7568096C8.61266031 12.4184964 8.79621694 11.964212 8.74781212 11.5 8.35184104 11.5197012 7.86866031 11.7612241 7.58891092 12.0998265 7.33773019 12.3897735 7.1154073 12.8630651 7.17335429 13.3078265 7.61784586 13.3463807 8.0619326 13.0856578 8.34216393 12.7568096M8.74276152 13.3946699C8.09724827 13.356212 7.54842899 13.761012 7.24014947 13.761012 6.93173501 13.761012 6.45967718 13.4140434 5.94912297 13.4233928 5.28460248 13.433147 4.6680049 13.8088771 4.33077116 14.4064482 3.6371808 15.6019181 4.14773502 17.3752 4.82222176 18.3488289 5.14977839 18.8305253 5.54451574 19.3608964 6.06466995 19.3418313 6.55612056 19.3225542 6.74873742 19.0236241 7.34611574 19.0236241 7.94305068 19.0236241 8.11656393 19.3418313 8.63679525 19.3321928 9.17628441 19.3225542 9.5135567 18.8502651 9.84111333 18.3681253 10.2168627 17.8190169 10.3706748 17.2888193 10.3803519 17.2597108 10.3706748 17.2500723 9.340082 16.8546988 9.33052056 15.6691759 9.32078562 14.6765205 10.1396579 14.2043663 10.1781928 14.1750843 9.71577357 13.4911518 8.99324827 13.4140434 8.74276152 13.3946699M14.7108819 12C16.1138698 12 17.0909108 12.967094 17.0909108 14.3751132 17.0909108 15.7881638 16.0938602 16.7603277 14.6757976 16.7603277L13.1224096 16.7603277 13.1224096 19.2305349 12 19.2305349 12 12 14.7108819 12zM13.1224096 15.8182168L14.4101976 15.8182168C15.3873349 15.8182168 15.9434602 15.2921446 15.9434602 14.3801446 15.9434602 13.468241 15.3873349 12.9470843 14.4152096 12.9470843L13.1224096 12.9470843 13.1224096 15.8182168zM17.3693686 17.7324337C17.3693686 16.805359 18.0758939 16.2742168 19.3786409 16.1941012L20.7766168 16.1088385 20.7766168 15.7080289C20.7766168 15.1217542 20.3907855 14.8010602 19.7043662 14.8010602 19.1380819 14.8010602 18.7272096 15.0916819 18.6420626 15.5376385L17.6298409 15.5376385C17.6599903 14.6005976 18.5418409 13.9192096 19.7344192 13.9192096 21.0171759 13.9192096 21.8539759 14.5906506 21.8539759 15.6328289L21.8539759 19.2305349 20.8167132 19.2305349 20.8167132 18.363759 20.7916915 18.363759C20.4960385 18.929947 19.8446072 19.2856289 19.1380819 19.2856289 18.0958843 19.2856289 17.3693686 18.664347 17.3693686 17.7324337zM20.7766168 17.2663903L20.7766168 16.860453 19.5289445 16.940665C18.8274506 16.9857156 18.4617253 17.2462843 18.4617253 17.7022843 18.4617253 18.1432096 18.8425253 18.4289156 19.4387662 18.4289156 20.2003662 18.4289156 20.7766168 17.942747 20.7766168 17.2663903zM22.8075373 21.1647229L22.8075373 20.297947C22.877706 20.3078168 23.0480192 20.3178602 23.1381783 20.3178602 23.6342939 20.3178602 23.9148723 20.107547 24.0852819 19.5663036L24.1855036 19.2456096 22.2864 13.984347 23.4588723 13.984347 24.7817445 18.2533976 24.8067662 18.2533976 26.1296385 13.984347 27.2721542 13.984347 25.3028819 19.5112096C24.8519132 20.7788915 24.3357879 21.1948723 23.2434313 21.1948723 23.1582843 21.1948723 22.8826409 21.1848289 22.8075373 21.1647229z"></path></g></svg>
+						</li>
+						<li style="width: 32px; height: 32px; margin-right: 15px;">
+							<svg width="32" height="32" viewBox="0 0 32 32"><defs><linearGradient id="creditcard-b" x1="0%" y1="100%" y2="0%"><stop offset="0%" stop-color="#060B0E"></stop><stop offset="100%" stop-color="#254764"></stop></linearGradient><rect id="creditcard-a" width="32" height="32" rx="8"></rect><linearGradient id="creditcard-c" x1="27.635%" x2="22.59%" y1="25.476%" y2="11.652%"><stop offset="0%" stop-color="#FFF" stop-opacity="0"></stop><stop offset="100%" stop-color="#FFF"></stop></linearGradient><linearGradient id="creditcard-e" x1="50%" x2="38.943%" y1="100%" y2="55.528%"><stop offset="0%" stop-color="#FFF" stop-opacity="0"></stop><stop offset="100%" stop-color="#FFF"></stop></linearGradient><linearGradient id="creditcard-f" x1="38.943%" x2="50%" y1="55.528%" y2="100%"><stop offset="0%" stop-color="#FFF" stop-opacity="0"></stop><stop offset="100%" stop-color="#FFF"></stop></linearGradient><linearGradient id="creditcard-i" x1="50%" x2="50%" y1="0%" y2="100%"><stop offset="0%" stop-color="#FAD961"></stop><stop offset="100%" stop-color="#F7955D"></stop></linearGradient><rect id="creditcard-h" width="7" height="5" rx="1"></rect><filter id="creditcard-g" width="157.1%" height="180%" x="-28.6%" y="-20%" filterUnits="objectBoundingBox"><feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset><feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="0.5"></feGaussianBlur><feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.1 0"></feColorMatrix></filter></defs><g fill="none" fill-rule="evenodd"><mask id="creditcard-d" fill="#fff"><use xlink:href="#creditcard-a"></use></mask><use fill="url(#creditcard-b)" xlink:href="#creditcard-a"></use><circle cx="37.5" cy="40.5" r="31.5" fill="url(#creditcard-c)" mask="url(#creditcard-d)" opacity="0.1"></circle><circle cx="6.5" cy="31.5" r="16.5" fill="url(#creditcard-e)" mask="url(#creditcard-d)" opacity="0.1"></circle><circle cx="42.5" cy="-1.5" r="26.5" fill="url(#creditcard-f)" mask="url(#creditcard-d)" opacity="0.1"></circle><g mask="url(#creditcard-d)"><g transform="translate(4 14)"><g><use fill="#000" filter="url(#creditcard-g)" xlink:href="#creditcard-h"></use><use fill="url(#creditcard-i)" xlink:href="#creditcard-h"></use></g><rect width="1" height="3" x="1" y="1" fill="#7A3802" opacity="0.3"></rect><rect width="1" height="3" x="3" y="1" fill="#7A3802" opacity="0.3"></rect><rect width="1" height="3" x="5" y="1" fill="#7A3802" opacity="0.3"></rect></g></g><rect width="5" height="1" x="4" y="22" fill="#FFF" fill-opacity="0.8" mask="url(#creditcard-d)"></rect><rect width="3" height="1" x="4" y="24" fill="#FFF" fill-opacity="0.8" mask="url(#creditcard-d)"></rect><rect width="3" height="1" x="8" y="24" fill="#FFF" fill-opacity="0.8" mask="url(#creditcard-d)"></rect><rect width="3" height="1" x="12" y="24" fill="#FFF" fill-opacity="0.8" mask="url(#creditcard-d)"></rect><rect width="5" height="1" x="10" y="22" fill="#FFF" fill-opacity="0.8" mask="url(#creditcard-d)"></rect><rect width="5" height="1" x="16" y="22" fill="#FFF" fill-opacity="0.8" mask="url(#creditcard-d)"></rect><rect width="5" height="1" x="22" y="22" fill="#FFF" fill-opacity="0.8" mask="url(#creditcard-d)"></rect></g></svg>
+						</li> #}
+					</ul>
+				</div>
+			</featured-payment-methods>
+
+
+
+		</div>
+
+	</body>
+</html>

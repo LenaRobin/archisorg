@@ -1,0 +1,264 @@
+// Small text
+.header--volume--1 {
+	margin-bottom: $space--l;
+	height: 80vh;
+	grid-template-columns: 3fr 3fr;
+    display: grid;
+    column-gap: $space--s;
+    margin-top: $space--s;
+	// margin-bottom: $space--s;
+	
+	@include screen--desktop {
+		// margin-bottom: 0;
+	}
+
+	@include screen--tablet {
+		height: auto !important;
+		margin-bottom: $space--s;
+		margin-top: $space--m;
+		grid-template-columns: 1fr;
+	}
+
+	@include screen--mobile {
+		height: auto !important;
+		margin-bottom: $space--s;
+		margin-top: $space--m;
+		grid-template-columns: 1fr;
+	}
+
+	.text {
+		display: flex;
+		justify-content: flex-end;
+		flex-direction: column;
+
+		@include screen--mobile {
+			justify-content: flex-start;
+		}
+
+
+		
+		.post__title {
+			// margin-bottom: $space--xs;
+			word-break: break-word;
+
+			@include screen--mobile {
+				// margin-bottom: $space--xxs;
+			}
+		}
+
+		.post__subtitle {
+			text-align: right;
+			margin-bottom: $space--xs;
+			text-transform: uppercase;
+			text-indent: $space--m;
+
+			// h4 {
+			// 	text-align: left;
+			// 	@include p;
+			// }
+		}
+
+		.post__author {
+			text-transform: uppercase;
+			margin: $space--xxs 0;
+		}
+	}
+
+	.image {
+
+		.post__cover {
+			margin-bottom: 0;
+
+			@include screen--tablet {
+				margin-top: $space--s;
+			}
+
+			img {
+				height: 80vh;
+				max-height: none;	
+				filter: grayscale(0) brightness(1) !important;
+			    transition: all 150ms ease !important;
+			    mix-blend-mode: normal !important;
+
+				@include screen--tablet {
+					height: auto;
+				}
+			}
+		}
+	}
+
+
+	.post__date {
+		margin-bottom: $space--xs;
+
+		@include screen--mobile {
+			// margin-top: $space--xs;
+		}
+	}
+
+
+	.tags {
+		.filter__tag {
+			display: inline-block;
+		}
+
+		@include screen--mobile {
+			margin-bottom: $space--xs;
+			// text-align: right;
+		}
+	}
+}
+
+
+
+// Large text
+.header--volume--2 {
+    justify-content: space-between;
+	margin-bottom: $space--l;
+    flex-direction: column;
+    display: flex;
+    margin-top: $space--s;
+
+	@include screen--desktop {
+		// margin-bottom: 0;
+	}
+
+	@include screen--tablet {
+		// margin-bottom: 0;
+	}
+
+	@include screen--mobile {
+		margin-bottom: $space--s;
+		margin-top: $space--m;
+	}
+
+    .row--1 {
+		.post__title {
+			margin-bottom: $space--xs;
+			word-break: break-word;
+
+			h2 {
+				word-break: auto;
+
+				@include screen--mobile {
+					@include h3;
+				}
+			}
+		}
+
+		.post__author {
+			margin-bottom: $space--xs;
+			text-transform: uppercase;
+
+			@include screen--mobile {
+				margin-bottom: $space--xs;
+			}
+
+
+			.author__tag {
+				margin-bottom: $space--xxs / 3;
+			}
+
+			h4 {
+				@include screen--mobile {
+					@include h5;
+				}	
+			}
+		}
+
+    }
+
+    .row--2 {
+	    display: grid;
+	    column-gap: $space--s;
+
+		@include screen--large {
+			grid-template-columns: minmax(50%, 50%);
+		}
+
+		@include screen--desktop {
+			grid-template-columns: minmax(33%, 33%);
+		}
+
+		@include screen--mobile {
+			grid-template-columns: 1fr;
+			column-gap: 0;
+		}
+
+		.post__cover {
+			margin-left: 0vw;
+			margin-bottom: 0;
+			margin-top: $space--s;
+
+			@include screen--large {
+				grid-column: 1 / 3;
+			}
+
+			@include screen--desktop {
+				grid-column: 1 / 3;
+			}
+
+			img {
+				max-height: 90vh;
+				// filter: grayscale(0) brightness(1) !important;
+			    // transition: all 150ms ease !important;
+			    // mix-blend-mode: luminosity !important;
+
+			}
+		}
+
+		.text {
+			display: flex;
+		    flex-direction: column;
+		    justify-content: flex-end;
+		    // margin-top: $space--xs;
+
+			@include screen--large {
+				grid-column: 1 / 3;
+			}
+
+			@include screen--desktop {
+				grid-column: 1 / 3;
+			    // margin-top: $space--s;
+			}
+
+			@include screen--tablet {
+				grid-column: 1 / 3;
+			    margin-top: $space--s;
+			}
+
+			@include screen--mobile {
+				margin-top: $space--xs;
+			}
+
+
+			.post__subtitle {
+				margin-bottom: $space--xs;
+				text-align: right;
+				text-transform: uppercase;
+				// margin-top: $space--xs;
+			}
+
+
+
+			.post__date {
+				margin-bottom: $space--xs;
+			}
+		}
+    }
+
+	.tags {
+		.filter__tag {
+			display: inline-block;
+		}
+
+		@include screen--mobile {
+			margin-bottom: $space--xs;
+			// text-align: right;
+		}
+	}
+
+	
+
+
+}

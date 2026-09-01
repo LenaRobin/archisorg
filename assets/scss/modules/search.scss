@@ -1,0 +1,121 @@
+// Main container
+.searchbar {
+	
+}
+
+
+.search-bar {
+	display: flex;
+}
+
+.search-bar input,
+.search-btn, 
+.search-btn:before, 
+.search-btn:after {
+	transition: all 0.25s ease-out;
+}
+
+.search-bar input,
+.search-btn {
+	// width: 2em;
+	// height: 2em;
+}
+
+.search-bar input:invalid:not(:focus),
+.search-btn {
+	cursor: pointer;
+}
+.search-bar,
+.search-bar input:focus,
+.search-bar input:valid  {
+	width: 100%;
+}
+.search-bar input:focus,
+.search-bar input:not(:focus) + .search-btn:focus {
+	outline: transparent;
+}
+.search-bar {
+	margin: auto;
+}
+.search-bar input {
+	background: transparent;
+	transform: translate(0) scale(0);
+	transform-origin: 100% 0;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	height: $space--s * 1.5;
+	color: $color--white;
+	// @include type--sans;
+	@include type--body;
+	width: 0;
+	padding: 0;
+}
+
+.search-bar input::-webkit-search-decoration {
+	-webkit-appearance: none;
+}
+.search-bar input:focus,
+.search-bar input:valid {
+	background: transparent;
+	border-radius: 0;
+	padding: 0 $space--xs;
+	padding-left: 0;
+	width: 100%;
+	border: 0;
+	border-bottom: $borders--thin $color--white--transp;
+}
+
+
+.search-bar input::placeholder {
+	color: transparent;
+	// @include type--sans;
+	@include type--body;
+}
+
+
+
+.search-btn {
+	position: relative;
+	transform: translate(0,0);
+	transform-origin: 100% 100%;
+	background-color: transparent;
+	@include type--body;
+	// @include type--sans;
+	padding-left: 0;
+    margin-left: -5px;
+}
+
+
+.search-btn span {
+	color: $color--white;
+}
+
+
+
+/* Active state */
+.search-bar input:focus {
+	border-bottom: $borders--thin $color--white--transp;
+	transform: translate(0) scale(1);
+	margin-top: $space--s;
+}
+
+.search-bar input:focus + .search-btn,
+.search-bar input:valid + .search-btn {
+	transform: scale(1);
+	border-bottom: $borders--thin $color--white--transp;
+	margin-top: $space--s;
+}
+
+
+.search-bar input:focus::placeholder,
+.search-bar input:valid::placeholder {
+	color: $color--white--transp;
+}
+
+
+.search-bar input:focus + .search-btn:hover,
+.search-bar input:valid + .search-btn:hover,
+.search-bar input:valid:not(:focus) + .search-btn:focus {
+
+}

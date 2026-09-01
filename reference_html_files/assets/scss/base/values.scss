@@ -1,0 +1,36 @@
+// Units
+$base-unit: 1em;
+$space--xl: 14rem;
+$space--l: 6rem;
+$space--m: 3.5rem;
+$space--s: 1.75rem;
+$space--xs: 0.8rem;
+$space--xxs: 0.25em;
+
+// Corners
+$corners--layer: 2px;
+
+// Borders
+$borders--thick: 4px solid;
+$borders--thin: 1px solid;
+
+// Colors
+$color--black: #0e0404;
+$color--white: #ffffff;
+$color--white--transp: #ffffff55;
+$color--volume: #ffffff;
+
+$color--projects: #3838ff;
+$color--projects--3: #5454fd;
+
+$color--events: #ff1111;
+$color--shop: #FFF72D;
+$color--new: #fff700;
+
+// Animations
+$speed--slow: 800ms;
+$speed--fast: 300ms;
+
+@mixin smooth {
+   transition: all $speed--fast ease-out;
+}

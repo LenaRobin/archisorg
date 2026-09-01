@@ -1,0 +1,22 @@
+{% extends "base.twig" %}
+
+
+{% block outside_content %}
+	<div class="content__archis">
+		<div class="archis__about">
+
+			<div class="error404__container">
+
+				
+				<h4>{{generalcontent.__404page.text | default("Sorry! We could not find the page you are looking for.")}}</h4>
+			
+				<div class="link  link--inline--darkmode link--inline">
+					
+					
+					<a href="{{generalcontent._404page.link.url | default("/")}}">{{generalcontent._404page.link.title | default("Go back to the homepage")}}</a>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+{% endblock %}

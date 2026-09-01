@@ -1,0 +1,58 @@
+<div class="news__thumbnail">
+    <a class="container" href="{{newbit.path}}">
+
+        <div class="text">
+            <h6 class="title">{{newbit.title}}<br>
+            {% if newbit.subtitle %}
+                {{ newbit.subtitle|join(' ') }}
+            {% endif %}
+            </h6>
+        </div>
+            {# <h6 class="authors">
+                {% for author in newbit.id|getAuthors %}
+                    {% if not loop.first %}<br/>&amp; {% endif %}{{author.display_name}}        
+                {% endfor %}
+            </h6> #}
+
+        {% if newbit.thumbnail %}
+        <div class="image__container image__container--volume">
+            <img class="image" src="{{newbit.thumbnail | resize(1000, 600) }}" alt="">
+        </div>
+        {% endif %}
+
+        <div class="text">
+            {# <p>{{newbit.date}}</p> #}
+
+            {# Excerpt part #}
+            <div class="excerpt">
+              <p>{{ newbit.post_excerpt|excerpt(22)}}</p>
+            </div>
+            {# Tags part #}
+            <div class="tags">
+                
+                {% set pub = newbit.meta("publication") %}
+                {% if pub and pub.category|length > 0 %}
+                    {# <span class="filter__tag">{{pub|issueTitle.title}}</span> #}
+                    <span class="filter__tag">{{ pub.category }}</span>
+                {% endif %}
+
+                {% if newbit.type.labels.name and newbit.type.labels.name|length > 0  %}
+                    <span class="filter__tag">{{ newbit.type.labels.name }}</span>
+                {% endif %}
+
+                
+                {# {% set dossiers = newbit.terms("dossier")  %} #}
+                {# {% set topics = newbit.terms("topics")  %} #}
+
+                {# {% for cat in dossiers %}
+                    <span class="filter__tag">{{cat.name}}</span>
+                {% endfor %}
+                {% for cat in topics %}
+                 <span class="filter__tag">{{cat.name}}</span>
+                {% endfor %} #}
+          </div>
+        </div>
+
+
+    </a>
+</div>

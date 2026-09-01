@@ -1,0 +1,6 @@
+img {
+  width: 100%;
+  filter: grayscale(1) brightness(1);
+  -webkit-filter: grayscale(1) brightness(1);
+  mix-blend-mode: multiply;
+}/*# sourceMappingURL=images.css.map */

@@ -1,0 +1,82 @@
+{% extends "base.twig" %}
+
+{% block outside_content %}
+	<div class="content__archis">
+		<div class="archis__about">
+			<div class="title">
+				<h2>
+					{{ post.title }}
+				</h2>
+			</div>
+			<div class="introduction">
+				<h4>
+					{{ post.meta("intro") }}
+				</h4>
+			</div>
+			{% if post.thumbnail %}
+			<div class="image__container">
+				<img class="image image--bw" src="{{post.thumbnail | resize(1200)}}" alt="">
+			</div>
+			{% endif %}
+			<div class="description">
+				{{ post.content }}
+			</div>
+			<div class="team">
+			{% set team = post.meta("team_members") %}
+			{% if team %}
+				
+				<h3>{{generalcontent.words.team}}</h3>
+				<div class="team__members">
+					{% for m in team %}
+						<div class="team__item">
+							<details>						
+								<summary><h6>{{m.name}}{{m.position ? " (" ~ m.position ~ ")"}}</h6></summary>
+
+								{% if m.details %}
+								<p class="details">{{m.details}}</p>
+								{% endif %}
+								{% if m.email %}
+								<p class="email">
+									{{m.email ? "— " ~ m.email|replace({"@": " @ "})}}
+								</p>
+								{% endif %}
+							</details>
+						</div>
+					{% endfor %}
+				
+				</div>
+			{% endif %}
+
+
+			{% set team_extra = post.meta("team_extra") %}
+			{% for ex in team_extra %}
+					<div class="team__extra">
+						{% if ex.category %}
+						<h5 class="header--line">{{ex.category}}</h5>
+						{% endif %}
+						<p>{{ex.names}}</p>
+					</div>
+			{% endfor %}
+			</div>
+
+			{% set second_img = post.meta("second_image") %}
+			
+			{% if second_img %}
+				<div class="image__container">
+					<img class="image image--bw" src="{{Image(second_img) | resize(1200)}}" alt="{{second_img.alt}}">
+				</div>
+			{% endif %}
+			{% set contributors = post.meta("contributors") %}
+			{% if contributors %}
+			<div class="contributors">
+				<h4>{{generalcontent.words.contributors}}</h4>
+				<div class="contributors__list">
+					<p>
+						{{ contributors }}
+					</p>
+				</div>
+  		</div>
+  		{% endif %}
+		</div>
+	</div>
+{% endblock %}

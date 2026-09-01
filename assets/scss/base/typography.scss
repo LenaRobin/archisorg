@@ -1,0 +1,507 @@
+// @font-face {
+//   font-family: Univers Next;
+//   src: url('fonts/UniversNextProHeavy.ttf') format('truetype');
+//   font-weight: 600;
+// }
+
+// @font-face {
+//   font-family: Univers Next;
+//   src: url('fonts/UniversNextProMedium.ttf') format('truetype');
+//   font-weight: 500;
+// }
+
+
+@font-face {
+  font-family: "Univers Next";
+  font-weight: 500;
+  src: url('fonts/UniversNextProMedium/font.woff2') format('woff2'), url('fonts/UniversNextProMedium/font.woff') format('woff');
+}
+@font-face {
+  font-family: "Univers Next";
+  font-weight: 730;
+  src: url('fonts/UniversNextProHeavy/font.woff2') format('woff2'), url('fonts/UniversNextProHeavy/font.woff') format('woff');
+}
+
+
+
+@mixin type--univers {
+  font-family: 'Univers Next', "Helvetica", "Arial", sans-serif !important;  
+}
+
+body {
+  font-family: 'Univers Next', "Helvetica", "Arial", sans-serif; 
+  line-height: 1.3 !important;
+  letter-spacing: -0.015em;
+  font-weight: 500;
+  font-size: 17px;
+
+  @include screen--large {
+    font-size: 17px;  
+  }
+  @include screen--desktop {
+    font-size: 17px;  
+  }
+  @include screen--tablet {
+    font-size: 16px;  
+  }
+  @include screen--mobile {
+    font-size: 15px;
+  }
+}
+
+
+
+@mixin type--body {
+  font-family:  'Univers Next', "Helvetica", "Arial", sans-serif !important;  
+  line-height: 1.3 !important;
+  letter-spacing: -0.015em;
+  font-weight: 500;
+  font-size: 17px;
+
+  @include screen--large {
+    font-size: 17px;  
+  }
+  @include screen--desktop {
+    font-size: 17px;  
+  }
+  @include screen--tablet {
+    font-size: 16px;  
+  }
+  @include screen--mobile {
+    font-size: 15px;
+  }
+}
+
+
+
+
+@mixin type--header {
+    @include screen--large {
+      font-size: 16vw !important;
+      letter-spacing: -0.035em !important;    
+    }
+    @include screen--desktop {
+      font-size: 16vw !important;
+      letter-spacing: -0.035em !important;    
+    }
+    @include screen--tablet {
+      font-size: 18vw !important;
+      letter-spacing: -0.035em !important;    
+    }
+    @include screen--mobile {
+      font-size: 21vw !important;
+      letter-spacing: -0.035em !important;    
+    }
+}
+
+
+
+
+@mixin type--header--notvolume {
+  @include screen--large {
+    font-size: 10vw !important;
+    letter-spacing: -0.035em !important;    
+  }
+  @include screen--desktop {
+    font-size: 9vw !important;
+    letter-spacing: -0.035em !important;    
+  }
+  @include screen--tablet {
+    font-size: 14vw !important;
+    letter-spacing: -0.035em !important;    
+  }
+  @include screen--mobile {
+    font-size: 50px !important;
+    letter-spacing: -0.035em !important;    
+  }
+}
+
+
+
+
+@mixin type--header--home {
+  text-transform: uppercase;
+  
+  @include screen--large {
+    font-size: 8vw !important;
+    letter-spacing: -0.035em !important;    
+  }
+  @include screen--desktop {
+    font-size: 8vw !important;
+    letter-spacing: -0.035em !important;    
+  }
+  @include screen--tablet {
+    font-size: 8.75vw !important;
+    letter-spacing: -0.035em !important;    
+  }
+  @include screen--mobile {
+    font-size: 14.25vw !important;
+    letter-spacing: -0.035em !important;    
+  }
+}
+
+
+
+h1 {
+  font-size: 8.5rem;
+  letter-spacing: -0.045em !important;
+  line-height: 0.95 !important;
+  font-family:  'Univers Next', "Helvetica", "Arial", sans-serif !important;  
+  font-weight: 730 !important;
+
+  @include screen--large {
+    font-size: 8.5rem;
+  }
+  @include screen--desktop {
+    font-size: 8.5rem;
+  }
+  @include screen--tablet {
+    font-size: 6.5rem;
+  }
+  @include screen--mobile {
+    font-size: 3.5rem;
+  }
+}
+
+@mixin h1 {
+  font-size: 8.5rem;
+  letter-spacing: -0.045em !important;
+  line-height: 0.95 !important;
+  font-family:  'Univers Next', "Helvetica", "Arial", sans-serif !important;  
+  font-weight: 730 !important;
+
+  @include screen--large {
+    font-size: 8.5rem;
+  }
+  @include screen--desktop {
+    font-size: 8.5rem;
+  }
+  @include screen--tablet {
+    font-size: 6.5rem;
+  }
+  @include screen--mobile {
+    font-size: 3.5rem;
+  }
+}
+
+h2 {
+  font-size: 5.5rem;
+  letter-spacing: -0.025em !important;
+  line-height: 0.95 !important;
+  font-family:  'Univers Next', "Helvetica", "Arial", sans-serif !important;  
+  font-weight: 730 !important;
+
+  @include screen--large {
+    font-size: 5.5rem;
+  }
+  @include screen--desktop {
+    font-size: 5.5rem;
+  }
+  @include screen--tablet {
+    font-size: 4.5rem;
+  }
+  @include screen--mobile {
+    font-size: 3rem;
+  }
+}
+
+@mixin h2 {
+  font-size: 5.5rem;
+  letter-spacing: -0.025em !important;
+  line-height: 0.95 !important;
+  font-family:  'Univers Next', "Helvetica", "Arial", sans-serif !important;  
+  font-weight: 730 !important;
+
+  @include screen--large {
+    font-size: 5.5rem;
+  }
+  @include screen--desktop {
+    font-size: 5.5rem;
+  }
+  @include screen--tablet {
+    font-size: 4.5rem;
+  }
+  @include screen--mobile {
+    font-size: 3rem;
+  }
+}
+
+h3 {
+  font-size: 2.8rem;
+  letter-spacing: -0.025em !important;
+  line-height: 1.05 !important;
+  font-family:  'Univers Next', "Helvetica", "Arial", sans-serif !important;  
+  font-weight: 730 !important;
+  margin-bottom: 0.5rem !important;
+
+  @include screen--large {
+    font-size: 2.8rem;
+  }
+  @include screen--desktop {
+    font-size: 2.8rem;
+  }
+  @include screen--tablet {
+    font-size: 2.8rem;
+  }
+  @include screen--mobile {
+    font-size: 2.15rem;
+    word-break: break-word;
+  }
+}
+
+@mixin h3 {
+  font-size: 2.8rem;
+  letter-spacing: -0.025em !important;
+  line-height: 1.05 !important;
+  font-family:  'Univers Next', "Helvetica", "Arial", sans-serif !important;  
+  font-weight: 730 !important;
+
+  @include screen--large {
+    font-size: 2.8rem;
+  }
+  @include screen--desktop {
+    font-size: 2.8rem;
+  }
+  @include screen--tablet {
+    font-size: 2.8rem;
+  }
+  @include screen--mobile {
+    font-size: 2.15rem;
+  }
+}
+
+h4 {
+  font-size: 2.2rem;
+  letter-spacing: -0.025em !important;
+  line-height: 1.05 !important;
+  font-family:  'Univers Next', "Helvetica", "Arial", sans-serif !important;  
+  font-weight: 730 !important;
+  margin-bottom: 0.5rem !important;
+
+  @include screen--large {
+    font-size: 2.2rem;
+  }
+  @include screen--desktop {
+    font-size: 2.2rem;
+  }
+  @include screen--tablet {
+    font-size: 2.2rem;
+  }
+  @include screen--mobile {
+    font-size: 1.75rem;
+  }
+}
+
+@mixin h4 {
+  font-size: 2.2rem;
+  letter-spacing: -0.025em !important;
+  line-height: 1.05 !important;
+  font-family:  'Univers Next', "Helvetica", "Arial", sans-serif !important;  
+  font-weight: 730 !important;
+
+  @include screen--large {
+    font-size: 2.2rem;
+  }
+  @include screen--desktop {
+    font-size: 2.2rem;
+  }
+  @include screen--tablet {
+    font-size: 2.2rem;
+  }
+  @include screen--mobile {
+    font-size: 1.75rem;
+  }
+}
+
+h5 {
+  font-size: 1.6rem;
+  letter-spacing: -0.015em !important;
+  line-height: 1.15 !important;
+  font-family:  'Univers Next', "Helvetica", "Arial", sans-serif !important;  
+  font-weight: 600;
+
+  @include screen--large {
+    font-size: 1.6rem;
+  }
+  @include screen--desktop {
+    font-size: 1.6rem;
+  }
+  @include screen--tablet {
+    font-size: 1.6rem;
+  }
+  @include screen--mobile {
+    font-size: 1.35rem;
+  }
+}
+
+@mixin h5 {
+  font-size: 1.6rem;
+  letter-spacing: -0.015em !important;
+  line-height: 1.15 !important;
+  font-family:  'Univers Next', "Helvetica", "Arial", sans-serif !important;  
+  font-weight: 600;
+
+  @include screen--large {
+    font-size: 1.6rem;
+  }
+  @include screen--desktop {
+    font-size: 1.6rem;
+  }
+  @include screen--tablet {
+    font-size: 1.6rem;
+  }
+  @include screen--mobile {
+    font-size: 1.35rem;
+  }
+}
+
+h6 {
+  font-size: 1.2rem;
+  letter-spacing: -0.01em !important;
+  line-height: 1.25 !important;
+  font-family:  'Univers Next', "Helvetica", "Arial", sans-serif !important;  
+  font-weight: 730 !important;
+
+  @include screen--large {
+    font-size: 1.2rem;
+  }
+  @include screen--desktop {
+    font-size: 1.2rem;
+  }
+  @include screen--tablet {
+    font-size: 1.1rem;
+  }
+  @include screen--mobile {
+    font-size: 1rem;
+  }
+}
+
+@mixin h6 {
+  font-size: 1.1rem;
+  letter-spacing: -0.01em !important;
+  line-height: 1.25 !important;
+  font-family:  'Univers Next', "Helvetica", "Arial", sans-serif !important;  
+  font-weight: 730 !important;
+
+  @include screen--large {
+    font-size: 1.1rem;
+  }
+  @include screen--desktop {
+    font-size: 1.1rem;
+  }
+  @include screen--tablet {
+    font-size: 1.1rem;
+  }
+  @include screen--mobile {
+    font-size: 1rem;
+  }
+}
+
+p, span, button {
+  font-size: 1em;
+  letter-spacing: -0.01em !important;
+  line-height: 1.35 !important;
+  font-family:  'Univers Next', "Helvetica", "Arial", sans-serif !important;  
+  font-weight: inherit !important;
+}
+
+sup {
+  font-size: 0.45em !important;
+}
+
+@mixin sup {
+  font-size: 0.45em !important;
+}
+
+@mixin p {
+  font-size: 0.9rem;
+  letter-spacing: -0.01em !important;
+  line-height: 1.35 !important;
+  font-family:  'Univers Next', "Helvetica", "Arial", sans-serif !important;  
+  font-weight: 500;
+}
+
+@mixin type--small {
+  font-size: 0.8rem;
+  letter-spacing: -0.01em !important;
+  line-height: 1.35 !important;
+  font-family:  'Univers Next', "Helvetica", "Arial", sans-serif !important;  
+  font-weight: 500;
+
+  @include screen--large {
+
+  }
+  @include screen--desktop {
+
+  }
+  @include screen--tablet {
+    font-size: 0.8rem;
+  }
+  @include screen--mobile {
+    font-size: 0.9rem;
+  }
+}
+
+@mixin type--mini {
+  font-size: 0.7rem;
+  letter-spacing: -0.01em !important;
+  line-height: 1.25 !important;
+  font-family:  'Univers Next', "Helvetica", "Arial", sans-serif !important;  
+  font-weight: 500;
+
+  @include screen--large {
+
+  }
+  @include screen--desktop {
+
+  }
+  @include screen--tablet {
+    font-size: 0.725rem;
+  }
+  @include screen--mobile {
+    font-size: 0.7rem;
+  }
+}
+
+p + p {
+  margin-top: 1.25rem;
+}
+
+i {
+  font-style: oblique;
+  font-family: inherit;
+  font-weight: inherit;
+}
+
+a {
+  color: inherit;
+  line-break: auto;
+  text-decoration: none;
+}
+
+@mixin type--underline {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 15%;
+  transition: ease 300ms;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+
+::-moz-selection {
+  background-color: $color--white;
+}
+
+::selection {
+  background-color: $color--white;
+}
+
+
+figcaption {
+  text-align: left !important;
+  color: $color--white;
+  background-color: none !important;
+}

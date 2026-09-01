@@ -1,0 +1,76 @@
+.page .layer {
+	// border-radius: $corners--layer;
+
+	@include screen--tablet {
+		border-left: solid $space--s $color--black;
+	}
+
+	@include screen--mobile {
+		border-left: solid 8px $color--black;
+	}
+}
+
+.home .layer {
+	border-left: 0 !important;
+}
+
+
+.layer__top--big {
+	.title {
+		h6 a {
+			text-transform: uppercase;
+			@include type--header;
+		}
+	}
+}
+
+.layer__top--small {
+	.title {
+		h6 {
+			text-transform: uppercase;
+			// @include type--sans;
+			// @include type--body;
+		}
+	}
+}
+
+
+.layer--projects .layer__top--big {
+	.title {
+		h2 a {
+			text-transform: uppercase;
+			@include type--header--notvolume;
+
+			@include screen--mobile {
+				font-size: 50px !important;
+			}
+		}
+	}
+}
+
+
+.layer--events .layer__top--big {
+	.title {
+		h2 a {
+			text-transform: uppercase;
+			@include type--header--notvolume;
+
+			@include screen--mobile {
+				font-size: 50px !important;
+			}
+		}
+	}
+}
+
+.layer--books {
+	.title {
+		h2 a {
+			text-transform: uppercase;
+			@include type--header--notvolume;
+
+			@include screen--mobile {
+				font-size: 50px !important;
+			}
+		}
+	}
+}

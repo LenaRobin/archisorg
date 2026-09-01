@@ -1,0 +1,6 @@
+# pack-refs with: peeled fully-peeled sorted 
+2afc5bd954e0f433e58ae81d21aeda1919e22e18 refs/remotes/origin/alternativeGrid
+fe81547846e11afe8862eb3a57c5fbcf45271e49 refs/remotes/origin/lena
+016be2e4b9498e0e0287ba3cde1af8209bc4939e refs/remotes/origin/master
+3253ae257f52fd092654887f59eec2d859da2311 refs/tags/1.0
+5226755b2f9e0a747cd6c74997dc61b773511767 refs/tags/1.1

@@ -1,0 +1,450 @@
+{
+    "key": "group_618a354f85a57",
+    "title": "Product description",
+    "fields": [
+        {
+            "key": "field_6196161c014f3",
+            "label": "Product type",
+            "name": "product_type",
+            "type": "radio",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "publication": "Publication (Volume, Archis, book, single edition...)",
+                "misc": "Item (totebag, mug...)"
+            },
+            "allow_null": 1,
+            "other_choice": 0,
+            "default_value": "publication",
+            "layout": "vertical",
+            "return_format": "value",
+            "show_column": 0,
+            "show_column_sortable": 0,
+            "show_column_weight": 1000,
+            "allow_quickedit": 0,
+            "allow_bulkedit": 0,
+            "save_other_choice": 0
+        },
+        {
+            "key": "field_618a35529dae7",
+            "label": "Is the product new?",
+            "name": "new",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "New product",
+            "default_value": 1,
+            "ui": 0,
+            "show_column": 0,
+            "show_column_sortable": 0,
+            "show_column_weight": 1000,
+            "allow_quickedit": 0,
+            "allow_bulkedit": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_619620e126175",
+            "label": "Item details",
+            "name": "item_details",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6196161c014f3",
+                        "operator": "==",
+                        "value": "misc"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "row",
+            "sub_fields": [
+                {
+                    "key": "field_619620e126176",
+                    "label": "Item availability",
+                    "name": "is_the_item_available",
+                    "type": "select",
+                    "instructions": "Item available",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "available": "Available",
+                        "unavailable": "Not available"
+                    },
+                    "default_value": "available",
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "ui": 0,
+                    "return_format": "value",
+                    "show_column": 0,
+                    "show_column_sortable": 0,
+                    "show_column_weight": 1000,
+                    "allow_quickedit": 0,
+                    "allow_bulkedit": 0,
+                    "ajax": 0,
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_61962bcb146ad",
+                    "label": "Price in euros",
+                    "name": "item_price",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": 20,
+                    "prepend": "€",
+                    "append": "",
+                    "maxlength": "",
+                    "show_column": 0,
+                    "show_column_sortable": 0,
+                    "show_column_weight": 1000,
+                    "allow_quickedit": 0,
+                    "allow_bulkedit": 0
+                }
+            ]
+        },
+        {
+            "key": "field_61961f86d0e57",
+            "label": "PRINT details",
+            "name": "print_details",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6196161c014f3",
+                        "operator": "==",
+                        "value": "publication"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "row",
+            "sub_fields": [
+                {
+                    "key": "field_61961f87d0e58",
+                    "label": "Print availability",
+                    "name": "is_the_print_available",
+                    "type": "select",
+                    "instructions": "Print available",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "available": "Available",
+                        "out": "Out of stocks"
+                    },
+                    "default_value": false,
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "ui": 0,
+                    "return_format": "value",
+                    "ajax": 0,
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_619621dab81c9",
+                    "label": "Who sells it?",
+                    "name": "print_seller",
+                    "type": "radio",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "internal": "We (Archis) sells it",
+                        "external": "External seller"
+                    },
+                    "allow_null": 0,
+                    "other_choice": 0,
+                    "default_value": "internal",
+                    "layout": "vertical",
+                    "return_format": "value",
+                    "show_column": 0,
+                    "show_column_sortable": 0,
+                    "show_column_weight": 1000,
+                    "allow_quickedit": 0,
+                    "allow_bulkedit": 0,
+                    "save_other_choice": 0
+                },
+                {
+                    "key": "field_61961f87d0e59",
+                    "label": "Link",
+                    "name": "print_link",
+                    "type": "url",
+                    "instructions": "If an external webshop sells the publication, enter the url of the page",
+                    "required": 1,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_619621dab81c9",
+                                "operator": "==",
+                                "value": "external"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "show_column": 0,
+                    "show_column_sortable": 0,
+                    "show_column_weight": 1000,
+                    "allow_quickedit": 0,
+                    "allow_bulkedit": 0
+                },
+                {
+                    "key": "field_619628ad697d4",
+                    "label": "Price in euros",
+                    "name": "print_price",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": 20,
+                    "prepend": "€",
+                    "append": "",
+                    "maxlength": "",
+                    "show_column": 0,
+                    "show_column_sortable": 0,
+                    "show_column_weight": 1000,
+                    "allow_quickedit": 0,
+                    "allow_bulkedit": 0
+                }
+            ]
+        },
+        {
+            "key": "field_61961e3f8c06f",
+            "label": "PDF details",
+            "name": "pdf_details",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6196161c014f3",
+                        "operator": "==",
+                        "value": "publication"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "row",
+            "sub_fields": [
+                {
+                    "key": "field_61961e6fca54b",
+                    "label": "PDF availability",
+                    "name": "is_the_pdf_available",
+                    "type": "select",
+                    "instructions": "PDF available",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "available": "Available",
+                        "unavailable": "Not available"
+                    },
+                    "default_value": "available",
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "ui": 0,
+                    "return_format": "value",
+                    "ajax": 0,
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_61961e93ca54c",
+                    "label": "PDF key",
+                    "name": "pdf_key",
+                    "type": "text",
+                    "instructions": "Enter the key to be uploaded in Snipcart",
+                    "required": 1,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_61961e6fca54b",
+                                "operator": "==",
+                                "value": "available"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": "",
+                    "show_column": 0,
+                    "show_column_sortable": 0,
+                    "show_column_weight": 1000,
+                    "allow_quickedit": 0,
+                    "allow_bulkedit": 0
+                },
+                {
+                    "key": "field_61962b76b54af",
+                    "label": "Price in euros",
+                    "name": "pdf_price",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": 10,
+                    "prepend": "€",
+                    "append": "",
+                    "maxlength": "",
+                    "show_column": 0,
+                    "show_column_sortable": 0,
+                    "show_column_weight": 1000,
+                    "allow_quickedit": 0,
+                    "allow_bulkedit": 0
+                }
+            ]
+        },
+        {
+            "key": "field_619622a3634f6",
+            "label": "Product description",
+            "name": "product_description",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "maxlength": 400,
+            "rows": 6,
+            "new_lines": ""
+        },
+        {
+            "key": "field_6196376b0faca",
+            "label": "Matching publication page",
+            "name": "publication_url",
+            "type": "page_link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6196161c014f3",
+                        "operator": "==",
+                        "value": "publication"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "publication",
+                "book"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "allow_archives": 0,
+            "multiple": 0,
+            "show_column": 0,
+            "show_column_weight": 1000
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "shop"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "acf_after_title",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "the_content",
+        "excerpt",
+        "author",
+        "tags"
+    ],
+    "active": true,
+    "description": "",
+    "modified": 1648627869
+}

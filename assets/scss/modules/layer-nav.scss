@@ -1,0 +1,174 @@
+.background {
+
+	.layer__archis {
+		display: flex;
+		justify-content: space-between;
+		flex-direction: column;
+		
+		.layer__archis__top {
+
+		}
+
+		.layer__archis__bottom {
+
+		}
+
+	}
+
+	.layer__archis--full {
+		
+	}
+
+
+	.layer__nav {
+		display: flex;
+		justify-content: space-between;
+		flex-direction: column;
+		height: 100%;
+	    width: 33%;
+		opacity: 0.35;
+		cursor: pointer;
+		transition: opacity 300ms;
+
+		@include screen--tablet {
+			width: 100%;
+			padding-top: 0;
+			opacity: 1;
+		}
+
+		// Navigation
+		.navigation {
+			transition: all 500ms ease;
+			padding-left: $space--xs;
+			padding-top: $space--xs;
+
+			@include screen--tablet {
+				padding-left: 0;
+			}
+
+			@include screen--mobile {
+				padding-left: $space--xs;
+			}
+
+			.menu__logo {
+				text-transform: uppercase;
+				@include h4;
+				margin-bottom: $space--xs;
+				display: block;
+			}
+
+			// @include screen--tablet {
+			// 	padding-left: 0;
+			// 	padding-top: $space--xs;
+			// }
+
+			// @include screen--mobile {
+			// 	padding-top: $space--xs;
+			// 	padding-left: $space--xs;
+			// }
+
+			ul {
+				li {
+					padding: $space--xxs / 1.5 0;
+					@include h6;
+					// @include type--sans;
+
+					a {
+						transition: all 500ms ease-in-out;
+					    transform-origin: top left;
+					    display: flex;
+					    align-items: center;
+					    text-transform: uppercase;
+
+					    @include screen--tablet {
+    						font-size: 1.35rem;
+					    }
+
+					    &:before {
+			   				background-repeat: no-repeat;
+							background-image: url('assets/icons/arrow--right.svg'); 
+							height: 18px;
+							width: 20px;
+							margin-right: $space--xs;
+				   		    content: "";
+							display: none;
+							transition: all 500ms ease-in-out;
+
+							@include screen--touch {
+								background-image: none;
+							}
+
+						}
+					}
+
+					&:hover a {
+						transform: translateX(1px);
+					    transform-origin: top left;
+						
+						@include screen--touch {
+							transform: translateX(0);
+						}
+
+						&:before {
+							display: block;
+
+							@include screen--touch {
+								background-image: none;
+								display: none;
+								transform: translateX(0);
+							}
+						}
+					}
+
+					&.current-page-item,
+					&.current-menu-item,
+					&.global_current {
+						a:before {
+			   				background-repeat: no-repeat;
+							background-image: url('assets/icons/arrow--right.svg'); 
+							height: 18px;
+							width: 20px;
+							margin-right: $space--xs;
+				   		    content: "";
+							display: block;
+						}
+					}
+				}
+			}
+
+		}
+	}
+
+
+}
+
+
+.menu__secondary {
+	padding-top: $space--xs;
+	padding-left:  $space--xs;
+
+	@include screen--tablet {
+		padding-left: 0;
+	}
+
+
+	@include screen--mobile {
+		padding-left: $space--xs;
+	}
+
+	
+	ul li {
+		margin-bottom: $space--xxs;
+
+		a {
+			@include p;
+			font-size: 0.9em;
+			text-transform: none;
+		}
+	}
+}
+
+
+.home .page .background .layer__nav {
+    width: 100%;
+}

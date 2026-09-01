@@ -1,0 +1,155 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	<div class="layer layer--events">
+		<div class="layer__top">
+			<div class="nav nav--volume">
+				<div class="nav__bar">
+					<div class="layer__top layer__top--small">
+						<div class="title">
+							<h6>
+								<a href="{{generalcontent.breadcrumbs.events.url}}">{{generalcontent.breadcrumbs.events.title}}</a>
+							</h6>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="layer__content">
+			<div class="post__header">
+				<div class="post__title">
+					<h2>{{post.title}}</h2>
+				</div>
+			</div>
+			<div class="event__main">
+				<div class="event__details">
+					<div class="date">
+						{% set f = post.meta("from") | date("d.m.Y") %}
+						{% set f_time = post.meta("from") | date("H:i") %}
+			      		{% set t = post.meta("to") | date("d.m.Y") %}
+						<!-- {% set t_time = post.meta("to") | date("H:i") %} -->
+						{% if not post.meta("to") or t == f %}
+			          		<h4>
+								{{f}}								
+							</h4>							
+							<h6>Starts at {{f_time}} {{post.meta("timezone")}}</h6p>
+						{% else %}
+							<h4>{{f}}<br>— {{t}}</h4><br>
+							<h6>Starts on {{f}} at {{f_time}} {{post.meta("timezone")}}</h6>
+			      		{% endif %}
+					</div>
+					<div class="adress">
+						{% set loc = post.meta("location") %}
+							{% if loc.location %}<h6>{{ loc.location }}</h6>{% endif %}
+							<p>
+							{% if loc.address_line_1 %}{{ loc.address_line_1 }}<br/>{% endif %}
+							{% if loc.address_line_2 %}{{ loc.address_line_2 }}<br/>{% endif %}
+							{% if loc.city or loc.postcode %}{{ loc.postcode }} {{ loc.city }}{% endif %}
+							</p>
+					</div>
+						{% set sidebar = post.meta("sidebar") %}
+							{% if sidebar %}
+							<div class="event__book">
+								{% for side in sidebar %}
+								<div class="book__tickets button button--primary">
+									<a href="{{side.link.url}}" target="{{side.link.target}}">{{side.link.title}}</a>
+								</div>
+								{% endfor %}
+							</div>
+						{% endif %}
+				</div>
+
+				<div class="event__description">
+					{% if post.thumbnail %}
+					<div class="post__cover">
+						<img src="{{post.thumbnail | resize(1200)}}" alt="{{post.title}}">
+					</div>
+					{% endif %}
+					<div class="post__content">
+						{{ post.content }}
+  				</div>
+				</div>
+				
+			</div>
+
+			{% set extra = post.meta("extra_information") %}
+			
+			{% if extra %}
+			<div class="event__information">
+				{% for item in extra %}
+				<div class="item">
+					<span class="title">{{item.title}}</span>
+					
+					<p>{{item.content}}</p>	
+				</div>
+				{% endfor %}
+			</div>
+			{% endif %}
+			
+			{% set speakers = post.meta("speakers") %}
+			
+			{% if speakers %}
+			<div class="event__speakers">
+				{% for speaker in speakers %}
+				<div class="item">
+					{% if speaker.image %}
+					<div class="portrait">
+						<img src="{{Image(speaker.image) | resize(500)}}" alt="{{speaker.name}}">
+					</div>
+					{% endif %}
+					<div class="name">
+						<h6>{{speaker.name}}</h6>
+					</div>
+					{% if speaker.description %}
+					<div class="bio">
+						<p>
+							{{ speaker.description }}
+						</p>
+					</div>
+					{% endif %}
+				</div>
+				{% endfor %}
+			</div>
+			{% endif %}
+
+			{% set credits = post.meta("credits") %}
+			
+			{% if credits %}
+			<div class="event__credits">
+				<div class="text">
+					<h6>
+						{{generalcontent.sentences.events_collaboration}}
+					</h6>
+				</div>
+				<div class="list">
+					{% for cred in credits %}
+					<div class="item">
+						{% if cred.url %}
+							<a href="{{cred.url}}" target="_blank">
+						{% endif %}
+						{% if cred.logo %}
+							<img src="{{Image(cred.logo) | resize(600)}}" alt="{{cred.name}}">
+						{% else %}
+							{{ cred.name }}
+						{% endif %}
+						{% if cred.url %}
+							</a>
+						{% endif %}
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+			{% endif %}
+
+		</div>
+
+		<div class="layer__bottom">
+			{# Back to events #}
+			<div class="link--inline back">
+				<a href="{{generalcontent.links.back_to_events.url}}">{{generalcontent.links.back_to_events.title}}</a>
+			</div>
+		</div>
+	</div>
+
+
+{% endblock %}

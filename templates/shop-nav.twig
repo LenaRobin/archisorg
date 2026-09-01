@@ -1,0 +1,98 @@
+<div class="nav nav--shop">
+
+  <!-- Nav bar -->
+  <div class="nav__bar">
+
+    <!-- Title -->
+    <div class="layer__top {{volume_class | default("layer__top--small")}}">
+      <div class="title">
+        <h6><a href="/volume/">Volume</a></h6>
+      </div>
+    </div>
+  
+    {% if not hide_filter %}
+    <!-- Actions -->
+    <div class="nav__actions">
+
+
+      
+      {% if nav_pub %}
+      <div class="option button__nav--issues">
+        <button class="button--dropdown">
+          {{generalcontent.words.issues}}  
+        </button>
+      </div>
+      {%  endif %}
+
+      {% if nav_dossier and nav_dossier|length != 0 %}
+      <div class="option button__nav--dossiers">
+        <button class="button--dropdown">{{generalcontent.words.collaborations}}</button>
+      </div>
+      {% endif %}
+
+      {% if nav_topic and nav_topic|length != 0 %}
+        <div class="option button__nav--topics">
+          <button class="button--dropdown">
+            {{generalcontent.words.themes}}
+          </button>
+        </div>
+      {% endif %}
+      
+    </div>
+    {% endif %}
+  </div>
+  
+  {% if not hide_filter %}
+  {# Filter panel #}
+  <div class="nav__panel">
+
+    {# Issues / Publications subnav #}
+    {% if nav_pub %}
+      <div class="filter__group">
+        <div class="filter__group__tags">
+          {% for pub in nav_pub %}
+            <div class="filter__tag">
+              <a href="{{pub.path}}">{{ pub | issueTitle.shortTitle }}</a>
+            </div>
+          {% endfor %}
+        </div>
+
+        <div class="filter__group__extra">
+          <div class="link--inline">
+            <a href="{{generalcontent.links.see_all_issues.url}}">{{generalcontent.links.see_all_issues.title}}</a>
+          </div>
+          
+        </div>
+      </div>
+    {%  endif %}
+
+    {# Dossiers subnav #}
+    {% if nav_dossier and nav_dossier|length != 0 %}
+      <div class="filter__group">
+        <div class="filter__group__tags">
+          {% for tag in nav_dossier %}
+            <div class="filter__tag">
+              <a href="{{tag.path}}">{{tag.name}}</a>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+  {# Topic subnav #}
+    {% if nav_topic and nav_topic|length != 0 %}
+      <div class="filter__group">
+        <div class="filter__group__tags">
+          {% for tag in nav_topic %}
+            <div class="filter__tag">
+              <a href="{{tag.path}}">{{tag.name}}</a>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+  {% endif %}
+
+
+</div>

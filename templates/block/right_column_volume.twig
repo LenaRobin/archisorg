@@ -1,0 +1,35 @@
+{% if pub %}
+<div class="module__right">
+  <div class="issue__current">
+    <div class="image">
+    {%  if pub.thumbnail %}
+      <a href="{{pub.path}}">
+        <img src="{{pub.thumbnail | resize(600) }}" alt="{{pub.issueTitle.title}}">
+      </a>
+    </div>
+    {% endif %}
+    <div class="text">
+      <a href="{{pub.path}}">
+        {% if pub.meta("pub_info").number %}
+          <div class="number">
+            <h2>{{pub.meta("pub_info").number}}</h2>
+          </div>
+        {% endif %}
+
+        <span>
+          {{generalcontent.words.current_issue}}
+        </span>
+        <p>{{pub|issueTitle.title}}</p>
+      </a>
+    </div>
+
+    {% if post.purchase_link %}
+      <a target="_blank" href="{{post.purchase_link}}">
+        <div class="button--primary">
+          {{generalcontent.words.buy_the_issue}}
+        </div>
+      </a>
+    {% endif %}
+  </div>  
+</div>
+{% endif %}

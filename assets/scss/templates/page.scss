@@ -1,0 +1,250 @@
+html {
+	background-color: $color--black;
+}
+
+body {
+	background-color: $color--black;
+	color: $color--white;
+    overflow-x: hidden;
+
+    &.body--noscroll {
+    	overflow: hidden;
+    }
+
+	&.body--noscrollmobile {
+    	overflow: hidden;
+    }
+}
+
+
+// Global page container (Volume, Projects, Events...)
+.page {
+	min-height: 100vh;	
+
+	@include screen--tablet {
+		min-height: 0;
+		overflow-x: hidden;
+	}
+
+	.background {
+		width: 100vw;
+		position: sticky;
+		top: 0;
+		height: 100vh;
+		padding: $space--s;
+		z-index: 0;
+		cursor: default;
+
+		&:hover {
+			.layer__nav {
+				opacity: 1;
+			}
+		}
+
+		@include screen--tablet {
+			background-color: $color--black;
+			position: fixed;
+			top: 0;
+			height: auto;
+			left: 0;
+			width: 100vw;
+			padding-top: 0;
+		}
+
+		@include screen--mobile {
+			padding: $space--xxs;
+			padding-top: 0;
+		}
+
+	}
+
+	.layers {
+	    width: calc(100vw - #{$space--l});
+	    z-index: 9;
+	    margin-left: $space--l;
+	    position: relative;
+	    margin-top: calc(-100vh + #{$space--m});
+	    transition-property: filter, transform;
+	    transition-duration: 200ms, 300ms;
+	    transition-timing-function: cubic-bezier(0, 0, 0.21, 1), ease-out;
+	    transition-delay: 150ms, 0s;
+
+		@include screen--tablet {
+			position: absolute;
+			top: 0;
+			margin-top: 0;
+			padding-top: 0;
+			width: 100vw;
+			margin-left: 0;
+		    margin-top: 3.2rem;
+		}
+
+		@include screen--mobile {
+			position: absolute;
+			top: 0;
+			margin-top: 0;
+			padding-top: 0;
+			width: 100vw;
+			margin-left: 0;
+  		  	margin-top: 50px;
+		}
+
+	    &.layers--move--hint {
+	    	transform: translate3d(33%, 0, 15rem);
+			// filter: brightness(0.5);
+
+			@include screen--tablet {
+		    	transform: translate3d(95%, 0, 15rem);
+				// filter: brightness(2);			
+			}
+
+
+			img {
+				@include image--nb;
+			}
+	    }
+
+		&.layers--move--aside {
+	    	transform: translate3d(33%, 0, 15rem);
+			cursor: pointer;
+			
+			@include screen--tablet {
+		    	transform: translate3d(95%, 0, 15rem);
+				// filter: brightness(1);			
+			}
+
+
+			img {
+				@include image--nb;
+			}
+
+			&.layers--move--hintback {
+	    		transform: translate3d(30%, 0, 0rem);
+			}
+		}
+
+		.layer {
+			padding: $space--s + $space--xs;
+
+			@include screen--desktop {
+			 	padding: $space--s;
+			}
+
+			@include screen--tablet {
+				padding: $space--s;
+			}
+
+			@include screen--mobile {
+				padding: $space--s $space--xs;
+			}
+		}
+	}
+}
+
+
+
+
+.layer__top {
+
+	&.layer__top--big {
+		h2 {
+			a {
+		    	line-height: 1 !important;
+			}
+		}
+	}
+
+	&.layer__top--small {
+		// padding-top: $space--xs;
+		// padding-left: $space--xs;
+
+		a {
+			text-decoration: none;
+		}
+
+		h6 {
+			transition: all 300ms;
+		    transform-origin: top left;
+			@include p;
+		    transform-origin: top left;
+		    display: flex;
+		    align-items: center;
+		    text-transform: uppercase;
+
+			&:before {
+   				background-repeat: no-repeat;
+				background-image: url('assets/icons/arrow--left.svg'); 
+				height: 18px;
+				width: 20px;
+				margin-right: $space--xs;
+	   		    content: "";
+				display: none;
+
+				@include screen--touch {
+					display: block;
+				}
+
+				@include screen--tablet {
+					display: block;
+				}
+				
+				@include screen--mobile {
+					display: block;
+				}
+			}
+		}
+
+		&:hover h6 {
+			transform: translateX($space--xxs);
+		    transform-origin: top left;
+
+
+			&:before {
+				display: block;
+			}
+		}
+
+		.title h6 {
+			transition: all 300ms;
+		    transform-origin: top left;
+			@include p;
+		    transform-origin: top left;
+		    display: flex;
+		    align-items: center;
+		    text-transform: uppercase;
+
+			&:before {
+   				background-repeat: no-repeat;
+				background-image: url('assets/icons/arrow--left.svg'); 
+				height: 18px;
+				width: 20px;
+				margin-right: $space--xs;
+	   		    content: "";
+				display: none;
+
+				@include screen--touch {
+					display: block;
+				}
+
+				@include screen--tablet {
+					display: block;
+				}
+
+				@include screen--mobile {
+					display: block;
+				}
+			}
+		}
+
+		&:hover .title h6 {
+			transform: translateX($space--xxs);
+		    transform-origin: top left;
+
+
+			&:before {
+				display: block;
+			}
+		}
+	}	
+}
+

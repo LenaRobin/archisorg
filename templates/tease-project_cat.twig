@@ -1,0 +1,23 @@
+<div class="item item--project--category article__thumbnail article__thumbnail--list">
+  <a class="link__container" href="{{term.path}}">
+    {% if term.image %}
+      <div class="image__container">
+        <img class="image" loading="lazy" src="{{Image(term.image)|resize(600)}}" alt="">
+      </div>
+    {% endif %}
+    <div class="text">
+      <div class="title">
+        
+        <h5>{{term.name}}</h5>
+      </div>
+        <div class="from">
+        <p>Project</p>
+      </div>
+      <div class="excerpt">
+        <p>
+          {{ term.excerpt }}
+        </p>
+      </div>
+    </div>
+  </a>
+</div>

@@ -1,0 +1,61 @@
+.layer--projects {
+
+
+	.project__info {
+		.split {
+			display: grid;
+			grid-template-columns: 3fr 1fr 2fr;
+			grid-column-gap: $space--s;
+			align-items: baseline;
+
+			.project__description {
+				grid-column: 1 / 2;
+
+				p {
+
+				}
+			}
+
+			.project__info {
+				grid-column: 3 / 4;
+
+				.item {
+					display: grid;
+					grid-template-columns: 2fr 4fr;
+					grid-column-gap: $space--s;
+					border-top: $borders--thin;
+					align-items: baseline;
+
+					.label {
+						border-top: none;
+					}
+
+					.content {
+						p {
+							// border-top: $borders--thin;
+						}
+					}
+				}
+
+				.item + .item {
+					margin-top: $space--s;
+				}
+
+			}
+		}
+	}
+
+
+	.articles__list {
+		display: grid;
+		grid-template-columns: 2fr 2fr 2fr;
+		grid-column-gap: $space--s;
+	}
+
+
+
+	.filter__bar {
+    	justify-content: flex-end;
+	}
+
+}

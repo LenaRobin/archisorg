@@ -1,0 +1,26 @@
+# Node / build
+node_modules/
+dist/
+build/
+# Composer
+vendor/
+# OS / Editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+# Logs
+npm-debug.log*
+.yarn-integrity
+
+# PHPStorm
+*.iml
+
+# WordPress specifics (avoid adding uploads or config)
+wp-config.php
+.htaccess
+wp-content/uploads/
+
+# Other
+.env
+.env.*

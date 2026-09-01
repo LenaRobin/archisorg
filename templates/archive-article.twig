@@ -1,0 +1,57 @@
+{# This file demonstrates using most of the index.twig template and modifying 
+   just a small part. See `search.twig` for an example of another approach #}
+
+{% extends "base.twig" %}
+
+{% block content %}
+  <div class="layer layer--volume"> 
+    {% include "volume_nav.twig" with {"volume_class": "layer__top--big"} %}
+
+
+    <div class="layer__content">
+
+      {% include "block/archive_article_feed.twig" with {"posts": posts|slice(0, 9), "second_section": false, "pagination": posts.pagination} %}
+
+
+      {% if pagination.current == 1 %}
+      <div class="layer__breaking">
+        {% if nav_pub %}
+        <div class="issue__carousel">
+
+          <div class="issues">
+            {% for pub in nav_pub %}
+              {% if pub.thumbnail %}
+              <div class="cover"><a href="{{pub.path}}"><img loading="lazy" src="{{pub.thumbnail | resize(400)}}" alt="{{pub|issueTitle.title}}"></a></div>  
+              {% endif %}
+            {% endfor %}
+          </div>
+
+          <div class="title">
+
+            <!-- Link to all volume archive -->
+            <div class="link link--inline">
+
+              
+              <a href="{{generalcontent.links.see_all_issues.url}}">{{generalcontent.links.see_all_issues.title}}</a>
+            </div>
+          </div>
+
+
+        </div>
+        {% endif %}
+      </div>
+      {% endif %}
+
+
+    <div class="layer__breaking">
+     {% include "block/newsletter.twig" %}
+    </div>
+
+    {% include "block/archive_article_feed.twig" with {"posts": posts|slice(10, 9), "second_section": true, "pagination": posts.pagination} %}
+
+    {% include 'partial/pagination.twig' with { pagination: posts.pagination({show_all: false, mid_size: 3, end_size: 2}) } %}
+
+          
+    </div>
+  </div>
+{% endblock %}

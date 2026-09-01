@@ -1,0 +1,159 @@
+.searchresults__container {
+	padding-right: $space--m;
+
+
+
+	img {
+		@include image--nb;
+	}
+
+	.searchresults__string {
+		p, span {
+			@include h6;
+			@include type--univers;			
+		}
+		margin-bottom: $space--l;
+		margin-top: $space--l;
+	}
+
+
+	.from {
+		margin-top: $space--xs;
+	}
+
+	.title {
+		margin-bottom: $space--xxs !important;
+	}
+
+
+	.item--article {
+		margin-bottom: $space--m;
+
+		a {
+			display: grid;
+			grid-template-columns: 2fr 4fr;
+			grid-column-gap: $space--s;
+			* {
+				min-width: 0;
+			}
+			.image__container {
+				grid-column: 1/2;
+			}
+
+			.excerpt {
+				display: none;
+			}
+
+			.text {
+				grid-column: 2/6;
+				border-top: $borders--thin $color--white--transp;
+				padding-top: $space--xs;
+			}
+		}
+	}
+
+	.item--project--single {
+		margin-bottom: $space--m;
+
+		a {
+			display: grid;
+			grid-template-columns: 2fr 4fr;
+			grid-column-gap: $space--s;
+			* {
+				min-width: 0;
+			}
+			.excerpt {
+				display: none;
+			}
+
+			.text {
+				grid-column: 2/6;
+				border-top: $borders--thin $color--white--transp;
+				padding-top: $space--xs;
+			}
+		}
+	}
+
+	.item--publication {
+		margin-bottom: $space--m;
+
+		a {
+			display: grid;
+			grid-template-columns: 2fr 4fr;
+			grid-column-gap: $space--s;
+			* {
+				min-width: 0;
+			}
+			.image__container {
+				grid-column: 1/2;
+			}
+
+			.excerpt {
+				display: none;
+			}
+
+			.text {
+				grid-column: 2/6;
+				border-top: $borders--thin $color--white--transp;
+				padding-top: $space--s;
+			}
+		}
+
+	}
+
+
+
+	.item--project--category {
+		margin-bottom: $space--m;
+
+		a {
+			display: grid;
+			grid-template-columns: 2fr 4fr;
+			grid-column-gap: $space--s;
+			* {
+				min-width: 0;
+			}
+			.image__container {
+				grid-column: 1/2;
+			}
+
+			.excerpt {
+				display: none;
+			}
+
+			.text {
+				grid-column: 2/6;
+				border-top: $borders--thin $color--white--transp;
+				padding-top: $space--xs;
+			}
+		}
+	}
+
+
+	.item--page {
+		margin-bottom: $space--l;
+
+		a {
+			display: grid;
+			grid-template-columns: 2fr 4fr;
+			grid-column-gap: $space--s;
+			* {
+				min-width: 0;
+			}
+
+			.text {
+				grid-column: 2/6;
+				border-top: $borders--thin $color--white--transp;
+				padding-top: $space--s;
+
+				.title {
+					text-transform: uppercase;
+				}
+			}
+		}
+	}
+
+
+
+
+}

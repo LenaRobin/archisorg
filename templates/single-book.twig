@@ -1,0 +1,256 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	<div class="layer layer--books">
+    
+
+		<div class="layer__top">
+			<div class="nav nav--volume">
+				<div class="nav__bar">
+					<div class="layer__top layer__top--small">
+						<a href="{{generalcontent.breadcrumbs.books.url}}">
+							<div class="title">
+								<h6>{{generalcontent.breadcrumbs.books.title}}</h6>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="layer__content">
+			
+				<!-- Category intro -->
+				<div class="category__intro">
+					<div class="text">
+						{% if not title.number and not title.subject %}
+							<h2>{{ post.title }}</h2>
+						{% else %}
+							<div class="issue__number">
+  							<h2>{{title.number}}</h2>
+  						</div>
+  						<div class="issue__title">
+  							<h2>{{title.subject}}</h2>
+  						</div>
+						{% endif %}
+					<div class="category__description">
+  						<div class="issue__publishing">
+  							<h5>{{ post.date | date("F Y")}}</h5>
+  						</div>
+  						<h6>
+							{{ post.meta("short_description") }}
+  						</h6>
+  					</div>
+  					<div class="category__description__details">
+  						
+  						<div class="issue__details">
+  							{{ post.content }}
+
+	  						{% set more = post.meta("more_details") %}
+	  						{% if more %}
+	  							{# <details class="more__item"> #}
+    							    {# <summary class="item__title link--inline"> #}
+								        {# <p>{{more.title}}</p> #}
+								    {# </summary> #}
+							    	{{more.content}}
+								{# </details> #}
+	  						{% endif %}
+  						</div>
+
+
+
+
+  						{% if post.meta("contributors") %}
+  						<div class="issue__contributors">
+  							<details class="more__item">
+							    <summary class="item__title link--inline">
+							        <span>{{generalcontent.words.contributors}}</span>
+							    </summary>
+								<p>{{ post.meta("contributors") }}</p>
+							</details>
+						</div>
+  						{% endif %}
+
+  						{% if post.meta("publication_details") %}
+  						<div class="printed__details">
+
+  							
+  							<details class="details__item">
+							    <summary class="item__title link--inline">
+							        <span>{{generalcontent.words.details}}</span>
+							    </summary>
+							    <div class="item__details">
+							    	{{ post.meta("publication_details") }}
+							    </div>	
+							</details>
+
+  						</div>
+  						{% endif %}
+
+  					</div>
+
+
+
+
+  			<div class="layer__feed">	
+				{# START: Articles #}
+				{% if articles and articles.found_posts != 0 %}
+
+  				<div class="articles__list">
+					
+					<div class="text">
+						<h3>{{generalcontent.words.online_selection}}</h3>
+					</div>
+				
+
+  					{% for article in articles %}
+
+	  					{% if article.featured  %}
+	  						<div class="article__thumbnail article__thumbnail--list article__thumbnail--editorial {{article.thumbnail ? "" : "article__thumbnail--nopic"}}">
+	    						<a class="container" href="{{article.path}}">
+	    							{% if article.thumbnail %}
+		    							<div class="image__container image__container--volume image__container--gradient">
+			    							<img class="image image--bw image--transparent" src="{{article.thumbnail | resize(1200, 900)}}" alt="">
+		    							</div>
+	    							{% endif %}
+	    							<div class="text">
+	    								<div class="title">
+	    									<h5>{{article.title}}</h5>
+	    								</div>
+	    								<div class="authors">
+					    					{% for author in article.id|getAuthors %}
+								        <h6 class="author__tag">{{author.display_name}}</h6>
+								      {% endfor %}
+	    								</div>
+	    							</div>
+	    						</a>
+	    					</div>
+	    				{% else %}
+
+    						
+    						<div class="article__thumbnail article__thumbnail--list {{article.thumbnail ? "" : "article__thumbnail--nopic"}}">
+	    						<a class="container" href="{{article.path}}">
+		    						{% if article.thumbnail %}
+		    							<div class="image__container image__container--volume image__container--gradient">
+			    							<img class="image image--bw image--transparent" src="{{article.thumbnail | resize(600, 450)}}" alt="">
+		    							</div>
+		    						{% endif %}
+	    							<div class="text">
+										<div class="title">
+	    									<h5>{{article.title}}</h5>
+	    								</div>
+	    								<div class="authors">
+					    					{% for author in article.id|getAuthors %}
+								        <h6 class="author__tag">{{author.display_name}}</h6>
+								      {% endfor %}
+	    							</div>
+	    						</a>
+	    					</div>
+	    				{% endif %}
+	  				{% endfor %}
+	  			</div>	
+
+  				{% endif %}
+				</div>
+
+
+
+			{# START:  Issue info #}
+				{% set a_links = post.meta("article_links") %}
+				{% if a_links and a_links|length != 0 %}
+
+				<div class="issue__info">
+					<div class="issue__info__toc">
+						<div class="text">
+							<h3>{{generalcontent.words.contents}}</h3>
+						</div>
+
+						<div class="toc__list">
+							{% for part in a_links %}
+								{% if part.acf_fc_layout == "article_link" %}
+									{% if part.url %}
+										<a href="{{part.url}}" class="toc__item">
+									{% else %}
+										<div class="toc__item">
+									{% endif %}
+										<div class="author">
+											<h6>{{part.author}}</h6>
+										</div>
+										<div class="title">
+											<h6>{{part.title}}</h6>
+										</div>
+									{% if part.url %}
+										</a>
+									{% else %}
+										</div>
+									{% endif %}
+								{% elseif part.acf_fc_layout == "category_seperator" %}
+									<div class="part">
+										<h6>{{ part.text }}</h6>
+									</div>
+								{% endif %}
+							{% endfor %}
+							
+						</div>
+
+					</div>
+				</div>
+				{# END Issue info #}
+				{%  endif %}
+				
+
+
+
+					</div>
+
+					<div class="category__cta">
+						<div class="sticky">
+							{% if post.thumbnail %}
+								<div class="image__container image__container--volume">
+	    							<img class="image image--bw image--transparent" src="{{post.thumbnail | resize(800)}}" alt="">
+								</div>
+							{% endif %}
+
+							{% if post.meta("purchase_link") %}
+								<a href="{{post.meta("purchase_link")}}">
+									<div class="button--primary">
+										{{generalcontent.words.buy}}
+				  					</div>
+			  					</a>
+		  					{% endif %}
+						</div>
+					</div>
+
+
+
+
+
+				{# End category intro #}
+				</div>	
+
+
+
+
+        {% if nav_books %}
+        <div class="issue__carousel">
+			<div class="issues">
+			{% for pub in nav_books %}
+				{% if pub.thumbnail %}
+					<div class="cover"><a href="{{pub.path}}"><img loading="lazy" src="{{pub.thumbnail | resize(400)}}" alt="{{pub|issueTitle.title}}"></a></div>  
+				{% endif %}
+			{% endfor %}
+			</div>
+
+			<div class="title">
+				<div class="link link--inline">
+					<a href="{{generalcontent.links.see_all_books.url}}">{{generalcontent.links.see_all_books.title}}</a>
+				</div>
+			</div>
+        </div>
+        {% endif %}
+
+	
+			
+		</div><!-- /content-wrapper -->
+	</div>
+{% endblock %}

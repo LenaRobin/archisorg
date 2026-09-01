@@ -1,0 +1,12 @@
+<div class="category__intro">
+  <div class="top">
+    <div class="category__title">
+      <h2>{{term.name}}</h2>
+    </div>
+  </div>
+  {% if term.description %}
+  <div class="category__description">
+      <p><span class="catgory__type">{{term.taxonomy | title}} / </span>{{term.description}}</p>
+  </div>
+  {% endif %}
+</div>

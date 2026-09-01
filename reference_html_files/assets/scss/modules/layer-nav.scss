@@ -1,0 +1,83 @@
+.background {
+	// width: 50%;
+	// position: sticky;
+	// top: 0;
+	// height: 100vh;
+	// padding: 1em;
+
+	.layer__archis {
+		display: flex;
+		justify-content: space-between;
+		flex-direction: column;
+		
+		.layer__archis__top {
+
+		}
+
+		.layer__archis__bottom {
+
+		}
+
+	}
+
+	.layer__archis--full {
+		
+	}
+
+
+	.layer__nav {
+		display: flex;
+		justify-content: space-between;
+		flex-direction: column;
+		height: 100%;
+	    width: 33%;
+		opacity: 0.35;
+		cursor: pointer;
+		transition: opacity 300ms;
+		padding-top: $space--s;
+
+		// Navigation
+		.navigation {
+
+			ul {
+				li {
+					border-top: $borders--thin;
+					border-color: $color--white--transp;
+					padding: $space--xs / 2 0;
+
+					// Bullet
+					&.link--section {
+						a:after {
+						    background-color: transparent;
+						    width: 15px;
+						    height: 15px;
+						    position: absolute;
+						    content: "";
+						    border-radius: 100%;
+						    margin-top: 3px;
+						    margin-left: 0.5rem;
+						    display: inline-block;
+						    transform: scale(0.75);
+						    opacity: 0.25;
+						    transition: all 100ms;
+						}
+
+						 &:hover a:after {
+						    background-color: green;
+						    transform: scale(1);
+						    opacity: 1;
+					    }
+					}
+				}
+			}
+		}
+	}
+
+
+}
+
+
+
+.home .page .background .layer__nav {
+    width: 100%;
+}

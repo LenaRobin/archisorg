@@ -1,0 +1,12 @@
+{% if ad %}
+<div class="add add--horizontal">
+  <div class="add__container">
+    <a href="{{ad.url}}">
+    	<div class="container">
+			<img class="add--large" src="{{Image(ad.desktop_image).src}}" alt="">
+			<img class="add--small" src="{{Image(ad.mobile_image).src}}" alt="">
+    	</div>
+    </a>
+  </div>
+</div>
+{% endif %}

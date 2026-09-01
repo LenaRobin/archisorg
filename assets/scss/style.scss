@@ -1,0 +1,75 @@
+/*!
+ * Theme Name: Archis.org theme
+ * Description: https://archis.org theme
+ * Author: LAVA https://magma.amsterdam & Léna Robin Studio https://lenarobin.com
+ * Author URI:
+ * Version: 0.1
+*/
+
+
+// Base
+@import 'base/reset.sass';
+@import 'base/values.scss';
+@import 'base/mediaqueries.scss';
+@import 'base/typography.scss';
+@import 'base/base.scss';
+@import 'base/spacing.scss';
+
+// Modules
+@import 'modules/images.scss';
+@import 'modules/thumbnails.scss';
+@import 'modules/footer.scss';
+@import 'modules/buttons.scss';
+@import 'modules/breadcrumb.scss';
+@import 'modules/links.scss';
+@import 'modules/layer.scss';
+@import 'modules/filter.scss';
+@import 'modules/advertising.scss';
+@import 'modules/carousel.scss';
+@import 'modules/current.scss';
+@import 'modules/layer-nav.scss';
+@import 'modules/post-headers.scss';
+@import 'modules/pagination.scss';
+@import 'modules/details.scss';
+@import 'modules/search.scss';
+@import 'modules/search-results.scss';
+@import 'modules/sticker.scss';
+@import 'modules/newslettermodule.scss';
+@import 'modules/slider.scss';
+@import 'modules/snipcart.scss';
+
+
+// Templates
+@import 'templates/page.scss';
+@import 'templates/post.scss';
+@import 'templates/nav.scss';
+
+@import 'templates/home.scss';
+
+@import 'templates/volume.scss';
+@import 'templates/volume-post.scss';
+@import 'templates/volume-archive.scss';
+@import 'templates/volume-category.scss';
+@import 'templates/volume-issue.scss';
+
+@import 'templates/events.scss';
+@import 'templates/events-posts.scss';
+
+@import 'templates/projects.scss';
+@import 'templates/projects-category.scss';
+@import 'templates/projects-post.scss';
+
+@import 'templates/archis-about.scss';
+@import 'templates/new.scss';
+
+@import 'templates/404.scss';
+
+@import 'templates/books-archive.scss';
+@import 'templates/books-post.scss';
+
+@import 'templates/archis-shop.scss';
+@import 'templates/shop-post.scss';
+
+@import 'templates/newspage.scss';
+
+@import 'modules/subscribeform.scss';

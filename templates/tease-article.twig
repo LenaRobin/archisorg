@@ -1,0 +1,23 @@
+<div class="item item--article article__thumbnail article__thumbnail--list">
+  <a class="link__container" href="{{post.path}}">
+    {% if post.thumbnail %}
+      <div class="image__container image__container--volume">
+        <img class="image" loading="lazy" src="{{post.thumbnail|resize(600)}}" alt="">
+      </div>
+    {% endif %}
+    <div class="text">
+      
+      <div class="title">
+        <h5>{{post.title}}</h5>
+      </div>
+      <div class="authors">
+        {% for author in post.id|getAuthors %}
+          <h5 class="author__tag">{{author.display_name}}</h5>
+        {% endfor %}
+      </div>
+      <div class="from">
+        <p>In Volume</p>
+      </div>
+    </div>
+  </a>
+</div>

@@ -1,0 +1,109 @@
+.error404 {
+
+
+	.error404__container {
+		display: block;
+		padding-top: $space--m;
+	}
+
+	    	
+	.background {
+
+	}
+
+	.page {
+	    grid-template-columns: 1fr 2fr;
+	    display: grid;
+	    grid-column-gap: $space--s;
+
+	    .layers {
+	    	width: 100%;
+	    	margin-left: 0;
+	    	color: $color--white;
+	    	margin: 0;
+	    }
+
+	    .background {
+	    	width: auto;
+	    	padding-right: 0;
+
+	    	.layer__archis {
+	    		width: 100%;
+	    	}
+
+	    	.layer__nav {
+	    		opacity: 1;
+
+		    	.navigation {
+		    		width: 100%;
+		    	}
+	    	}
+
+
+	    }
+
+	}
+
+
+	.link--inline, .post__next {
+		margin-top: $space--s;
+		
+		a, span {
+			// @include type--sans;
+			text-align: center;
+			margin: 0 auto;
+			padding: 0;
+			transition: all ease;
+			transition-duration: 0.15s;
+			position: relative;
+			will-change: width;
+			text-decoration: none;
+	
+			&:before,
+			&:after {
+				content: "";
+				position: absolute;
+				bottom: - $space--xxs / 1.5;
+				width: 0px;
+				height: 1px;
+				margin: 5px 0 0;
+				transition: all ease;
+				transition-duration: 0.15s;
+				opacity: 0;
+				background-color: $color--black;
+			}
+	
+			&:before {
+				left: 50%;
+			}
+			&:after {
+				right: 50%;
+			}
+			
+		}
+	
+		&:hover {
+			cursor: pointer;
+	
+			a, span {
+				&:before,
+				&:after {
+					width: 50%;
+					opacity: 1;
+				}
+			}
+		}
+	
+	
+		&.link--inline--darkmode {
+			a, span {
+				&:before,
+				&:after {
+					background-color: $color--white;
+				}
+			}
+		}
+	
+	}
+	
+}

@@ -1,0 +1,8 @@
+.issue__carousel .issues {
+  white-space: nowrap;
+  overflow: scroll;
+}
+.issue__carousel .issues .cover {
+  width: 100px;
+  display: inline-block;
+}/*# sourceMappingURL=carousel.css.map */

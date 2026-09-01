@@ -1,0 +1,37 @@
+.volume-category {
+	.layer__feed {
+		grid-template-columns: 5fr 1fr;
+		grid-column-gap: $space--m;
+	}
+
+
+
+	.category__intro {
+		margin-bottom: $space--l;
+		display: grid;
+		grid-template-columns: 4fr 2fr;
+		grid-column-gap: $space--s;
+		
+		.top {
+			grid-column: 1 / 4;
+
+			.category__title {
+				margin-bottom: $space--s;
+			}
+		}
+
+		.category__description {
+			// display: none;
+
+			max-width: 60ch;
+
+			span.catgory__type {
+				@include h6;
+				text-transform: uppercase;
+			}
+		}
+	}
+
+
+}
+

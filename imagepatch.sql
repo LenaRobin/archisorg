@@ -1,0 +1,1 @@
+DELETE m FROM `archis_postmeta` as m LEFT JOIN `archis_posts` AS p ON m.`meta_value` = p.`ID` LEFT JOIN `archis_posts` AS p2 ON m.`post_id` = p2.`ID` WHERE m.`meta_key` = '_thumbnail_id' AND p.`ID` IS NULL;

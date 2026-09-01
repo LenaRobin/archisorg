@@ -1,0 +1,100 @@
+
+{% extends "base.twig" %}
+
+{% block content %}
+  <div class="layer layer--projects">
+
+    <div class="nav nav--events">
+
+      <div class="nav__bar">
+
+        <div class="layer__top layer__top--big">
+          <div class="title">
+          
+            <h2>
+              <a href="{{generalcontent.breadcrumbs.projects.url}}">{{generalcontent.breadcrumbs.projects.title}}</a>
+            </h2>
+          </div>
+        </div>
+      
+      </div>
+
+      
+    </div>
+    {% set sticker = generalcontent.stickers.projects %}
+    {% if sticker %}
+      <div class="sticker--text">
+        <p>
+          {{sticker}}
+        </p>
+      </div>
+    {% endif %}
+    
+    <div class="layer__content">
+
+
+      {# News in projects — This section should include 3 of the most recent #}
+
+      {# {% if posts %}
+      <div class="label"><h6>Current affairs</h6></div>
+      
+      <div class="projects__new">
+        
+        {% for post in posts %}
+        <div class="article__thumbnail article__thumbnail--list">
+          <a class="container" href="{{post.path}}">
+              {% if post.thumbnail %}
+              <div class="image__container image__container--volume">
+                <img class="image image--bw image--transparent" src="{{ post.thumbnail | resize(600) }}" alt="">
+              </div>
+              {% endif %}
+            <div class="text">
+              <div class="title">
+                <h6>{{post.title}}</h6>
+              </div>
+              
+
+              <div class="tags">
+                  <span class="filter__tag date">{{post.date}}</span>
+              </div>
+
+            </div>
+          </a>
+        </div>
+        {% endfor %}
+      
+      </div>
+      {% endif %} #}
+
+
+      {# Projects list #}
+{# 
+      <div class="label">
+        <h6>
+          {{generalcontent.words.our_projects}}
+        </h6>
+      </div> #}
+
+      <div class="projects__list">
+
+      {% for cat in categories %}
+        
+        <div class="project__thumbnail">
+          <a href="{{cat.path}}" class="container">
+            {% if cat.image %}
+            <div class="image__container image__container--projects">
+              <img class="image image--bw" src="{{Image(cat.image) | resize(1200)}}" alt="{{Image(cat.thumbnail).alt}}">
+            </div>
+            {% endif %}
+            <div class="text">
+              <h3>{{cat.name}}</h3>
+              <p>{{cat.excerpt}}</p>
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+      </div>
+    </div>
+      
+  </div>
+{% endblock %}

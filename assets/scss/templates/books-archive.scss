@@ -1,0 +1,93 @@
+.layer--books {
+    background-color: $color--books;
+    color: $color--black;
+}
+
+
+
+
+.layer--books {
+	.layer__content {
+	    display: grid;
+	    grid-template-columns: 1fr 1fr 1fr 1fr;
+	    grid-column-gap: $space--m;
+	    grid-row-gap: $space--m;
+		margin-top: 0 !important;
+
+		@include screen--mobile {
+			row-gap: $space--s;
+		}
+
+	    * {
+	    	min-width: 0;
+		}
+		
+		.layer__title {
+			grid-column: 1 / 4;
+			grid-row: 1;
+			text-transform: uppercase;
+		}
+
+		.layer__intro {
+			grid-row: 2;
+			grid-column: 1 / 4;
+			margin-bottom: $space--l;
+            margin-top: $space--l;
+
+			@include screen--mobile {
+				grid-column: 1 / 5;
+			}
+
+			.subscribe__module {
+				grid-column: 1 / 4;
+				grid-row: 3;
+
+				.subscribe__link {
+					margin-top: $space--s;
+					width: auto;
+					max-width: 400px;
+				}
+			}
+		}
+
+
+
+		.editions {
+			grid-row: 4;
+			grid-column: 1 / 5;
+
+			.item {
+				.title {
+					font-weight: 600;
+				}
+			}
+
+            .item--new {
+                &:after {
+                    text-align: center;
+                    content: "new";
+                    position: absolute;
+                    z-index: 9999;
+                    top: - $space--xs;
+                    right: - $space--xxs;
+                    background: $color--black;
+                    color: $color--books;
+                    height: 100px;
+                    width: 100px;
+                    border-radius: 100%;
+                    text-align: center;
+                    padding-top: 40px;
+                    font-weight: 400;
+                    text-transform: uppercase;
+                }
+            }
+		}
+
+	}
+
+
+
+
+
+
+}

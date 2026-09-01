@@ -1,0 +1,23 @@
+<div class="item item--publication">
+  <a class="link__container" href="{{post.path}}">
+      <div class="image">
+        <img src="{{post.thumbnail | resize(800)}}" alt="{{post.thumbnail.alt}}">
+      </div>
+      <div class="text">
+        <div class="number">
+          <h3>56</h3>
+        </div>
+        <div class="info">
+          <div class="title">
+            <h5>{{title.subject ? title.subject : post.title}}</h5>              
+          </div>
+          <div class="year">
+            <span>{{post.date("F Y")}}</span>
+          </div>
+          <div class="with">
+            <span>{{post.contributors}}</span>
+          </div>    
+      </div>
+    </div>
+  </a>
+</div>  

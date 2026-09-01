@@ -1,0 +1,25 @@
+.layer--projects--3 {
+	background-color: $color--projects--3;
+
+	.post__cover {
+		img {
+			@include image--interactive;
+		}		
+	}
+
+}
+
+
+
+.projects-post {
+	.nav__bar {
+		border-bottom: 0;
+	}
+	
+	.layer--projects {
+		.layer__content {
+			margin-top: $space--m !important;
+		}
+	}
+
+}

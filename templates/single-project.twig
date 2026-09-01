@@ -1,0 +1,139 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	<div class="layer layer--projects layer--projects--3">
+		
+		<div class="layer__top">
+			<div class="nav nav--projects">
+				<div class="nav__bar">
+					{% set parent = post.terms("project_cat") %}
+					{% if parent|first %}
+					<div class="layer__top layer__top--small">
+						<div class="title">
+							
+							<a href="{{parent|first.path}}">
+								<div class="title">
+									<h6>{{parent|first.name}}</h6>
+								</div>
+							</a>
+
+						</div>
+					</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+
+		<div class="layer__content">
+
+				{% set header_style = post.title_style | default("auto") %}
+				
+				{% if not post.thumbnail %}
+
+					{% if header_style != "small_text" %}
+							{% include "block/article_title_large.twig" with {"post": post} %}	
+					{% else %}
+						{% include "block/article_title_small.twig" with {"post": post} %}
+					{%  endif  %}
+				{%  elseif header_style == "small_text" %}
+					{% include "block/article_title_small.twig" with {"post": post} %}
+				{%  elseif header_style == "large_text" %}
+					{% include "block/article_title_large.twig" with {"post": post} %}
+				{% else %}
+					{% if post.title|length < 35 %}
+						{% include "block/article_title_large.twig" with {"post": post} %}
+					{% else %}
+						{% include "block/article_title_small.twig" with {"post": post} %}
+					{%  endif %}
+				{%  endif %}
+				
+				<div class="post__content">
+						{{post.content}}
+				</div>	
+				
+
+				{# START: Footnotes #}
+				
+				{% set footnotes = post.meta("footnotes") %}
+				{% if footnotes %}
+				<div class="post__footnotes">
+
+					{% for note in footnotes %}
+						{% if note.note %}
+						<li>{{ note.note }}</li>
+						{% endif %}
+					{% endfor %}
+				</div>
+				{% endif %}
+				{# END: Footnotes #}
+
+				{# START: Metadata block #}
+				<div class="post__meta">
+	  				
+			      {% for author in post.id|getAuthors %}
+  					{% if author.description and Post(author.ID).hide_bio != "1" %}
+				        <div class="author__bio">
+			  					<div class="name">
+			  						<p>{{author.display_name}}</p>
+			  					</div>
+			  					<div class="text">
+			  						<p>{{author.description}}</p>
+			  					</div>
+			  				</div>
+  					{% endif %}
+			      {% endfor %}
+				    
+	  				
+			      {% set pub = post.meta("publication") %}
+			      {% if pub %}
+	  				{# START: Related publication #}
+	  				
+	  				<div class="publication">
+	  					<div class="availability">
+	  						<p>{{generalcontent.sentences.article__this_article_is_featured_in}} {{pub|issueTitle.title}}</p>
+	  					</div>	
+	  					<div class="row">
+	  						{% if pub.thumbnail %}
+		  						<div class="image">
+		  							<a href="{{pub.path}}">
+		  							<img src="{{pub.thumbnail | resize(600)}}" alt="">
+		  							</a>
+		  						</div>
+	  						{% endif %}
+	  						<div class="actions">
+	  							{% if pub.purchase_link %}
+	  								<div class="button--primary">
+										<a href="{{pub.purchase_link}}">{{generalcontent.words.buy_magazine}}</a>
+									</div>
+	  							{% endif %}
+	  							{% if post.purchase_link %}
+		  							<div class="button--primary"><a href="{{post.purchase_link.url}}" target="{{ post.purchase_link.target}}">{{post.purchase_link.title}}</a></div>
+	  							{% endif %}
+	  						</div>
+	  					</div>
+	  				</div>
+	  				{# END: Related publication #}
+	  				{% endif %}
+
+	  			
+					</div>
+					{# END: Metadata block #}
+
+					{# START: Next article block #}
+					{% if next %}
+					<div class="post__next">
+	    					<div class="cta link--inline">
+	    						<span>
+									{{generalcontent.words.next_article}}
+								</span>
+	    					</div>
+    					<a href="{{post.prev.path}}">
+    						<div class="title">
+    							<h3>{{next.title}}</h3>
+    						</div>
+    					</a>
+    				</div>
+    			{% endif %}
+		</div><!-- /content-wrapper -->
+	</div>
+{% endblock %}

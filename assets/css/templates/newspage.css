@@ -1,0 +1,6 @@
+.news__thumbnail {
+  background-color: red !important;
+}
+.news__thumbnail .container {
+  background-color: red !important;
+}

@@ -1,0 +1,187 @@
+{% extends "base.twig" %}
+
+{% block content %}
+  <div class="layer layer--shop">
+        <div class="archis__shop">
+            <div class="header__title">
+                <h2>Shop</h2>
+            </div>
+            
+            <div class="description">
+                {{ page.content }}
+            </div>
+
+            {# Filters #}
+            <div class="shop__filter">
+                <div class="nav__actions">
+                <div class="option button__nav--filters">
+                    {% if query == '' %}
+                        <a href="/shop/" class="button--filter--active">All</a>
+                    {% else %}
+                        <a href="/shop/" class="button--filter--default">All</a>
+                    {% endif %}
+                </div>
+                {% for cat in categories %}
+                    <div class="option button__nav--filters">
+                        {% if query == cat.slug %}
+                            <a href="/shop/" class="button--filter--active">{{ cat.name }}</a>
+                        {% else %}
+                            <a href="/shop/?category={{cat.slug}}" class="button--filter--default">{{ cat.name }}</a>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+
+            <div class="editions">
+                {% for post in shopitems %}     
+                    
+                    {# Publication #}
+                    {# {% if post.get_field('product_type') == 'publication' %}
+                    <div class="item {% if post.new %}item--new{% endif %} item--publication"> #}
+
+{% if post.get_field('product_type') == 'publication' %}
+<div class="item {% if post.get_field('new') %}item--new{% endif %} item--publication">
+
+
+                        <a href="{{post.path}}">
+
+                            {% if post.thumbnail %}
+                            <div class="image">
+                                {% set is_gif = post.thumbnail.src | split('.') | last | lower == 'gif' %}
+                                {% if is_gif %}
+                                    {# For GIFs, don't use WebP - keep as GIF to preserve animation #}
+                                    <img loading="lazy" 
+                                         src="{{post.thumbnail | resize(300)}}" 
+                                         alt="{{post.thumbnail.alt}}"
+                                         width="300" 
+                                         height="auto"
+                                         decoding="async"
+                                         style="image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;">
+                                {% else %}
+                                    {# For other formats, use WebP with fallback #}
+                                    <picture>
+                                        <source srcset="{{post.thumbnail | webp(300)}}" type="image/webp">
+                                        <img loading="lazy" 
+                                             src="{{post.thumbnail | resize(300)}}" 
+                                             alt="{{post.thumbnail.alt}}"
+                                             width="300" 
+                                             height="auto"
+                                             decoding="async"
+                                             style="image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;">
+                                    </picture>
+                                {% endif %}
+                            </div>
+                            {% endif %}
+
+                            <div class="text">
+                                {% set title = post.meta("pub_info") %}
+                                {% if title.number %}
+                                <div class="number">
+                                    <div>{{title.number}}</div>
+                                </div>
+                                {% endif %}
+
+                                <div class="info">
+                                    <div class="title">
+                                        <p>{{title.subject ? title.subject : post.title}}</p>              
+                                    </div>
+                                </div>
+
+                                <div class="price">
+                                    {% if post.meta('pdf_details').is_the_pdf_available  == 'available' and post.meta('print_details').is_the_print_available  == 'available' %}
+                                        <span>From €{{post.meta('pdf_details').pdf_price}}</span>
+                                    {% elseif post.meta('pdf_details').is_the_pdf_available  == 'available' and post.meta('print_details').is_the_print_available  != 'available' %}
+                                        <span>€{{post.meta('pdf_details').pdf_price}}</span>
+                                    {% elseif post.meta('pdf_details').is_the_pdf_available  != 'available' and post.meta('print_details').is_the_print_available  == 'available' %}
+                                        <span>€{{post.meta('print_details').print_price}}</span>
+                                     {% elseif post.meta('pdf_details').is_the_pdf_available  != 'available' and post.meta('print_details').is_the_print_available  != 'available' %}
+                                        <span>Sold out</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </a>
+                    </div>  
+                    {% endif %}
+
+                    {# Misc #}
+                    {# {% if post.get_field('product_type') == 'misc' %}
+                    <div class="item {% if post.new %}item--new{% endif %} item--misc"> #}
+
+                    {% if post.get_field('product_type') == 'misc' %}
+<div class="item {% if post.get_field('new') %}item--new{% endif %} item--misc">
+                        <a href="{{post.path}}">
+
+                            {% if post.thumbnail %}
+                            <div class="image"
+                            style="
+                                background: transparent;
+                                margin: 0;
+                                aspect-ratio: none;
+                                display: flex;
+                                justify-content: center;
+                                position: relative;">
+                                {% set is_gif = post.thumbnail.src | split('.') | last | lower == 'gif' %}
+                                {% if is_gif %}
+                                    {# For GIFs, don't use WebP - keep as GIF to preserve animation #}
+                                    <img loading="lazy" 
+                                         src="{{post.thumbnail | resize(800)}}" 
+                                         alt="{{post.thumbnail.alt}}"
+                                         {# width="300"  #}
+                                         height="auto"
+                                         decoding="async"
+                                         style="image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges; 
+                                            object-fit: cover;
+                                            background: #ededed;">
+                                {% else %}
+                                    {# For other formats, use WebP with fallback #}
+                                    <picture>
+                                        <source srcset="{{post.thumbnail | webp(300)}}" type="image/webp">
+                                        <img loading="lazy" 
+                                             src="{{post.thumbnail | resize(300)}}" 
+                                             alt="{{post.thumbnail.alt}}"
+                                             {# width="300"  #}
+                                             height="auto"
+                                             decoding="async"
+                                             style="image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges; 
+                                            object-fit: unset;
+                                            background: #ededed;
+                                            margin: 0;
+                                            height: auto;
+                                            width: 100%;
+                                            aspect-ratio: auto;
+                                            ">
+                                    </picture>
+                                {% endif %}
+                            </div>
+                            {% endif %}
+                
+                            <div class="text">
+                                {% set title = post.meta("pub_info") %}
+                                {% if title.number %}
+                                <div class="number">
+                                    <div>{{title.number}}</div>
+                                </div>
+                                {% endif %}
+                                <div class="info">
+                                    <div class="title">
+                                        <p>{{title.subject ? title.subject : post.title}}</p>              
+                                    </div>
+                                </div>
+                                <div class="price">
+                                    <span>€{{post.meta('item_details').item_price}}</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>  
+                    {% endif %}
+
+                {% endfor %}
+            </div>
+
+            {# Include pagination partial #}
+            {% include "partial/pagination.twig" with {"posts": shopitems} %}
+
+        </div>
+    </div>
+{% endblock %}

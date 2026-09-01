@@ -1,0 +1,73 @@
+{# This file demonstrates using most of the index.twig template and modifying 
+   just a small part. See `search.twig` for an example of another approach #}
+
+{% extends "base.twig" %}
+
+{% block content %}
+  <div class="layer layer--volume"> 
+    {% include "volume_nav.twig" with {"volume_class": "layer__top--small"} %}
+
+
+    <div class="layer__content">
+      <div class="layer__title">
+        <h2>{{generalcontent.words.publications}}</h2>
+      </div>
+      <div class="layer__intro">
+        <h6>
+          {{generalcontent.sentences.publication_intro}}
+        </h6>
+        {# {% include "block/subscribe.twig" %} #}
+      </div>
+
+
+      <div class="editions">
+        {% for post in posts %}
+          <div class="item">
+            <a href="{{post.path}}">
+              {% if post.thumbnail %}
+              <div class="image">
+                <img loading="lazy" src="{{post.thumbnail | resize(800)}}" alt="{{post.thumbnail.alt}}">
+              </div>
+              {% endif %}
+              <div class="text">
+                {% set title = post.meta("pub_info") %}
+                
+                {% if title.number %}
+                <div class="number">
+                  <div>{{title.number}}</div>
+                </div>
+                {% endif %}
+                <div class="info">
+                  
+                    
+                  <div class="title">
+                    
+                    <p>{{title.subject ? title.subject : post.title}}</p>              
+                  </div>
+                  <div class="year">
+                    <span>{{post.date("Y")}}</span>
+                  </div>
+                  {% if post.contributors %}
+                  <div class="with">
+                    {# option with limits as long as the names are , seperated
+                    <span>{{post.contributors|split(",")|slice(0, 3)|join(",")}}</span>
+                    } #}
+                    <span>{{post.contributors}}</span>
+                  </div>    
+                  {% endif %}
+
+                </div>
+              </div>
+            </a>
+          </div>  
+        {% endfor %}
+      </div>
+
+
+
+    </div>
+      
+
+
+  </div>
+{% endblock %}

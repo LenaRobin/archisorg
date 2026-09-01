@@ -1,0 +1,33 @@
+<div class="layer__feed">
+  <div class="articles__list">
+    
+    {% for post in posts %}
+        <div class="article__thumbnail article__thumbnail--list {{ post.thumbnail? "": "article__thumbnail--nopic"}}">
+          <a class="container" href="{{post.path}}">
+            {% if post.thumbnail %}
+              <div class="image__container image__container--volume">
+                <img class="image image--bw image--transparent" src="{{post.thumbnail|resize(600)}}" alt="">
+              </div>
+            {% endif %}
+            <div class="text">
+              <div class="title">
+                <h5>{{post.title}}</h5>
+              </div>
+
+
+              {# TODO: ANTON: : Add the correct tag value, does not need to be a link to a category page #}
+              
+              <div class="tags">
+                {% for cat in post.terms("project_art_cat") %}
+                  <span class="filter__tag">{{cat.name}}</span>
+                {% endfor %}
+              </div>
+
+            </div>
+          </a>
+        </div>
+      
+
+    {%  endfor %}
+  </div>
+</div>

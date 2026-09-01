@@ -1,0 +1,152 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	<div class="layer layer--volume">
+		{% include "volume_nav.twig" %}
+		
+		
+		<div class="layer__content">
+			{# <article class="post-type-{{ post.post_type }}" id="post-{{ post.ID }}"> #}
+				{% set header_style = post.title_style | default("auto") %}
+				
+				{% if not post.thumbnail %}
+
+					{% if header_style != "small_text" %}
+							{% include "block/article_title_large.twig" with {"post": post} %}	
+					{% else %}
+						{% include "block/article_title_small.twig" with {"post": post} %}
+					{%  endif  %}
+				{%  elseif header_style == "small_text" %}
+					{% include "block/article_title_small.twig" with {"post": post} %}
+				{%  elseif header_style == "large_text" %}
+					{% include "block/article_title_large.twig" with {"post": post} %}
+				{% else %}
+					{% if post.title|length < 35 %}
+						{% include "block/article_title_large.twig" with {"post": post} %}
+					{% else %}
+						{% include "block/article_title_small.twig" with {"post": post} %}
+					{%  endif %}
+				{%  endif %}
+				
+
+				
+				<div class="post__content">
+						{{post.content}}
+				</div>	
+				
+
+				{# START: Footnotes #}
+				{% set footnotes = post.meta("footnotes") %}
+				{% if footnotes %}
+				<div class="post__footnotes">
+					<ol>
+					{% for note in footnotes %}
+						{% if note.note %}
+						<li>{{ note.note }}</li>
+						{% endif %}
+					{% endfor %}
+					</ol>
+				</div>
+				{% endif %}
+				{# END: Footnotes #}
+
+				
+  				{# START: Metadata block #}
+				<div class="post__meta">
+			      {% for author in post.id|getAuthors %}
+  					{% if author.description and Post(author.ID).hide_bio != "1" %}
+
+				        <div class="author__bio">
+		  					<div class="name">
+		  						<h6>{{author.display_name}}</h6>
+		  					</div>
+		  					<div class="text">
+		  						<h6>{{author.description}}</h6>
+		  					</div>
+		  				</div>
+  					{% endif %}
+			      {% endfor %}
+				    
+	  				
+			      {% set pub = post.meta("publication") %}
+			      {% if pub %}
+	  				{# START: Related publication #}
+	  				
+	  				<div class="publication">
+	  					<div class="row">
+{# 	  						{% if pub.thumbnail %}
+		  						<div class="image">
+		  							<a href="{{pub.path}}">
+		  							<img src="{{pub.thumbnail | resize(600)}}" alt="">
+		  							</a>
+		  						</div>
+	  						{% endif %} #}
+	
+	  						<div class="actions">
+			  					<div class="availability">
+			  						<p>{{generalcontent.sentences.article__appears_in}} <span class="link--inline"><a href="{{pub.path}}">{{pub|issueTitle.title}}</a></span>.</p>
+			  					</div>	
+
+								<a href="{{ pub.path }}">
+									<div class="button--primary">{{ generalcontent.sentences.discover_the_issue }}</div>
+								</a>
+{# 
+								{% if pub.purchase_link %}
+									<a target="_blank" href="{{ pub.purchase_link }}">
+										<div class="button--primary">{{ generalcontent.words.buy }}</div>
+									</a>
+								{% endif %} #}
+
+								{# {% if pub.purchase_link %}
+									<a target="{{ pub.purchase_link['target']|default('_blank') }}" href="{{ pub.purchase_link['url'] }}">
+										<div class="button--primary">{{ pub.purchase_link['title']|default(generalcontent.words.buy) }}</div>
+									</a>
+								{% endif %}
+
+								{% if pub.purchase_link %}
+									{% set link_url = pub.purchase_link['url'] ?? pub.purchase_link %}
+									{% set link_title = pub.purchase_link['title'] ?? generalcontent.words.buy %}
+									{% set link_target = pub.purchase_link['target'] ?? '_blank' %}
+
+									<a href="{{ link_url }}" target="{{ link_target }}">
+										<div class="button--primary">{{ link_title }}</div>
+									</a>
+								{% endif %} #}
+
+
+								{# {% if post.purchase_link %}
+									<a href="{{ post.purchase_link['url'] }}" target="{{ post.purchase_link['target'] }}">
+										<div class="button--primary">{{ post.purchase_link['title'] }}</div>
+									</a>
+								{% endif %} #}
+								
+	  						</div>
+	  					</div>
+	  				</div>
+	  				{# END: Related publication #}
+
+  				{% endif %}
+				</div>
+				{# END: Metadata block #}
+	  			
+
+
+					{# START: Next article block #}
+					{% if post.prev %}
+					<div class="post__next">
+	    					<div class="cta">
+	    						<span>
+									{{generalcontent.words.related_article}}
+								</span>
+	    					</div>
+						
+						<a href="{{post.prev.path}}">
+							<div class="title">
+								<h3>{{post.prev.title}}</h3>
+							</div>
+						</a>
+					</div>
+    			{% endif %}
+		</div><!-- /content-wrapper -->
+	</div>
+{% endblock %}

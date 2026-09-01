@@ -1,0 +1,22 @@
+<div class="item item--project--single article__thumbnail article__thumbnail--list">
+  <a class="link__container" href="{{post.path}}">
+    {% if post.thumbnail %}
+      <div class="image__container">
+        <img class="image" loading="lazy" src="{{post.thumbnail|resize(600)}}" alt="">
+      </div>
+    {% endif %}
+    <div class="text">
+      <div class="title">
+        <h5>{{post.title}}</h5>
+      </div>
+      <div class="excerpt">
+        <p>
+          {{ post.post_excerpt}}
+        </p>
+      </div>
+      <div class="from">
+        <p>In Project {{post.terms("project_cat")|first.name}}</p>
+      </div>
+    </div>
+  </a>
+</div>

@@ -1,0 +1,228 @@
+.volume-issue {
+
+
+	.layer__content {
+		// padding: 0 $space--m / 2;
+		padding-bottom: $space--l;
+	}
+
+
+	.nav__actions {
+		display: none;
+	}	
+
+
+	details {
+		margin-top: $space--xs;	
+	}
+
+
+	.layer__title {
+		margin-bottom: $space--m;
+	}
+
+	.layer__feed {
+		grid-template-columns: 1fr;
+		grid-column-gap: $space--s;
+		padding: 0;
+		padding-bottom: $space--s;
+
+		// .cta {
+		// 	margin-top: $space--l;
+		// 	margin-bottom: $space--s;
+		// 	// text-align: center;
+		// }
+
+		// Articles list
+		.articles__list {
+			display: grid;
+			grid-template-columns: 1fr;
+			grid-column-gap: $space--s;
+			grid-row-gap: $space--s;
+			margin-top: $space--m + $space--s;
+
+			.article__thumbnail {
+				padding-bottom: 0;
+				padding-top: $space--xs * 1.5;
+
+				.container {
+					display: flex;
+					flex-direction: column;
+
+					.title {
+						text-transform: uppercase;
+						margin-bottom: $space--xxs * 1.25;
+					}
+				}
+
+				.authors {
+					text-transform: uppercase;
+
+					h6 {
+						display: contents;
+					}
+				}
+
+				@include screen--mobile {
+					display: block;
+
+					.container {
+						display: grid;
+						grid-template-columns: 1fr 2fr;
+						grid-column-gap: $space--xs;
+					}
+				}
+			}
+		}
+
+	}
+
+
+
+	.category__intro {
+		margin-bottom: $space--xl;
+		display: grid;
+		grid-template-columns: 4fr 2fr;
+		grid-column-gap: $space--s;
+		row-gap: $space--m;
+
+		@include screen--mobile {
+			grid-template-columns: 1fr;
+		}
+
+		.text {
+			.issue__title{
+				text-transform: uppercase;
+				// margin-bottom: $space--s;
+			}
+
+			.category__description {
+				margin-top: $space--xs;
+
+				.issue__publishing {
+					margin-bottom: $space--m;
+					// text-align: right;
+					text-transform: uppercase;
+				}
+			}
+		}
+
+		.category__cta {
+
+			filter: brightness(0.92) contrast(1.1) !important;
+
+			@include screen--mobile {
+				grid-row: 1;
+			}
+
+			.sticky {
+				position: sticky;
+				top: $space--m;
+			}
+
+			.image__container {
+				text-align: center;
+
+				img {
+					max-width: $space--xl;
+				}
+			}
+
+			a {
+			    display: flex;
+			    align-items: center;
+			    justify-content: center;			
+			}
+
+			.button--primary {
+				margin-top: $space--xs;
+				width: fit-content;
+			}
+		}
+
+		.category__description__details {
+			margin-top: $space--xs;
+		}
+
+	}
+}
+
+
+
+
+
+
+
+
+.issue__info {		
+	margin-top: $space--l;
+
+	.text {
+		margin-bottom: $space--s * 1.25;
+	}
+
+	.issue__info__toc {
+
+		.toc__list {
+			pointer: default;
+
+			.toc__item {
+				pointer: default;
+				text-transform: uppercase;
+				margin-bottom: $space--s;
+
+				.author {
+					margin-top: $space--xxs;
+					pointer: default;
+				}
+
+				.title {
+					pointer: default;
+				}
+			}
+
+			.part {
+				text-transform: uppercase;
+				// margin-top: $space--xs;
+				border-bottom: $borders--thin $color--black;
+				// padding-bottom: $space--xxs;
+				display: inline-block;
+				margin-bottom: $space--s;
+			}
+		}
+	}
+}
+
+
+
+.issue__details {
+
+}
+
+
+.onlinearticles__label {
+	margin-bottom: $space--s;
+}
+
+.issue__more {
+	// border-top: 1px solid $color--black--transp;
+	// padding: $space--xs 0;
+	// display: inline-flex;
+}
+
+.issue__contributors {
+	// border-top: 1px solid $color--black--transp;
+	// padding: $space--xs 0;
+	// display: inline-flex;
+}
+
+.printed__details {
+	// border-top: 1px solid $color--black--transp;
+	// padding: $space--xs 0;
+	// display: inline-flex;
+}
+
+.item__details {
+	margin-top: $space--xs;
+}
+

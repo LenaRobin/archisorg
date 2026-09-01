@@ -1,0 +1,46 @@
+    {# see `archive.twig` for an alternative strategy of extending templates #}
+{% extends "base.twig" %}
+
+{% block outside_content %}
+  
+  <div class="searchresults__container content__archis">
+    
+      <div class="title">
+        <h2>{{generalcontent.words.search}}</h2>
+      </div>
+
+      <div class="searchresults__string">
+          {% if posts|length == 0 and found_terms|length == 0 %}
+            <div class="item item--nothing">
+
+              
+              <h5>{{generalcontent.sentences.search__no_results}}</h5>
+            </div>
+          {% else %}
+            <h5>{{found_terms|length + posts.found_posts}} {{generalcontent.sentences.search__result_for}} "{{search_query}}"</h5>
+            
+          {% endif %}
+          
+          
+        
+        </div>
+        {% if pagination.current == 1 %}
+          {% for term in found_terms %}
+            {# {% include ['tease-'~post.post_type~'.twig', 'tease.twig'] %} #}
+            {% include ['tease-'~term.taxonomy~'.twig', 'tease.twig'] %}          
+          {% endfor %}
+        {% endif %}
+        {% for post in posts %}
+          {% include ['tease-'~post.post_type~'.twig', 'tease.twig'] %}
+        {% endfor %}
+
+        {% include 'partial/pagination.twig' with { pagination: posts.pagination({show_all: false, mid_size: 3, end_size: 2}) } %}
+ 
+    		
+    	</div>
+
+
+
+
+  </div>
+{% endblock %}

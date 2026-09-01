@@ -1,0 +1,127 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	<div class="layer layer--projects">
+		
+		<div class="layer__top">
+			<div class="nav nav--projects">
+				<div class="nav__bar">
+					<div class="layer__top layer__top--small">
+						<div class="title">
+							<h6>
+								<a href="{{generalcontent.breadcrumbs.projects.url}}">{{generalcontent.breadcrumbs.projects.title}}</a>
+							</h6>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="layer__content">
+				<div class="project__info">
+				
+					<div class="post__title">
+						<h2>{{term.name}}</h2>
+					</div>
+
+					<div class="split">
+						<div class="project__description">
+							{{ term.description }}
+						</div>
+
+						<div class="project__info">
+							{% set info = term.meta("info") %}
+							{% for inf in info %}
+								<div class="item">
+									<div class="label">
+										<p>{{inf.title}}</p>
+									</div>
+									<div class="content">
+										{% for item in inf.items %}
+											{% if item.url%} 
+												<a href="{{item.url}}" target="_blank">{{item.item}}</a>
+											{% else %}
+												<p>{{item.item}}</p>
+											{% endif %}
+										{% endfor %}
+									</div>
+								</div>	
+							{% endfor %}
+
+							{% set publications = term.meta("publications") %}
+							{# Related publications #}
+							{% if publications and publications|length != 0 %}
+							<div class="project__related">
+								<div class="project__related__title label">
+									<p>
+										{{generalcontent.words.related_publications}}
+									</p>
+								</div>
+
+								<div class="project__related__items">
+									{% for pub_i in publications %}
+										{% set pub = Post(pub_i) %}
+									<div class="item">									
+										<a href="{{pub.path}}">
+											{% if pub.thumbnail %}
+											<img src="{{pub.thumbnail | resize(600)}}" alt="{{pub.thumbnail.alt}}">
+											{% endif %}
+											<p>{{pub|issueTitle.title}}</p>
+										</a>
+									</div>
+									{% endfor %}
+								</div>
+							</div>
+							{% endif %}
+
+
+						</div>
+					</div>
+		
+
+				</div>
+
+
+
+				{% if categories and categories|length != 0 %}
+					
+					<div class="nav__bar filter__bar">
+			    				
+	  				<div class="nav__actions filter__actions">
+					  		<span class="label">
+								{{generalcontent.words.filter}}
+							</span>
+	    					<!-- Filter group 1 -->
+	    					<div class="filter__group">
+	    						<div class="filter__group__tags">
+	    							<a href="/{{current_url}}/" class="filter__tag">{{generalcontent.words.all}}</a>
+	    							{% for cat in categories %}
+				    					<a href="/{{current_url}}/?category={{cat.slug}}" class="filter__tag">{{cat.name}}</a>
+			    					{% endfor %}
+	    						</div>
+	    					</div>
+	  				</div>
+
+					</div>
+				{% endif %}
+				{% include "block/archive_category_feed.twig" with {"posts": posts} %}
+				
+
+	
+
+
+
+
+			<!-- End of layer content -->
+			</div>
+
+			<div class="layer__bottom">
+				{# Back to projects #}
+				<div class="link--inline back">
+					<a href="{{generalcontent.links.back_to_projects.url}}">{{generalcontent.links.back_to_projects.title}}</a>
+				</div>
+			</div>
+
+		</div><!-- /content-wrapper -->
+	</div>
+{% endblock %}

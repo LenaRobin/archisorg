@@ -1,0 +1,16 @@
+.add {
+	.add__disclaimer {
+		@include type--small;
+		margin-bottom: $space--s;
+	}
+
+	.add__container {
+		background-color: pink;
+		width: 100%;
+		height: 200px;
+	}
+
+	&.add--horizontal {
+		// padding: $space--m;
+	}
+}

@@ -1,0 +1,22 @@
+@mixin image--nb {
+	filter: grayscale(1) brightness(1);
+	-webkit-filter: grayscale(1) brightness(1);
+    mix-blend-mode: multiply;
+}
+
+@mixin image--interactive {
+	filter: grayscale(1) brightness(1);
+	-webkit-filter: grayscale(1) brightness(1);
+    mix-blend-mode: multiply;
+
+	&:hover {
+		filter: none;
+		-webkit-filter: none;	
+	    mix-blend-mode: normal;
+	}
+}
+
+img {
+	width: 100%;
+	@include image--nb;
+}

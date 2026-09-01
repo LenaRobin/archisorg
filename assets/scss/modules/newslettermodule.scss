@@ -1,0 +1,90 @@
+.newsletter__module {
+	margin-bottom: $space--xl;
+	margin-top: $space--l;
+
+	.newsletter__label {
+		margin-bottom: $space--s;
+	}
+
+
+
+	#mc_embed_signup_scroll {
+
+	}
+
+	.mc-field-group {
+	    display: flex;
+	    align-items: center;
+	    justify-content: center;
+
+		input {
+			width: 60%;
+			background-color: transparent;
+			border-bottom: $borders--thin;
+			color: $color--black;
+			// @include type--sans;
+			@include type--body;
+			padding-bottom: $space--xxs;
+			height: $space--s;
+			transform: all 200ms ease;
+			font-family: 'Univers Next' !important; 
+
+			&::placeholder {
+				color: $color--black--transp2;
+			}
+
+			&:focus {
+				border-bottom-color: $color--black;
+			}
+		}
+
+		label {
+			display: none;
+		}
+	}
+
+	.clear {
+
+    	input {
+    		float: right;
+    		background-color: transparent;
+    		color: $color--black;
+    		transform: translateY(- $space--s);
+    		border: $borders--thin;
+    		border-color: transparent;
+			@include type--body;
+			font-family: 'Univers Next' !important; 
+    	}
+
+		.button {
+			font-family: 'Univers Next' !important; 
+		}
+	}
+
+
+}
+
+#mc_embed_signup_scroll {
+
+	input {
+		background-color: transparent !important;
+	}
+
+	.clear {
+
+    	input {
+    		float: right;
+    		background-color: transparent;
+    		color: $color--black;
+    		transform: translateY(- $space--s);
+    		border: $borders--thin;
+    		border-color: transparent;
+			@include type--body;
+			font-family: 'Univers Next' !important; 
+    	}
+
+		.button {
+			font-family: 'Univers Next' !important; 
+		}
+	}
+}

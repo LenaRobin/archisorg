@@ -1,0 +1,9 @@
+{% if menu_secondary %}
+<div class="menu__secondary">
+	<ul>   
+		{% for item in menu_secondary.get_items %}
+			<li class="link--inline link--inline--darkmode"><a target="{{item.target}}" href="{{item.link}}">{{item.title}}</a></li>
+		{% endfor %}
+	</ul>
+</div>
+{% endif %}

@@ -1,0 +1,157 @@
+.layer--volume {
+	background-color: $color--volume;
+	color: $color--black;
+	// border-radius: $corners--layer;
+
+	::-moz-selection { /* Code for Firefox */
+	  color: $color--black;
+	  background: $color--black--transp;
+	}
+
+	::selection {
+	  color: $color--black;
+	  background: $color--black--transp;
+	}
+
+
+
+	.nav__actions {
+		margin-top: 0 !important;
+	}
+
+
+
+	.layer__feed {
+		display: grid;
+		grid-template-columns: 5fr 1fr;
+		grid-column-gap: $space--m;
+
+
+		@include screen--tablet {
+			padding: 0;
+			display: block;
+		}
+
+		@include screen--mobile {
+			padding: 0;
+		}
+
+
+		.articles__list {
+			display: grid;
+			grid-template-columns: 3fr 3fr;
+			grid-column-gap: $space--m;
+
+			@include screen--large {
+				grid-template-columns: 1fr;
+			}
+
+			@include screen--desktop {
+				grid-template-columns: 1fr;
+			}
+
+			@include screen--tablet {
+				grid-template-columns: 1fr;
+				display: block;
+			}
+		}
+
+		.module__right {
+			padding-bottom: $space--l;
+
+			@include screen--tablet {
+				grid-row: 1;
+				display: flex;
+				justify-content: center;
+				padding-bottom: $space--m;
+				padding-top: $space--m;
+			}
+
+			.issue__current {
+				position: sticky;
+				top: $space--l;
+				transform: rotate(0deg);
+				transition: all 200ms ease-in-out;
+				cursor: pointer;
+	
+				&:hover {
+					transform: rotate(8deg);
+				}
+			}
+		}
+	}
+
+	.layer__feed + .layer__feed {
+		margin-top: $space--m;
+	}
+
+
+}
+
+
+
+
+.layer__breaking {
+	margin-top: $space--m;
+	margin-bottom: $space--m;
+
+	@include screen--tablet {
+		margin-top: $space--m;
+		margin-bottom: $space--s;
+	}
+
+
+	.newsletter__module {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+
+		.newsletter__label {
+			grid-column: 2/4;
+
+			@include screen--tablet {
+				grid-column: 1/5;
+			}
+		}
+
+		.newsletter__container {
+			grid-column: 2/4;
+
+			@include screen--tablet {
+				grid-column: 1/5;
+			}
+
+			.mc-field-group {
+				display: block;
+
+				input {
+					width: calc(100% - 70px);
+				}
+			}			
+		}
+
+	}
+}
+
+
+
+.volume .nav__actions {
+	margin-top: $space--s !important;
+}
+
+.volume .layer__content {
+	margin-top: $space--l;
+
+	@include screen--tablet {
+		margin-top: $space--m;
+	}
+}
+
+.volume .articles__list {
+	.article__thumbnail--highlight  {
+		border-top: 0 !important;
+
+		@include screen--tablet {
+			border-top: 1px !important;
+		}
+	}
+}

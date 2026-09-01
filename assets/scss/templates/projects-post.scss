@@ -1,0 +1,130 @@
+.layer--projects--3 {
+
+	.layer__content {
+		@include screen--mobile {
+			padding-bottom: 0 !important;
+		}
+	}
+
+
+
+	.post__cover {
+		img {
+			@include image--nb;
+		}		
+
+	}
+
+	.post__cover.image--after {
+		img {
+			@include image--nb;
+		}	
+
+		@include image--nb;
+
+		.image--after {
+			@include image--nb;
+		}
+
+		mix-blend-mode: multiply !important;
+	}
+
+	img {
+		@include image--nb;
+	}
+
+	// .header--volume--1 .image .post__cover img {
+	// 	@include image--nb;
+	// 	filter: grayscale(1) brightness(1) !important;
+	// 	transition: all 150ms ease !important;
+	// 	mix-blend-mode: luminosity !important;
+	// }
+
+	// .header--volume--2 .image--after .image--after,
+	// .header--volume--1 .image--after .image--after,
+	// .header--volume--2 .image--before .image--before,
+	// .header--volume--1 .image--before .image--before	 {
+	// 	@include image--nb;
+	// 	filter: grayscale(1) brightness(1) !important;
+	// 	transition: all 150ms ease !important;
+	// 	mix-blend-mode: luminosity !important;
+	// }
+}
+
+
+
+.projects-post {
+
+	// .post__header {
+	// 	@include image--nb;
+	// }
+
+
+	figure.wp-block-image, figure, figure:not(.wp-block-gallery) {
+		width: 100% !important;
+		margin-top: $space--m;
+		margin-bottom: $space--m;
+
+		@include screen--large {
+			grid-column: 2 / 3 !important;
+		}
+
+		@include screen--desktop {
+			grid-column: 2 / 4 !important;
+		}
+
+		@include screen--tablet {
+			grid-column: 2 / 4 !important;
+		}
+
+		// &:nth-of-type(3n+1){
+		// 	@include screen--large {
+		// 		grid-column: 2 / 3 !important;
+		// 	}
+
+		// 	@include screen--desktop {
+		// 		grid-column: 2 / 4 !important;
+		// 	}
+
+		// 	@include screen--tablet {
+		// 		grid-column: 2 / 4 !important;
+		// 	}
+		// }
+
+		figcaption {
+			text-align: left;
+			@include type--small;
+			margin-top: $space--xxs;
+			// @include type--sans;
+
+			* {
+				@include type--small;
+				margin-top: $space--xxs;
+				// @include type--sans;		
+			}
+		}
+	}
+
+	img {
+		@include image--nb;
+	}
+
+	.nav__bar {
+		border-bottom: 0;
+	}
+	
+	.layer__content {
+		margin-top: $space--m !important;
+	}
+
+	.post__meta {
+		display: none;
+	}
+
+	.post__author {
+		display: none;
+	}
+	.post__date {
+		display: none;
+	}
+}

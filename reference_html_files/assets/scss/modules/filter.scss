@@ -1,0 +1,80 @@
+.filter {
+	border-top: $borders--thin;
+	padding-top: $space--xs / 2;
+	border-bottom: $borders--thin;
+	padding-bottom: $space--xs / 2.5;
+}
+
+.filter__bar {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	border-top: $borders--thin;
+	border-bottom: $borders--thin;
+	
+	.filter__showcase {
+		display: inline;
+	}
+
+	.filter__actions {
+		display: flex;
+
+		.button {
+			margin-left: $space--xs;
+		}
+	}
+
+}
+
+
+.nav__bar, .filter__bar {
+
+	.nav__actions, .filter__actions {
+		.button {
+			// position: relative;
+			margin-left: $space--xs;
+
+			.filter__group {
+				width: auto;
+				z-index: 9999;
+				position: absolute;
+				margin-top: 1.4rem;
+				// transform: translateY(-100%);
+				// transition: all 300ms;
+				// visibility: hidden;
+				// height: 0;
+				display: none;
+
+				&.filter__group--open {
+					// transform: translateY(0%);
+					// visibility: visible;
+					// transition: all 300ms;
+					// height: auto;
+					display: block;
+				}
+
+				.filter__group__title {
+					@include type--small;
+					margin-bottom: $space--xs;
+					cursor: default;
+				}
+			}
+		}
+	}
+}
+
+
+// Typographic elements
+.filter__tag, .filter__tag {
+	padding: 0.4em 0.6em 0.25em 0.6em;
+	border-radius: 25px;
+	@include type--small;
+	letter-spacing: 0.025em !important;
+	margin-bottom: 8px;
+	border: 1px solid $color--black;
+
+	&:hover {
+		background-color: $color--black;
+		color: $color--projects;
+	}
+}

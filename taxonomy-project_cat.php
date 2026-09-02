@@ -20,7 +20,7 @@ $context = Timber::context();
 $context["body_class"] = "volume volume-category";
 global $wp_query;
 
-$context["term"] = new Timber\Term(get_queried_object_id(), "project_cat");
+$context["term"] = Timber::get_term(get_queried_object_id());
 
 $posts = $context["term"]->posts(10000);
 

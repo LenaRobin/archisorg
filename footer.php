@@ -1,14 +1,13 @@
 <?php
 /**
- * Third party plugins that hijack the theme will call wp_footer() to get the footer template.
- * We use this to end our output buffer (started in header.php) and render into the view/page-plugin.twig template.
+ * Theme footer for the Composer-managed Timber theme.
  *
- * If you're not using a plugin that requries this behavior (ones that do include Events Calendar Pro and
- * WooCommerce) you can delete this file and header.php
+ * wp_footer() is used here to flush the output buffer started in the header and
+ * hand control to the Twig templates used by the site.
  *
- * @package  WordPress
+ * @package  ArchisWordpressTheme
  * @subpackage  Timber
- * @since   Timber 0.1
+ * @since   2026-09-02
  */
 
 $timberContext = $GLOBALS['timberContext']; // @codingStandardsIgnoreFile

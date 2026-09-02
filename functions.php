@@ -1,22 +1,25 @@
 <?php
 /**
- * Timber starter-theme
- * https://github.com/timber/starter-theme
+ * Theme bootstrap for the Archis website.
  *
- * @package  WordPress
+ * Timber is loaded via Composer from this theme's vendor/autoload.php and is
+ * initialized using the current Timber 2.x API. Twig templates are rendered from
+ * the theme's templates/ directory.
+ *
+ * @package  ArchisWordpressTheme
  * @subpackage  Timber
- * @since   Timber 0.1
+ * @since   2026-09-02
  */
 
 /**
- * If you are installing Timber as a Composer dependency in your theme, you'll need this block
- * to load your dependencies and initialize Timber. If you are using Timber via the WordPress.org
- * plug-in, you can safely delete this block.
+ * Load the Composer dependency autoloader and initialize Timber.
+ *
+ * This theme intentionally uses the Composer-managed dependency chain instead of
+ * the legacy Timber plugin approach.
  */
 $composer_autoload = __DIR__ . '/vendor/autoload.php';
 if ( file_exists( $composer_autoload ) ) {
 	require_once $composer_autoload;
-	// $timber = new Timber\Timber();
 	Timber\Timber::init();
 }
 
@@ -419,7 +422,7 @@ class StarterSite extends Timber\Site {
 		);
 
 
-		$context["nav_pub"] = new Timber\PostQuery($nav_pub_query);
+		$context["nav_pub"] = Timber::get_posts($nav_pub_query);
 
 		$nav_books_query = array(
 			'posts_per_page'   => -1, 
@@ -427,12 +430,12 @@ class StarterSite extends Timber\Site {
 	   );
 
 
-	   $context["nav_books"] = new Timber\PostQuery($nav_books_query);
+	   $context["nav_books"] = Timber::get_posts($nav_books_query);
 
 		$topics = $this->get_terms_by_post_type(array("topic"), array("article"));
 		$context["nav_topic"] = [];
 		foreach ($topics as $key => $term) {
-			$context["nav_topic"][] = new Timber\Term($term->term_id, "topic");
+			$context["nav_topic"][] = Timber::get_term($term->term_id);
 		}
 		usort($context["nav_topic"], array($this, 'compareByName'));
 
@@ -440,7 +443,7 @@ class StarterSite extends Timber\Site {
 		$dossiers = $this->get_terms_by_post_type(array("dossier"), array("article"));
 		$context["nav_dossier"] = [];
 		foreach ($dossiers as $key => $term) {
-			$context["nav_dossier"][] = new Timber\Term($term->term_id, "dossier");
+			$context["nav_dossier"][] = Timber::get_term($term->term_id);
 		}
 		usort($context["nav_dossier"], array($this, 'compareByName'));
 
@@ -455,12 +458,12 @@ class StarterSite extends Timber\Site {
 		global $wp;
 		$context["current_url"] = $wp->request;
 		$context["full_url"] = home_url( $wp->request ) . "/";
-		$context['menu']  = new Timber\Menu("Menu");
-		$context['menu_secondary']  = new Timber\Menu("menu_secondary");
-		$context['footer_secondary_1']  = new Timber\Menu("footer_secondary_1");
-		$context['footer_secondary_2']  = new Timber\Menu("footer_secondary_2");
-		$context['footer_social']  = new Timber\Menu("footer_social");
-		$context['footer_tertiary']  = new Timber\Menu("footer_tertiary");
+		$context['menu']  = Timber::get_menu("Menu");
+		$context['menu_secondary']  = Timber::get_menu("menu_secondary");
+		$context['footer_secondary_1']  = Timber::get_menu("footer_secondary_1");
+		$context['footer_secondary_2']  = Timber::get_menu("footer_secondary_2");
+		$context['footer_social']  = Timber::get_menu("footer_social");
+		$context['footer_tertiary']  = Timber::get_menu("footer_tertiary");
 		$context['generalcontent'] = get_fields('option');
 
 		$context['site']  = $this;
@@ -579,7 +582,7 @@ class StarterSite extends Timber\Site {
 		  'meta_key'     => 'priority',
 		  'meta_type'      => 'DATETIME'
 		);
-		$ads = new Timber\PostQuery($q);
+		$ads = Timber::get_posts($q);
 		$total = intval($ads->found_posts);
 		
 

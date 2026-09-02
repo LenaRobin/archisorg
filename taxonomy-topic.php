@@ -20,7 +20,7 @@ $context = Timber::context();
 $context["body_class"] = "volume volume-category";
 global $wp_query;
 
-$context["term"] = new Timber\Term(get_queried_object_id(), "topic");
+$context["term"] = Timber::get_term(get_queried_object_id());
 
 global $paged;
 if (!isset($paged) || !$paged){
@@ -51,8 +51,8 @@ $query = array(
   // 'meta_key'     => 'from_date',
   // 'meta_type'      => 'DATETIME'
 );
-$context['posts'] = new Timber\PostQuery($query);
+$context['posts'] = Timber::get_posts($query);
 
-// $context['posts'] = new Timber\PostQuery();
+// $context['posts'] = Timber::get_posts();
 
 Timber::render( $templates, $context );

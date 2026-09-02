@@ -30,7 +30,7 @@ Template Post Type: page
 
 $context = Timber::context();
 
-$timber_post     = new Timber\Post();
+$timber_post     = Timber::get_post();
 $context['post'] = $timber_post;
 
 
@@ -55,7 +55,7 @@ $newbit_query = array(
 	// 'meta_type'			=> 'DATETIME'
 );
 
-$context["newbits"] = new Timber\PostQuery($newbit_query);
+$context["newbits"] = Timber::get_posts($newbit_query);
 
 
 
@@ -78,7 +78,7 @@ $article_query = array(
 	// 'meta_type'			=> 'DATETIME'
 );
 
-$context["articles"] = new Timber\PostQuery($article_query);
+$context["articles"] = Timber::get_posts($article_query);
 
 $publication_query = array(
 	'posts_per_page'	=> 1,
@@ -98,7 +98,7 @@ $publication_query = array(
 	// 'meta_type'			=> 'DATETIME'
 );
 
-$context["publication"] = new Timber\PostQuery($publication_query);
+$context["publication"] = Timber::get_posts($publication_query);
 
 
 
@@ -119,7 +119,7 @@ $event_query = array(
 	'meta_key'			=> 'from',
 	'meta_type'			=> 'DATETIME'
 );
-$context["events"] = new Timber\PostQuery($event_query);
+$context["events"] = Timber::get_posts($event_query);
 
 $terms = get_terms( 'project_cat', array(
     'hide_empty' => false,
@@ -130,7 +130,7 @@ $terms = get_terms( 'project_cat', array(
 
 $context['projects'] = [];
 foreach ($terms as $key => $term) {
-  $context["projects"][] = new Timber\Term($term->term_id, "project_cat");  
+  $context["projects"][] = Timber::get_term($term->term_id);
 }
 
 function project_sort($a, $b) {

@@ -54,7 +54,7 @@ $past = array(
   'meta_key'     => 'from',
   'meta_type'      => 'DATETIME'
 );
-$context['future'] = new Timber\PostQuery($future);
-$context['past'] = new Timber\PostQuery($past);
+$context['future'] = Timber::get_posts($future);
+$context['past'] = Timber::get_posts($past);
 
 Timber::render( $templates, $context );

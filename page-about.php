@@ -31,6 +31,6 @@ $context = Timber::context();
 $context["body_class"] = "about";
 $context["page_class"] = "page--about";
 $context["enable_layers"] = false;
-$timber_post     = new Timber\Post();
+$timber_post     = Timber::get_post();
 $context['post'] = $timber_post;
 Timber::render( array( 'page-about.twig', 'page.twig' ), $context );

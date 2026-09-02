@@ -22,10 +22,12 @@ $context["enable_layers"] = true;
 // // Get the page content from the shop page (not post)
 $shop_page = get_page_by_path('shop');
 if ($shop_page) {
-    $context['page'] = new Timber\Post($shop_page);
+    // $context['page'] = new Timber\Post($shop_page);
+    $context['page'] = Timber::get_post($shop_page);
 } else {
     // Fallback to current post
-    $timber_post = new Timber\Post();
+    // $timber_post = new Timber\Post();
+    $timber_post = Timber::get_post();
     $context['post'] = $timber_post;
 }
 
@@ -72,7 +74,8 @@ if ($context['query'] != '') {
 }
 
 // ALWAYS use custom query - this ensures fresh data
-$context['shopitems'] = new Timber\PostQuery($query_shop);
+// $context['shopitems'] = new Timber\PostQuery($query_shop);
+$context['shopitems'] = Timber::get_posts($query_shop);
 
 // Categories lookup - force refresh
 $shop_category = get_category_by_slug('shop');

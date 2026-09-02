@@ -28,7 +28,8 @@ $context['categories'] = [];
 
 foreach ($terms as $key => $term) {
   
-  $context["categories"][] = new Timber\Term($term->term_id, "project_cat");  
+//   $context["categories"][] = new Timber\Term($term->term_id, "project_cat");  
+  $context["categories"][] = Timber::get_term($term->term_id, "project_cat");
 }
 
 function project_sort($a, $b) {
@@ -57,6 +58,6 @@ $args = array(
 	'posts_per_page' => 4,
 	'order_by' => 'publish_date'
 );
-$context['posts'] = new Timber\PostQuery($args);
-
+// $context['posts'] = new Timber\PostQuery($args);
+$context['posts'] = Timber::get_posts($args);
 Timber::render( $templates, $context );

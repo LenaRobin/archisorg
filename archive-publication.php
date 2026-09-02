@@ -42,6 +42,6 @@ $query = array(
   // 'meta_key'     => 'from_date',
   // 'meta_type'      => 'DATETIME'
 );
-$context['posts'] = new Timber\PostQuery($query);
-
+// $context['posts'] = new Timber\PostQuery($query);
+$context['posts'] = Timber::get_posts($query);
 Timber::render( $templates, $context );

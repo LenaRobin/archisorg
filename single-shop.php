@@ -10,7 +10,8 @@
  */
 
 $context         = Timber::context();
-$timber_post     = Timber::query_post();
+// $timber_post     = Timber::query_post();
+$timber_post = Timber::get_post();
 $context['post'] = $timber_post;
 
 
@@ -45,8 +46,8 @@ $article_query = array(
 );
 
 
-$context["articles"] = new Timber\PostQuery($article_query);
-
+// $context["articles"] = new Timber\PostQuery($article_query);
+$context["articles"] = Timber::get_posts($article_query);
 // echo  $timber_post->ID;
 
 if ( post_password_required( $timber_post->ID ) ) {

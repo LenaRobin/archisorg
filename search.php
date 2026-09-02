@@ -45,6 +45,7 @@ foreach ($categories as $key => $cat) {
 }
 
 $context['search_query'] =  get_search_query();
-$context['posts'] = new Timber\PostQuery();
+// $context['posts'] = new Timber\PostQuery();
+$context['posts'] = Timber::get_posts();
 
 Timber::render( $templates, $context );

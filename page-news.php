@@ -30,7 +30,8 @@ Template Post Type: page
 
 $context = Timber::context();
 
-$timber_post     = new Timber\Post();
+// $timber_post     = new Timber\Post();
+$timber_post = Timber::get_post();
 $context['post'] = $timber_post;
 
 $newbit_query = array(
@@ -53,7 +54,8 @@ $newbit_query = array(
 	// 'meta_type'			=> 'DATETIME'
 );
 
-$context["newbits"] = new Timber\PostQuery($newbit_query);
+// $context["newbits"] = new Timber\PostQuery($newbit_query);
+$context["newbits"] = Timber::get_posts($newbit_query);
 $context["body_class"] = "news about";
 $context["page_class"] = "page--news page--about";
 $context["enable_layers"] = false;
